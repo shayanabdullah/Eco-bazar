@@ -1,1 +1,64 @@
 @import "tailwindcss";
+
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+
+
+
+@theme {
+    --color-soft-primary: #84D187;
+    --color-primary: #00B207;
+    --color-hard-primary: #2C742F;
+    --color-warning: #FF8A00;
+    --color-danger: #EA4B48;
+    --color-badge-blue: #2388FF;
+
+    /* gray */
+    --color-gray-9: #1A1A1A;
+    --color-gray-8: #333333;
+    --color-gray-7: #4D4D4D;
+    --color-gray-6: #666666;
+    --color-gray-5: #808080;
+    --color-gray-4: #999999;
+    --color-gray-3: #B3B3B3;
+    --color-gray-2: #CCCCCC;
+    --color-gray-1: #E6E6E6;
+    --color-gray-0: #F2F2F2;
+
+    /* green gray */
+    --color-green-gray-9: #002603;
+    --color-green-gray-8: #173B1A;
+    --color-green-gray-7: #2B572E;
+    --color-green-gray-6: #406B42;
+    --color-green-gray-5: #618062;
+    --color-green-gray-4: #7A997C;
+    --color-green-gray-3: #96B297;
+    --color-green-gray-2: #B4CCB4;
+    --color-green-gray-1: #DAE5DA;
+    --color-green-gray-0: #EDF2EE;
+
+
+        /* font */
+    --font-poppins: "Poppins", sans-serif;
+
+ 
+
+    /* display */
+    --display-01: 72px;
+
+    /* heading */
+    --heading-01: 56px;
+    --heading-02: 48px;
+    --heading-03: 40px;
+    --heading-04: 36px;
+    --heading-05: 32px;
+
+    /* body */
+    --body-xxl: 24px;
+    --body-xl: 20px;
+    --body-lg: 18px;
+    --body-md: 16px;
+    --body-sm: 14px;
+    --body-xs: 12px;
+}
