@@ -3,62 +3,60 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
-
-
-
 @theme {
-    --color-soft-primary: #84D187;
-    --color-primary: #00B207;
-    --color-hard-primary: #2C742F;
-    --color-warning: #FF8A00;
-    --color-danger: #EA4B48;
-    --color-badge-blue: #2388FF;
+  --color-soft-primary: #84d187;
+  --color-primary: #00b207;
+  --color-hard-primary: #2c742f;
+  --color-warning: #ff8a00;
+  --color-danger: #ea4b48;
+  --color-badge-blue: #2388ff;
 
-    /* gray */
-    --color-gray-9: #1A1A1A;
-    --color-gray-8: #333333;
-    --color-gray-7: #4D4D4D;
-    --color-gray-6: #666666;
-    --color-gray-5: #808080;
-    --color-gray-4: #999999;
-    --color-gray-3: #B3B3B3;
-    --color-gray-2: #CCCCCC;
-    --color-gray-1: #E6E6E6;
-    --color-gray-0: #F2F2F2;
+  /* gray */
+  --color-gray-9: #1a1a1a;
+  --color-gray-8: #333333;
+  --color-gray-7: #4d4d4d;
+  --color-gray-6: #666666;
+  --color-gray-5: #808080;
+  --color-gray-4: #999999;
+  --color-gray-3: #b3b3b3;
+  --color-gray-2: #cccccc;
+  --color-gray-1: #e6e6e6;
+  --color-gray-0: #f2f2f2;
 
-    /* green gray */
-    --color-green-gray-9: #002603;
-    --color-green-gray-8: #173B1A;
-    --color-green-gray-7: #2B572E;
-    --color-green-gray-6: #406B42;
-    --color-green-gray-5: #618062;
-    --color-green-gray-4: #7A997C;
-    --color-green-gray-3: #96B297;
-    --color-green-gray-2: #B4CCB4;
-    --color-green-gray-1: #DAE5DA;
-    --color-green-gray-0: #EDF2EE;
+  /* green gray */
+  --color-green-gray-9: #002603;
+  --color-green-gray-8: #173b1a;
+  --color-green-gray-7: #2b572e;
+  --color-green-gray-6: #406b42;
+  --color-green-gray-5: #618062;
+  --color-green-gray-4: #7a997c;
+  --color-green-gray-3: #96b297;
+  --color-green-gray-2: #b4ccb4;
+  --color-green-gray-1: #dae5da;
+  --color-green-gray-0: #edf2ee;
 
+  /* font */
+  --font-poppins: "Poppins", sans-serif;
 
-        /* font */
-    --font-poppins: "Poppins", sans-serif;
+  /* display */
+  --display-01: 72px;
 
- 
+  /* heading */
+  --text-heading-01: 56px;
+  --text-heading-02: 48px;
+  --text-heading-03: 40px;
+  --text-heading-04: 36px;
+  --text-heading-05: 32px;
 
-    /* display */
-    --display-01: 72px;
+  /* body */
+  --text-body-xxl: 24px;
+  --text-body-xl: 20px;
+  --text-body-lg: 18px;
+  --text-body-md: 16px;
+  --text-body-sm: 14px;
+  --text-body-xs: 12px;
+}
 
-    /* heading */
-    --heading-01: 56px;
-    --heading-02: 48px;
-    --heading-03: 40px;
-    --heading-04: 36px;
-    --heading-05: 32px;
-
-    /* body */
-    --text-body-xxl: 24px;
-    --text-body-xl: 20px;
-    --text-body-lg: 18px;
-    --text-body-md: 16px;
-    --text-body-sm: 14px;
-    --text-body-xs: 12px;
+.divider {
+  @apply after:absolute after:content-[''] after:h-full after:w-px after:left-1/2 after:top-0 after:-translate-x-1/2 after:bg-gray-1 after:rounded-full
 }

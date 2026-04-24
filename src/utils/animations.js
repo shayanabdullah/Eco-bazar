@@ -85,3 +85,85 @@ export const scale = (delay) => {
     }
   };
 }; 
+
+
+
+export const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+// smoother + modern fade (not boring)
+export const fadeUp = (delay = 0) => ({
+  hidden: {
+    y: 60,
+    opacity: 0,
+    filter: "blur(6px)",
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.8,
+      delay,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+});
+
+// product card pop
+export const cardPop = (delay = 0) => ({
+  hidden: {
+    scale: 0.9,
+    opacity: 0,
+  },
+  show: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+      delay,
+    },
+  },
+});
+
+// image zoom subtle
+export const imageZoom = {
+  hover: {
+    scale: 1.08,
+    transition: { duration: 0.4 },
+  },
+};
+
+// button interaction
+export const buttonAnim = {
+  hover: {
+    scale: 1.05,
+  },
+  tap: {
+    scale: 0.95,
+  },
+};
+
+// slide banners (hero + deals)
+export const slideFade = {
+  hidden: {
+    x: -80,
+    opacity: 0,
+  },
+  show: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.9,
+      ease: "easeOut",
+    },
+  },
+};

@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Container from "./layouts/Container";
 import { LuMapPin } from "react-icons/lu";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeIn, } from "../utils/animations";
+import useClickOutside from "../hooks/useClickOutside";
 
 const TopBar = () => {
   const [openLan, setOpenLan] = useState(false);
   const [openCurrency, setOpenCurrency] = useState(false);
+  const dropDownlanRef = useRef(null)
+  const dropDownCurRef = useRef(null)
+  useClickOutside(dropDownlanRef, ()=> setOpenLan(false))
+  useClickOutside(dropDownCurRef, ()=> setOpenCurrency(false))
+
+
+  
 
   return (
     <motion.header
-      variants={fadeIn('down', 0.4)}
+      variants={fadeIn('down', 0.3)}
       initial="hidden"
       whileInView="show"
       className="py-3 border-b border-gray-1"
@@ -28,12 +36,13 @@ const TopBar = () => {
           {/* RIGHT */}
           <div className="flex items-center gap-x-10 ">
             
-       <div className="flex items-center gap-x-5 relative after:absolute after:content-[''] after:h-full after:w-px after:left-1/2 after:top-0 after:-translate-x-1/2 after:bg-gray-1 after:rounded-full">
+       <div className="flex items-center gap-x-5 relative divider">
              {/* LANGUAGE */}
             <div className="flex items-center relative">
               <div
                 className="flex items-center gap-x-1.25 cursor-pointer"
                 onClick={() => setOpenLan(!openLan)}
+                ref={dropDownlanRef}
               >
                 Eng <IoChevronDownOutline />
               </div>
@@ -47,6 +56,7 @@ const TopBar = () => {
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
                     className="bg-gray-0 rounded-sm text-body-sm absolute top-[122%] z-50 left-0 shadow-md"
+                
                   >
                     <ul>
                       <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer">
@@ -65,7 +75,8 @@ const TopBar = () => {
           <div className="flex items-center relative">
               <div
                 className="flex items-center gap-x-1.25 cursor-pointer"
-                onClick={() => setOpenCurrency(!openCurrency)}
+                onClick={() => setOpenCurrency(prev => !prev)}
+                 ref={dropDownCurRef}
               >
                 USD <IoChevronDownOutline />
               </div>
@@ -79,6 +90,7 @@ const TopBar = () => {
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
                     className="bg-gray-0 rounded-sm text-body-sm absolute top-[122%] z-50 left-0 shadow-md"
+                   
                   >
                     <ul>
                       <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer">
@@ -86,6 +98,9 @@ const TopBar = () => {
                       </li>
                       <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer">
                       INR
+                      </li>
+                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer">
+                     EUR
                       </li>
                     </ul>
                   </motion.div>
