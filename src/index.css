@@ -55,10 +55,10 @@
     --heading-05: 32px;
 
     /* body */
-    --body-xxl: 24px;
-    --body-xl: 20px;
-    --body-lg: 18px;
-    --body-md: 16px;
-    --body-sm: 14px;
-    --body-xs: 12px;
+    --text-body-xxl: 24px;
+    --text-body-xl: 20px;
+    --text-body-lg: 18px;
+    --text-body-md: 16px;
+    --text-body-sm: 14px;
+    --text-body-xs: 12px;
 }
