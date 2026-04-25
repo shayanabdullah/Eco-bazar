@@ -5,6 +5,7 @@ import Container from "./layouts/Container";
 import { IoIosMenu } from "react-icons/io";
 import { CgChevronDown } from "react-icons/cg";
 import { Link } from "react-router";
+import { FiPhoneCall } from "react-icons/fi";
 
 const Navber = () => {
   const navLinks = [
@@ -45,7 +46,7 @@ const Navber = () => {
       variants={fadeIn("down", 0.2)}
       initial="hidden"
       whileInView="show"
-      className="bg-gray-9"
+      className="bg-gray-8"
     >
       <Container>
         <motion.div
@@ -54,7 +55,9 @@ const Navber = () => {
           initial="hidden"
           whileInView="show"
         >
+          {/* right */}
           <motion.div className="right flex items-center gap-x-8 h-full">
+
             {/* Categories */}
             <motion.div
               variants={fadeIn("up", 0.2)}
@@ -71,7 +74,7 @@ const Navber = () => {
               {/* TEXT BOX */}
               <motion.div
                 variants={fadeIn("down", 0.3)}
-                className="w-full flex items-center justify-between pr-4 pl-6 bg-gray-8 text-white py-4 min-h-full min-w-62.5 font-poppins font-medium text-body-md"
+                className="w-full flex items-center justify-between pr-4 pl-6 bg-gray-9 cursor-pointer text-white py-4 min-h-full min-w-62.5 font-poppins font-medium text-body-md"
               >
                 <h2>All Categories</h2>
 
@@ -83,11 +86,12 @@ const Navber = () => {
                 </motion.div>
               </motion.div>
             </motion.div>
+
             {/* Nav Links */}
             <div className="navlinks">
               <ul className="flex items-center gap-x-8">
                 {navLinks.map((link, index) => (
-                  <Link to={link.Link}>
+                  <Link to={link.Link} key={index}>
                     <li className="flex items-center gap-x-1 text-gray-5 font-poppins font-medium text-body-sm">{link.navItem}
                         {link.dropDown &&  <CgChevronDown/>}
                     </li>
@@ -96,6 +100,12 @@ const Navber = () => {
               </ul>
             </div>
           </motion.div>
+
+          {/* Left */}
+          <div className="flex items-center gap-x-2 font-poppins font-medium text-body-sm text-white cursor-pointer ">
+            <FiPhoneCall className="text-xl" />
+            <p>01998-422037</p>
+          </div>
         </motion.div>
       </Container>
     </motion.nav>
