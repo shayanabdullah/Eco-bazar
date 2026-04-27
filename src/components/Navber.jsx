@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import React from "react";
-import { fadeIn, container } from "../utils/animations";
+import { fadeIn, container, textVariant } from "../utils/animations";
 import Container from "./layouts/Container";
 import { IoIosMenu } from "react-icons/io";
 import { CgChevronDown } from "react-icons/cg";
@@ -51,21 +51,18 @@ const Navber = () => {
       <Container>
         <motion.div
           className="nav-main flex justify-between items-center h-full"
-          variants={fadeIn("down", 0.3)}
-          initial="hidden"
-          whileInView="show"
         >
           {/* right */}
           <motion.div className="right flex items-center gap-x-8 h-full">
 
             {/* Categories */}
             <motion.div
-              variants={fadeIn("up", 0.2)}
+           
               className="drop-down flex items-center h-full"
             >
               {/* BUTTON */}
               <motion.button
-                variants={fadeIn("down", 0.3)}
+           
                 className="p-2.5 bg-primary cursor-pointer"
               >
                 <IoIosMenu className="text-4xl text-white" />
@@ -73,14 +70,15 @@ const Navber = () => {
 
               {/* TEXT BOX */}
               <motion.div
-                variants={fadeIn("down", 0.3)}
+                
                 className="w-full flex items-center justify-between pr-4 pl-6 bg-gray-9 cursor-pointer text-white py-4 min-h-full min-w-62.5 font-poppins font-medium text-body-md"
               >
-                <h2>All Categories</h2>
+                <motion.h2 variants={textVariant(0.4)} >All Categories</motion.h2>
 
                 <motion.div
                   whileHover={{ rotate: 180 }}
                   transition={{ duration: 0.3 }}
+                  variants={textVariant(0.45)}
                 >
                   <CgChevronDown className="text-2xl cursor-pointer" />
                 </motion.div>
@@ -92,9 +90,9 @@ const Navber = () => {
               <ul className="flex items-center gap-x-8">
                 {navLinks.map((link, index) => (
                   <Link to={link.Link} key={index}>
-                    <li className="flex items-center gap-x-1 text-gray-5 font-poppins font-medium text-body-sm">{link.navItem}
+                    <motion.li variants={textVariant(0.2)} className="flex items-center gap-x-1 text-gray-5 font-poppins font-medium text-body-sm">{link.navItem}
                         {link.dropDown &&  <CgChevronDown/>}
-                    </li>
+                    </motion.li>
                   </Link>
                 ))}
               </ul>
@@ -104,7 +102,7 @@ const Navber = () => {
           {/* Left */}
           <div className="flex items-center gap-x-2 font-poppins font-medium text-body-sm text-white cursor-pointer ">
             <FiPhoneCall className="text-xl" />
-            <p>01998-422037</p>
+            <motion.p variants={textVariant(0.4)}>01998-422037</motion.p>
           </div>
         </motion.div>
       </Container>
