@@ -3,7 +3,7 @@ import Container from "./layouts/Container";
 import { LuMapPin } from "react-icons/lu";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
-import { fadeIn, } from "../utils/animations";
+import { fadeIn, textVariant, } from "../utils/animations";
 import useClickOutside from "../hooks/useClickOutside";
 
 const TopBar = () => {
@@ -11,8 +11,8 @@ const TopBar = () => {
   const [openCurrency, setOpenCurrency] = useState(false);
   const dropDownlanRef = useRef(null)
   const dropDownCurRef = useRef(null)
-  useClickOutside(dropDownlanRef, ()=> setOpenLan(false))
-  useClickOutside(dropDownCurRef, ()=> setOpenCurrency(false))
+  useClickOutside(dropDownlanRef, ()=> setOpenLan(false), openLan)
+  useClickOutside(dropDownCurRef, ()=> setOpenCurrency(false), openCurrency)
 
 
   
@@ -25,7 +25,7 @@ const TopBar = () => {
       className="py-3 border-b border-gray-1"
     >
       <Container>
-        <div className="flex justify-between items-center font-poppins text-body-xs text-gray-6 font-normal">
+        <div className=" hidden md:flex justify-between items-center font-poppins text-body-xs text-gray-6 font-normal">
           
           {/* LEFT */}
           <div className="flex items-center gap-x-1">
@@ -108,13 +108,20 @@ const TopBar = () => {
               </AnimatePresence>
             </div>
        </div>
-
              {/* AUTH */}
             <div className="capitalize cursor-pointer">
               Sign in / Sign Up
             </div>
           </div>
         </div>
+
+        {/* mobilo topbar */}
+        <motion.div variants={textVariant(0.4)} className="w-full flex justify-center md:hidden ">
+                    <div className="flex items-center gap-x-1 text-body-xs font-poppins font-medium">
+            <LuMapPin className="text-body-sm" />
+            Store Location: Lincoln- 344, Illinois, Chicago, USA
+          </div>
+        </motion.div>
       </Container>
     </motion.header>
   );
