@@ -105,7 +105,7 @@ const Navber = () => {
     <motion.nav
       variants={fadeIn("down", 0.2)}
       initial="hidden"
-      whileInView="show"
+      animate="show"
       className="bg-gray-8"
     >
       <Container>
@@ -152,7 +152,7 @@ const Navber = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className=" border border-gray-1 absolute top-[130%] left-0 w-full font-poppins font-normal text-body-sm text-green-gray-9 rounded-sm"
+                    className=" border border-gray-1 absolute top-[130%] left-0 z-999999 bg-white w-full font-poppins font-normal text-body-sm text-green-gray-9 rounded-sm"
                   >
                     {catagories?.map((catagory, index) => (
                       <div
@@ -201,6 +201,8 @@ const Navber = () => {
             <motion.p variants={textVariant(0.4)}>01998-422037</motion.p>
           </div>
         </motion.div>
+
+
       </Container>
     </motion.nav>
   );

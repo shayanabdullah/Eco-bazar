@@ -21,7 +21,7 @@ const TopBar = () => {
     <motion.header
       variants={fadeIn('down', 0.3)}
       initial="hidden"
-      whileInView="show"
+      animate="show"
       className="py-3 border-b border-gray-1"
     >
       <Container>

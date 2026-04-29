@@ -1,29 +1,127 @@
-import { motion } from "motion/react";
-import React from "react";
+import { AnimatePresence, motion } from "motion/react";
+import React, { useRef, useState } from "react";
 import Container from "./layouts/Container";
 import logo from "../assets/images/logo.webp";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { fadeIn, textVariant, scale, fadeUp } from "../utils/animations";
 import { BiSearch } from "react-icons/bi";
 import { BsHeart, BsSearch } from "react-icons/bs";
-import { LuSearch } from "react-icons/lu";
+import { LuFacebook, LuSearch } from "react-icons/lu";
 import { SlHandbag } from "react-icons/sl";
-import { Menu } from "lucide-react";
 import { MdMenu } from "react-icons/md";
 import { HiMenuAlt2 } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
+import { ChevronDown } from "lucide-react";
+import { FiPhoneCall } from "react-icons/fi";
+import { CiApple, CiCoffeeCup } from "react-icons/ci";
+import { TbMeat, TbSalad } from "react-icons/tb";
+import { IoFishOutline } from "react-icons/io5";
+import { RiDrinksLine } from "react-icons/ri";
+import { PiCookingPot, PiInstagramLogoLight, PiPopsicleLight, PiYoutubeLogoLight } from "react-icons/pi";
+import { GiCupcake } from "react-icons/gi";
+import { LuIceCreamBowl } from "react-icons/lu";
+import { FaPlus } from "react-icons/fa";
+import { GoPlus } from "react-icons/go";
+import { IoIosMenu } from "react-icons/io";
+import useClickOutside from "../hooks/useClickOutside";
+
 const MiddleBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const mobileNavLinks = [
+    {
+      navItem: "Home",
+      Link: "/",
+      dropDown: true,
+    },
+    {
+      navItem: "Shop",
+      Link: "/shop",
+      dropDown: true,
+    },
+    {
+      navItem: "Pages",
+      Link: "/pages",
+      dropDown: true,
+    },
+    {
+      navItem: "Blog",
+      Link: "/blog",
+      dropDown: true,
+    },
+    {
+      navItem: "About Us",
+      Link: "/about",
+      dropDown: false,
+    },
+    {
+      navItem: "Contact Us",
+      Link: "/contact",
+      dropDown: false,
+    },
+  ];
+  const catagories = [
+    {
+      category: "Fresh Fruit",
+      icon: <CiApple />,
+    },
+    {
+      category: "Vegetables",
+      icon: <TbSalad />,
+    },
+    {
+      category: "River Fish",
+      icon: <IoFishOutline />,
+    },
+    {
+      category: "Chicken & Meat",
+      icon: <TbMeat />,
+    },
+    {
+      category: "Drink & Water",
+      icon: <CiCoffeeCup />,
+    },
+    {
+      category: "Yogurt & Ice Cream",
+      icon: <PiPopsicleLight />,
+    },
+    {
+      category: "Cake & Bread",
+      icon: <GiCupcake />,
+    },
+    {
+      category: "Butter & Cream",
+      icon: <LuIceCreamBowl />,
+    },
+    {
+      category: "Cooking",
+      icon: <PiCookingPot />,
+    },
+    {
+      category: "View all Category",
+      icon: <GoPlus />,
+      last: true,
+    },
+  ];
+
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
+
+  const handleCatagoryOpen = () => {
+    setCategoriesOpen((prev) => !prev);
+  }; 
+  const menuRef = useRef(null)
+  useClickOutside(menuRef, ()=> setIsMenuOpen(false), isMenuOpen)
   return (
     <motion.div
-      variants={fadeIn("down", 0.4)}
+      variants={fadeIn("down", 0.2)}
       initial="hidden"
-      whileInView="show"
+      animate="show"
       className="py-6"
     >
       <Container>
         <motion.nav
-          variants={textVariant(0.4)}
+          variants={textVariant(0.2)}
           initial="hidden"
-          whileInView="show"
+          animate="show"
           className="hidden md:flex justify-between items-center "
         >
           {/* Logo */}
@@ -31,9 +129,9 @@ const MiddleBar = () => {
             <img src={logo} alt="logo" loading="lazy" />
             <Link to={"/"}>
               <motion.h2
-                variants={fadeUp(0.4)}
+                variants={fadeUp(0.2)}
                 initial="hidden"
-                whileInView="show"
+                animate="show"
                 className="font-poppins font-medium text-heading-05 text-green-gray-9"
               >
                 Ecobazar
@@ -83,35 +181,193 @@ const MiddleBar = () => {
         </motion.nav>
 
         {/* mobile middle bar */}
-        <div className="md:hidden py-1 px-4 flex items-center justify-between">
+        <div className="md:hidden py-1 px-4 flex items-center justify-between overflow-x-hidden">
           <div className="flex items-center gap-x-4">
-            <div className="menu-btn">
-              <HiMenuAlt2  className="text-3xl cursor-pointer"/>
+            <div
+              className="menu-btn"
+              onClick={() => setIsMenuOpen((prev) => !isMenuOpen)}
+            >
+              <HiMenuAlt2 className="text-3xl cursor-pointer" />
             </div>
-           <div className="logo flex items-center gap-x-1">
-            <img src={logo} alt="logo" loading="lazy" />
-            <Link to={"/"}>
-              <motion.h2
-                variants={fadeUp(0.4)}
-                initial="hidden"
-                whileInView="show"
-                className="font-poppins font-medium text-2xl text-green-gray-9"
-              >
-                Ecobazar
-              </motion.h2>
+            <div className="logo flex items-center gap-x-1">
+              <img src={logo} alt="logo" loading="lazy" />
+              <Link to={"/"}>
+                <motion.h2
+                  variants={fadeUp(0.2)}
+                  initial="hidden"
+                  animate="show"
+                  className="font-poppins font-medium text-2xl text-green-gray-9"
+                >
+                  Ecobazar
+                </motion.h2>
+              </Link>
+            </div>
+          </div>
+          {/* CART */}
+          <div className="cart relative ">
+            <span className="absolute -top-2 -right-0.5 w-4 h-4 flex items-center justify-center  rounded-full bg-hard-primary text-white font-poppins font-medium text-[10px]">
+              2
+            </span>
+            <Link>
+              <SlHandbag className="text-[26px]" />
             </Link>
           </div>
 
-          </div>
-                  {/* CART */}
-              <div className="cart relative ">
-                <span className="absolute -top-2 -right-0.5 w-4 h-4 flex items-center justify-center  rounded-full bg-hard-primary text-white font-poppins font-medium text-[10px]">
-                  2
-                </span>
-                <Link>
-                  <SlHandbag className="text-[26px]" />
+          {/* mobile side bar */}
+          <motion.div
+            className={`absolute top-0 max-w-[350px] w-full h-screen z-3 bg-white p-6 md:hidden border-r border-gray-2 transition-all duration-300 overflow-y-scroll ${isMenuOpen ? "left-0" : "-left-full "}`}
+            ref={menuRef}
+          >
+            {/* logo */}
+            <div className="flex justify-between items-center pb-4">
+              <div className="logo flex items-center gap-x-1">
+                <img src={logo} alt="logo" loading="lazy" />
+                <Link to={"/"}>
+                  <motion.h2
+                    variants={fadeUp(0.2)}
+                    initial="hidden"
+                    animate="show"
+                    className="font-poppins font-medium text-2xl text-green-gray-9"
+                  >
+                    Ecobazar
+                  </motion.h2>
                 </Link>
               </div>
+              <div className="close" onClick={() => setIsMenuOpen(false)}>
+                <IoClose className="text-3xl cursor-pointer" />
+              </div>
+            </div>
+            {/* Search bar */}
+            <div className="inputs flex flex-col items-center relative gap-y-2 pb-4">
+              <LuSearch className="text-2xl absolute top-3  left-2" />
+              <input
+                type="text"
+                className="border border-gray-1 py-3 pl-10 rounded-md! outline-0 min-w-full  font-poppins text-body-md text-gray-5 focus-within:border-gray-3 "
+                placeholder="Search"
+              />
+              <button className="py-2.5 px-6 font-poppins font-semibold text-white text-body-lg bg-primary rounded-md cursor-pointer w-full ">
+                Search
+              </button>
+            </div>
+            {/* Nav links */}
+            <div className="pt-4 flex flex-col justify-center gap-y-4 pb-8">
+              {mobileNavLinks.map((link, index) => (
+                <NavLink
+                  key={index}
+                  to={link.Link}
+                  className={
+                    "font-poppins font-semibold text-body-md pb-3 border-b border-gray-1 w-full flex justify-between items-center"
+                  }
+                  style={({ isActive }) => ({
+                    color: isActive ? "green" : "#808080",
+                  })}
+                >
+                  {link.navItem}{" "}
+                  {link.dropDown && <ChevronDown className="text-gray-8" />}
+                </NavLink>
+              ))}
+            </div>
+
+            {/* categories */}
+            <div className="mb-10">
+              {/* Categories */}
+              <motion.div className="drop-down  h-full relative">
+                <div className="flex items-center">
+                  {/* BUTTON */}
+                  <motion.button
+                    className="p-2.5 bg-primary cursor-pointer"
+                    onClick={handleCatagoryOpen}
+                  >
+                    <IoIosMenu className="text-4xl text-white" />
+                  </motion.button>
+
+                  {/* TEXT BOX */}
+                  <motion.div
+                    onClick={handleCatagoryOpen}
+                    className="w-full flex items-center justify-between pr-4 pl-6 bg-gray-9 cursor-pointer text-white! py-4 min-h-full  font-poppins font-medium text-body-md group"
+                  >
+                    <motion.h2>All Categories</motion.h2>
+
+                    <motion.div variants={textVariant(0.25)}>
+                      <ChevronDown
+                        className={`text-2xl cursor-pointer transition-transform duration-400 ${categoriesOpen && "rotate-180 "}`}
+                      />
+                    </motion.div>
+                  </motion.div>
+                </div>
+
+                {/* categories */}
+
+                <AnimatePresence>
+                  {categoriesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
+                      className=" border border-gray-1  bg-white w-full font-poppins font-normal text-body-sm text-green-gray-9 rounded-sm mb-5"
+                    >
+                      {catagories?.map((catagory, index) => (
+                        <div
+                          className="w-full py-4 px-5 flex gap-x-3 items-center cursor-pointer hover:bg-primary hover:text-white transition-colors duration-300 group"
+                          key={index}
+                          style={
+                            catagory.last && { borderTop: "1px solid #e6e6e6" }
+                          }
+                        >
+                          <i className="text-[26px] text-gray-4 group-hover:text-white! transition-colors duration-300">
+                            {catagory.icon}
+                          </i>
+                          <p>{catagory.category}</p>
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </div>
+
+            {/* cart, wishlist */}
+            <div className="flex flex-col gap-y-4 mb-5">
+              <div className="cart w-full flex items-center justify-between pb-3 border-b border-gray-1 text-body-md font-poppins font-semibold capitalize text-gray-7">
+                cart
+                <div className="cart relative">
+                  <span className="absolute -top-2 -right-0.5 w-4 h-4 flex items-center justify-center  rounded-full bg-hard-primary text-white font-poppins font-medium text-[10px]">
+                    2
+                  </span>
+                  <Link>
+                    <SlHandbag className="text-[26px]" />
+                  </Link>
+                </div>
+              </div>
+              <div className="cart w-full flex items-center justify-between pb-3 border-b border-gray-1 text-body-md font-poppins font-semibold capitalize text-gray-7">
+                Wishlist
+                <div className="wishlist ">
+                  <Link to={"/"}>
+                    <BsHeart className="text-2xl " />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+             {/* Sign in */}
+             <button className="py-3 w-full border border-gray-3 hover:border-primary transition-colors duration-200 flex justify-center rounded-md font-poppins font-medium text-gray-7 hover:text-primary cursor-pointer mb-5">Sign Up / Sign In</button>
+             {/* socal media icon */}
+             <div className="flex items-center gap-x-6 text-[#141718] text-2xl">
+              <PiInstagramLogoLight />
+              <a href="https://www.facebook.com/profile.php?id=61580061792886">
+                <LuFacebook />
+              </a>
+              <PiYoutubeLogoLight  />
+             </div>
+
+
+      
+          </motion.div>
+                 {/* overlay */}
+           {
+            isMenuOpen && (  <div className="fixed top-0 inset-0 bg-gray-6/70 z-1"></div>)
+           }
         </div>
       </Container>
     </motion.div>

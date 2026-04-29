@@ -7,9 +7,11 @@ import Navber from "../Navber";
 const MainLayouts = () => {
   return (
     <>
-      <TopBar />
-      <MiddleBar />
-      <Navber/>
+      <div className="sticky top-0 bg-white z-9999999">
+        <TopBar />
+        <MiddleBar />
+        <Navber />
+      </div>
       <Outlet />
     </>
   );
