@@ -5,6 +5,8 @@ import { IoChevronDownOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeIn, textVariant, } from "../utils/animations";
 import useClickOutside from "../hooks/useClickOutside";
+import { Link } from "react-router";
+
 
 const TopBar = () => {
   const [openLan, setOpenLan] = useState(false);
@@ -129,7 +131,9 @@ const TopBar = () => {
        </div>
              {/* AUTH */}
             <div className="capitalize cursor-pointer">
+             <Link to={'/login'}>
               Sign in / Sign Up
+             </Link>
             </div>
           </div>
         </div>
