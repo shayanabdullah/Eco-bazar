@@ -9,11 +9,9 @@ import { FiPhoneCall } from "react-icons/fi";
 import { CiApple, CiCoffeeCup } from "react-icons/ci";
 import { TbMeat, TbSalad } from "react-icons/tb";
 import { IoFishOutline } from "react-icons/io5";
-import { RiDrinksLine } from "react-icons/ri";
 import { PiCookingPot, PiPopsicleLight } from "react-icons/pi";
 import { GiCupcake } from "react-icons/gi";
 import { LuIceCreamBowl } from "react-icons/lu";
-import { FaPlus } from "react-icons/fa";
 import { GoPlus } from "react-icons/go";
 import useClickOutside from "../hooks/useClickOutside";
 
@@ -109,7 +107,7 @@ const Navber = () => {
       className="bg-gray-8"
     >
       <Container>
-        <motion.div className="nav-main hidden md:flex justify-between items-center w-full  h-full">
+        <motion.div className="nav-main hidden lg:flex justify-between items-center w-full  h-full">
           {/* right */}
           <motion.div className="right flex items-center gap-x-8  h-full">
             {/* Categories */}
@@ -132,11 +130,11 @@ const Navber = () => {
                 onClick={handleCatagoryOpen}
                 className="w-full flex items-center justify-between pr-4 pl-6 bg-gray-9 cursor-pointer text-white py-4 min-h-full min-w-62.5 font-poppins font-medium text-body-md group"
               >
-                <motion.h2 variants={textVariant(0.4)}>
+                <motion.h2 variants={textVariant(0.2)}>
                   All Categories
                 </motion.h2>
 
-                <motion.div variants={textVariant(0.45)}>
+                <motion.div variants={textVariant(0.25)}>
                   <CgChevronDown
                     className={`text-2xl cursor-pointer transition-transform duration-400 ${categoriesOpen && "rotate-180 "}`}
                   />
@@ -184,10 +182,13 @@ const Navber = () => {
                         color: isActive ? "white" : "#808080",
                         textDecoration: "none",
                       })}
-                      className="flex items-center gap-x-1 text-gray-5 font-poppins font-medium text-body-sm"
+           
                     >
+                      <h2 className="flex items-center gap-x-1  font-poppins font-medium text-body-sm hover:text-white transition-colors duration-300">
                       {link.navItem}
                       {link.dropDown && <CgChevronDown />}
+                      </h2>
+                     
                     </NavLink>
                   </motion.li>
                 ))}
@@ -198,11 +199,9 @@ const Navber = () => {
           {/* Left */}
           <div className="flex items-center gap-x-2 font-poppins font-medium text-body-sm text-white cursor-pointer ">
             <FiPhoneCall className="text-xl" />
-            <motion.p variants={textVariant(0.4)}>01998-422037</motion.p>
+            <motion.p variants={textVariant(0.2)}>01998-422037</motion.p>
           </div>
         </motion.div>
-
-
       </Container>
     </motion.nav>
   );

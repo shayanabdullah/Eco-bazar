@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import TopBar from "../TopBar";
 import MiddleBar from "../MiddleBar";
 import Navber from "../Navber";
+import Footer from './../Footer';
 
 const MainLayouts = () => {
   return (
@@ -13,6 +14,7 @@ const MainLayouts = () => {
         <Navber />
       </div>
       <Outlet />
+      <Footer/>
     </>
   );
 };

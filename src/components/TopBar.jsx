@@ -9,23 +9,27 @@ import useClickOutside from "../hooks/useClickOutside";
 const TopBar = () => {
   const [openLan, setOpenLan] = useState(false);
   const [openCurrency, setOpenCurrency] = useState(false);
+  const [currentCurrency, setCurrentCurrency] = useState('USD');
+  const [currentlan, setCurrentLan] = useState('Eng');
+
   const dropDownlanRef = useRef(null)
   const dropDownCurRef = useRef(null)
   useClickOutside(dropDownlanRef, ()=> setOpenLan(false), openLan)
   useClickOutside(dropDownCurRef, ()=> setOpenCurrency(false), openCurrency)
 
 
+
   
 
   return (
     <motion.header
-      variants={fadeIn('down', 0.3)}
+      variants={fadeIn('down', 0.2)}
       initial="hidden"
       animate="show"
       className="py-3 border-b border-gray-1"
     >
       <Container>
-        <div className=" hidden md:flex justify-between items-center font-poppins text-body-xs text-gray-6 font-normal">
+        <div className=" hidden lg:flex justify-between items-center font-poppins text-body-xs text-gray-6 font-normal">
           
           {/* LEFT */}
           <div className="flex items-center gap-x-1">
@@ -44,7 +48,8 @@ const TopBar = () => {
                 onClick={() => setOpenLan(!openLan)}
                 ref={dropDownlanRef}
               >
-                Eng <IoChevronDownOutline />
+                 {currentlan} <IoChevronDownOutline />
+
               </div>
 
               {/* DROPDOWN */}
@@ -59,10 +64,17 @@ const TopBar = () => {
                 
                   >
                     <ul>
-                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer">
+                   {
+                    currentlan !== 'Eng' && (
+                         <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer" onClick={() => setCurrentLan('Eng')}>
+                        Eng
+                      </li>
+                    )
+                   }
+                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer" onClick={() => setCurrentLan('BN')}>
                         BN
                       </li>
-                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer">
+                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer" onClick={() => setCurrentLan('JP')}>
                         JP
                       </li>
                     </ul>
@@ -78,7 +90,7 @@ const TopBar = () => {
                 onClick={() => setOpenCurrency(prev => !prev)}
                  ref={dropDownCurRef}
               >
-                USD <IoChevronDownOutline />
+                {currentCurrency} <IoChevronDownOutline />
               </div>
 
               {/* DROPDOWN */}
@@ -93,13 +105,20 @@ const TopBar = () => {
                    
                   >
                     <ul>
-                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer">
+                          {
+                    currentCurrency !== 'USD' && (
+                         <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer" onClick={() => setCurrentLan('USD')}>
+                        USD
+                      </li>
+                    )
+                   }
+                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer" onClick={() => setCurrentCurrency('BDT')}>
                        BDT
                       </li>
-                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer">
+                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer" onClick={() => setCurrentCurrency('INR')}>
                       INR
                       </li>
-                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer">
+                      <li className="hover:bg-gray-2 px-3 py-1 cursor-pointer" onClick={() => setCurrentCurrency('EUR')}>
                      EUR
                       </li>
                     </ul>
@@ -116,7 +135,7 @@ const TopBar = () => {
         </div>
 
         {/* mobilo topbar */}
-        <motion.div variants={textVariant(0.4)} className="w-full flex justify-center md:hidden ">
+        <motion.div variants={textVariant(0.2)} className="w-full flex justify-center lg:hidden ">
                     <div className="flex items-center gap-x-1 text-body-xs font-poppins font-medium">
             <LuMapPin className="text-body-sm" />
             Store Location: Lincoln- 344, Illinois, Chicago, USA

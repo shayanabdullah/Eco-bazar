@@ -4,27 +4,25 @@ import Container from "./layouts/Container";
 import logo from "../assets/images/logo.webp";
 import { Link, NavLink } from "react-router";
 import { fadeIn, textVariant, scale, fadeUp } from "../utils/animations";
-import { BiSearch } from "react-icons/bi";
-import { BsHeart, BsSearch } from "react-icons/bs";
+import { BsHeart } from "react-icons/bs";
 import { LuFacebook, LuSearch } from "react-icons/lu";
 import { SlHandbag } from "react-icons/sl";
-import { MdMenu } from "react-icons/md";
 import { HiMenuAlt2 } from "react-icons/hi";
-import { IoClose } from "react-icons/io5";
-import { ChevronDown } from "lucide-react";
-import { FiPhoneCall } from "react-icons/fi";
+import { IoClose, IoChevronDown } from "react-icons/io5";
 import { CiApple, CiCoffeeCup } from "react-icons/ci";
 import { TbMeat, TbSalad } from "react-icons/tb";
 import { IoFishOutline } from "react-icons/io5";
-import { RiDrinksLine } from "react-icons/ri";
-import { PiCookingPot, PiInstagramLogoLight, PiPopsicleLight, PiYoutubeLogoLight } from "react-icons/pi";
-import { GiCupcake } from "react-icons/gi";
+import {
+  PiCookingPot,
+  PiInstagramLogoLight,
+  PiPopsicleLight,
+  PiYoutubeLogoLight,
+} from "react-icons/pi";
 import { LuIceCreamBowl } from "react-icons/lu";
-import { FaPlus } from "react-icons/fa";
 import { GoPlus } from "react-icons/go";
 import { IoIosMenu } from "react-icons/io";
+import { GiCupcake } from "react-icons/gi";
 import useClickOutside from "../hooks/useClickOutside";
-
 const MiddleBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileNavLinks = [
@@ -107,22 +105,22 @@ const MiddleBar = () => {
 
   const handleCatagoryOpen = () => {
     setCategoriesOpen((prev) => !prev);
-  }; 
-  const menuRef = useRef(null)
-  useClickOutside(menuRef, ()=> setIsMenuOpen(false), isMenuOpen)
+  };
+  const menuRef = useRef(null);
+  useClickOutside(menuRef, () => setIsMenuOpen(false), isMenuOpen);
   return (
     <motion.div
       variants={fadeIn("down", 0.2)}
       initial="hidden"
       animate="show"
-      className="py-6"
+      className="py-6 border-b border-gray-3 lg:border-0"
     >
       <Container>
         <motion.nav
           variants={textVariant(0.2)}
           initial="hidden"
           animate="show"
-          className="hidden md:flex justify-between items-center "
+          className="hidden lg:flex justify-between items-center "
         >
           {/* Logo */}
           <div className="logo flex items-center gap-x-1">
@@ -181,7 +179,7 @@ const MiddleBar = () => {
         </motion.nav>
 
         {/* mobile middle bar */}
-        <div className="md:hidden py-1 px-4 flex items-center justify-between overflow-x-hidden">
+        <div className="lg:hidden py-1 px-4 flex items-center justify-between overflow-x-hidden">
           <div className="flex items-center gap-x-4">
             <div
               className="menu-btn"
@@ -215,7 +213,7 @@ const MiddleBar = () => {
 
           {/* mobile side bar */}
           <motion.div
-            className={`absolute top-0 max-w-[350px] w-full h-screen z-3 bg-white p-6 md:hidden border-r border-gray-2 transition-all duration-300 overflow-y-scroll ${isMenuOpen ? "left-0" : "-left-full "}`}
+            className={`absolute top-0 max-w-[350px] w-full h-screen z-3 bg-white p-6 lg:hidden border-r border-gray-2 transition-all duration-300 overflow-y-scroll ${isMenuOpen ? "left-0" : "-left-full "}`}
             ref={menuRef}
           >
             {/* logo */}
@@ -263,7 +261,7 @@ const MiddleBar = () => {
                   })}
                 >
                   {link.navItem}{" "}
-                  {link.dropDown && <ChevronDown className="text-gray-8" />}
+                  {link.dropDown && <IoChevronDown className="text-gray-8" />}
                 </NavLink>
               ))}
             </div>
@@ -289,7 +287,7 @@ const MiddleBar = () => {
                     <motion.h2>All Categories</motion.h2>
 
                     <motion.div variants={textVariant(0.25)}>
-                      <ChevronDown
+                      <IoChevronDown
                         className={`text-2xl cursor-pointer transition-transform duration-400 ${categoriesOpen && "rotate-180 "}`}
                       />
                     </motion.div>
@@ -350,24 +348,23 @@ const MiddleBar = () => {
               </div>
             </div>
 
-             {/* Sign in */}
-             <button className="py-3 w-full border border-gray-3 hover:border-primary transition-colors duration-200 flex justify-center rounded-md font-poppins font-medium text-gray-7 hover:text-primary cursor-pointer mb-5">Sign Up / Sign In</button>
-             {/* socal media icon */}
-             <div className="flex items-center gap-x-6 text-[#141718] text-2xl">
+            {/* Sign in */}
+            <button className="py-3 w-full border border-gray-3 hover:border-primary transition-colors duration-200 flex justify-center rounded-md font-poppins font-medium text-gray-7 hover:text-primary cursor-pointer mb-5">
+              Sign Up / Sign In
+            </button>
+            {/* socal media icon */}
+            <div className="flex items-center gap-x-6 text-[#141718] text-2xl">
               <PiInstagramLogoLight />
               <a href="https://www.facebook.com/profile.php?id=61580061792886">
                 <LuFacebook />
               </a>
-              <PiYoutubeLogoLight  />
-             </div>
-
-
-      
+              <PiYoutubeLogoLight />
+            </div>
           </motion.div>
-                 {/* overlay */}
-           {
-            isMenuOpen && (  <div className="fixed top-0 inset-0 bg-gray-6/70 z-1"></div>)
-           }
+          {/* overlay */}
+          {isMenuOpen && (
+            <div className="fixed top-0 inset-0 bg-gray-6/70 z-1"></div>
+          )}
         </div>
       </Container>
     </motion.div>
