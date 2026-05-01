@@ -213,7 +213,7 @@ const MiddleBar = () => {
 
           {/* mobile side bar */}
           <motion.div
-            className={`absolute top-0 max-w-[350px] w-full h-screen z-3 bg-white p-6 lg:hidden border-r border-gray-2 transition-all duration-300 overflow-y-scroll ${isMenuOpen ? "left-0" : "-left-full "}`}
+            className={`absolute top-0 max-w-[350px] w-full h-screen z-30 bg-white p-6 lg:hidden border-r border-gray-2 transition-all duration-300 overflow-y-scroll ${isMenuOpen ? "left-0" : "-left-full "}`}
             ref={menuRef}
           >
             {/* logo */}

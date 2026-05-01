@@ -42,8 +42,8 @@ const Login = () => {
             </div>
           </div>
 
-          <div className="main w-full md:py-20 flex flex-col justify-center items-center">
-            <div className="p-6 shadow-2xl border border-gray-1 shadow-[#F2F2F2] mx-auto rounded-lg">
+          <div className="main w-full md:py-20 py-10 flex flex-col justify-center md:items-center px-4 md:px-0">
+            <div className="p-4 md:p-6 shadow-2xl border border-gray-1 shadow-[#F2F2F2]  rounded-lg">
               <div className="text pb-5 text-center">
                 <h2 className="font-poppins font-semibold text-3xl text-gray-9">
                   Sign In

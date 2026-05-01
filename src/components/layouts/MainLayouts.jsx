@@ -4,6 +4,7 @@ import TopBar from "../TopBar";
 import MiddleBar from "../MiddleBar";
 import Navber from "../Navber";
 import Footer from './../Footer';
+import MobileBottomNav from "../MobileBottomNav";
 
 const MainLayouts = () => {
   return (
@@ -14,6 +15,7 @@ const MainLayouts = () => {
         <Navber />
       </div>
       <Outlet />
+      <MobileBottomNav/>
       <Footer/>
     </>
   );
