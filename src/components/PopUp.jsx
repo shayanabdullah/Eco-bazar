@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import popImg from "../assets/images/popup.webp";
 import { CgClose } from "react-icons/cg";
 import useClickOutside from "../hooks/useClickOutside.jsx";
+import { motion } from 'motion/react';
 const PopUp = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [dontShow, setDontShow] = useState(false);
@@ -40,7 +41,7 @@ const PopUp = () => {
     <>
       {showPopup && (
         <>
-          <section className="">
+          <motion.section initial={{ scale: 0 }} animate={{ scale: 1 }} className="relative z-102">
             <div
               className="main flex flex-col md:flex-row items-center max-w-218 w-[98%] md:w-full rounded-md shadow-xl shadow-gray-7 fixed top-1/2 left-1/2 -translate-1/2 bg-white z-100"
               ref={popRef}
@@ -101,7 +102,7 @@ const PopUp = () => {
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
           <div className="overlay absolute inset-0 h-screen w-screen top-0 bg-black/80 z-99"></div>
         </>
       )}
