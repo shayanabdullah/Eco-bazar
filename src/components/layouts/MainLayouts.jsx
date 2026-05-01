@@ -9,7 +9,7 @@ import MobileBottomNav from "../MobileBottomNav";
 const MainLayouts = () => {
   return (
     <>
-      <div className="sticky top-0 bg-white z-9999999">
+      <div className="sticky top-0 bg-white z-99">
         <TopBar />
         <MiddleBar />
         <Navber />
