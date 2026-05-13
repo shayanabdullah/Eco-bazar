@@ -55,7 +55,7 @@ const Login = () => {
                     Remember me
                   </label>
                 </div>
-                <p className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6">
+                <p className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6 hover:underline cursor-pointer">
                   Forget Password
                 </p>
               </div>

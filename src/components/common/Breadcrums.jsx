@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router'
 import { FaChevronRight } from 'react-icons/fa'
 const Breadcrums = () => {
   const pathName = useLocation().pathname
-  const pathArr = pathName.split('/')
+  const pathArr = pathName.split('/').filter(segment => segment.length < 30) 
  
   return (
     <div>

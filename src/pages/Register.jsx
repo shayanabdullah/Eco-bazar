@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "../components/layouts/Container";
 import bg from "../assets/images/breadcrum-bg.webp";
 import { GoHome } from "react-icons/go";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { BiChevronLeft, BiChevronRight, BiError } from "react-icons/bi";
 import { LuEye, LuEyeOff } from "react-icons/lu";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
+import CustomToastify from "../components/common/CustomToastify";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -16,8 +17,13 @@ const Register = () => {
     confirmPassword: "",
     terms: false,
   });
-
+ 
+   const navigate =  useNavigate()
   const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [userData, setUserData] = useState("");
+  const { email, password, confirmPassword, terms } = registrationData;
 
   const handleShow = () => {
     setShowPass((prev) => !prev);
@@ -39,19 +45,81 @@ const Register = () => {
   };
 
   const handleSubmit = async () => {
-    const user = await axios.post(
-      "http://localhost:5000/registration",
-      registrationData,
-    );
-    const { success, message } = user.data;
-    if(!success) {
-      setMessage(message); 
-      toast.error(message);  
-    }else {
-     setMessage(message)
-     toast.success(message);  
+    setLoading(true);
+    setErrorMessage("");
+
+    try {
+      const user = await axios.post(
+        "http://localhost:5000/registration",
+        registrationData,
+      );
+      setUserData(user?.data);
+      const { success, message } = user?.data;
+
+      if (!success) {
+        setErrorMessage(message);
+        toast(<CustomToastify type="error" title="Error" message={message} />, {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 2000,
+        });
+      } else {
+        setMessage(message);
+        toast(
+          <CustomToastify
+            type="loading"
+            title="Account Creating... "
+            message="Please wait while we create your account."
+          />,
+          {
+            position: "top-center",
+            hideProgressBar: true,
+            autoClose: 1000,
+          },
+        );
+        setRegistrationData({
+          email: "",
+          password: "",
+          confirmPassword: "",
+          terms: false,
+        });
+        const successToast = setTimeout(() => {
+          toast(
+            <CustomToastify
+              type="success"
+              title="Account Created"
+              message="Check your email to verify your account."
+            />,
+            {
+              position: "top-center",
+              hideProgressBar: true,
+              autoClose: 5000,
+            },
+          );
+          navigate('/account/login')
+        }, 1000);
+      }
+    } catch (error) {
+      toast(
+        <CustomToastify
+          type="error"
+          title="Error"
+          message={
+            error.response?.data?.message ||
+            "An error occurred. Please try again."
+          }
+        />,
+        {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 2000,
+        },
+      );
+    } finally {
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
-    console.log(user.data, registrationData);
   };
 
   return (
@@ -69,17 +137,19 @@ const Register = () => {
                 <input
                   type="text"
                   name="email"
-                  className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3"
+                  className={`py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200 ${errorMessage.includes("email" || "account") || errorMessage ? "border-red-500" : ""}`}
                   placeholder="Email"
                   onChange={handleChange}
+                  value={email}
                 />
                 <div className="password relative">
                   <input
                     type={showPass ? "text" : "password"}
-                    className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 relative"
+                    className={`py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200 ${errorMessage.toLowerCase().includes("passwords") || errorMessage ? "border-red-500" : ""}`}
                     placeholder="Password"
                     name="password"
                     onChange={handleChange}
+                    value={password}
                     required
                   />
                   <i
@@ -92,35 +162,53 @@ const Register = () => {
                 <div className="password relative">
                   <input
                     type="password"
-                    className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 relative"
+                    className={`py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200 ${errorMessage.toLowerCase().includes("passwords") || errorMessage.toLowerCase().includes("do not match") || errorMessage ? "border-red-500" : ""}`}
                     placeholder="Confirm Password"
                     onChange={handleChange}
                     name="confirmPassword"
+                    value={confirmPassword}
                   />
                 </div>
               </div>
-              <div className="w-full flex items-center justify-between pb-5">
+              <div className="w-full flex items-center justify-between pb-3">
                 <div className="flex items-center gap-x-2">
                   <input
                     type="checkbox"
                     name="terms"
                     id="terms"
-                    className="accent-primary"
+                    className="accent-primary check"
                     onChange={handleChange}
                   />
                   <label
                     htmlFor="terms"
-                    className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6"
+                    className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6 label relative cursor-pointer"
                   >
                     Accept all terms & Conditions
                   </label>
                 </div>
               </div>
+              {errorMessage && (
+                <p className="text-red-500 text-xs pb-5 flex items-center gap-x-2">
+                  {" "}
+                  <BiError className="text-lg" /> {errorMessage}
+                </p>
+              )}
               <button
                 onClick={handleSubmit}
-                className="w-full rounded-full py-2.5 md:py-3.5 bg-primary cursor-pointer font-poppins font-semibold text-xs sm:text-body-sm text-white mb-5 "
+                className={`w-full rounded-full py-2.5 md:py-3.5 bg-primary cursor-pointer font-poppins font-semibold text-xs sm:text-body-sm text-white mb-5 ${loading ? " bg-hard-primary! opacity-50 cursor-not-allowed" : ""}`}
               >
-                Create Account
+                {loading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-transparent border-2 border-white border-t-primary animate-spin"></span>
+                    <span className="animate-pulse">
+                      {message && !errorMessage
+                        ? "Redirecting to Login..."
+                        : "Creating Account..."}
+                    </span>
+                  </span>
+                ) : (
+                  "Create Account"
+                )}
               </button>
 
               <div className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6 text-center ">
