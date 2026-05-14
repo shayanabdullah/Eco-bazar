@@ -42,13 +42,13 @@ const config = {
       <div className={`${style.accent} mt-0.5`}>
         {style.icon}
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         {title && (
-          <h4 className={`font-bold  leading-none mb-1 ${style.accent}`}>
+          <h4 className={`font-bold  leading-none mb-1 ${style.accent} capitalize`}>
             {title}
           </h4>
         )}
-        <p className="text-gray-700 text-sm md:text-sm leading-snug">
+        <p className="text-gray-700 text-sm md:text-sm leading-snug capitalize">
           {message}
         </p>
       </div>

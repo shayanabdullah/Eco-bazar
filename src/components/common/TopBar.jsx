@@ -199,9 +199,11 @@ const TopBar = () => {
               </div>
             </div>
             {/* AUTH */}
+            <Link to={"/account/login"}>
             <div className="capitalize cursor-pointer">
-              <Link to={"/account/login"}>Sign in / Sign Up</Link>
+              <p>Sign in / Sign Up</p>
             </div>
+            </Link>
           </div>
         </div>
 

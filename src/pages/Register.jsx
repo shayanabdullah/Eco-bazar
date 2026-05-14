@@ -188,7 +188,7 @@ const Register = () => {
                 </div>
               </div>
               {errorMessage && (
-                <p className="text-red-500 text-xs pb-5 flex items-center gap-x-2">
+                <p className="text-red-500 text-xs pb-5 flex items-center gap-x-2 max-w-100">
                   {" "}
                   <BiError className="text-lg" /> {errorMessage}
                 </p>

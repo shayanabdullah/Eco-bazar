@@ -101,12 +101,6 @@ const MiddleBar = () => {
       last: true,
     },
   ];
-
-
- 
-
-
-
 useScrollLock(isMenuOpen);
 
     const toggleNavigation = () => {
