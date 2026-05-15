@@ -204,6 +204,11 @@ useScrollLock(isMenuOpen);
               </Link>
             </div>
           </div>
+          <div className="flex items-center gap-x-5">
+               {/* WISHLIST */}
+            <Link to={"/"}>
+              <BsHeart className="text-2xl " />
+            </Link>
           {/* CART */}
           <div className="cart relative ">
             <span className="absolute -top-2 -right-0.5 w-4 h-4 flex items-center justify-center  rounded-full bg-hard-primary text-white font-poppins font-medium text-[10px]">
@@ -212,6 +217,7 @@ useScrollLock(isMenuOpen);
             <Link>
               <SlHandbag className="text-[26px]" />
             </Link>
+          </div>
           </div>
 
           {/* mobile side bar */}

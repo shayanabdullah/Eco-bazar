@@ -215,3 +215,19 @@ transition: all 0.2s ease-in-out;
   background-repeat: no-repeat;
   background-position: center;
 }
+.swiper-pagination-bullet {
+  background: rgb(24, 23, 23) !important;
+    width: 8px !important;
+    height: 8px !important;
+    opacity: 1;
+    border-radius: 999px !important;
+    display: inline-block !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+ .swiper-pagination-bullet-active {
+    width: 14px !important;
+    height: 8px;
+    background: var(--color-primary) !important;
+    border-radius: 999px;
+  }
