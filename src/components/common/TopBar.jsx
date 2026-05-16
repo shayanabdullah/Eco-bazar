@@ -8,6 +8,8 @@ import { Link } from "react-router";
 import eng from "../../assets/icons/eng.svg";
 import bd from "../../assets/icons/bd.svg";
 import jp from "../../assets/icons/jp.svg";
+import ind from "../../assets/icons/ind.svg";
+import usa from "../../assets/icons/usa.svg";
 import { motion } from "motion/react";
 
 const TopBar = () => {
@@ -148,11 +150,42 @@ const TopBar = () => {
               {/* CURRENCY */}
               <div className="flex items-center relative">
                 <div
-                  className="flex items-center gap-x-1.25 cursor-pointer"
-                  onClick={() => setOpenCurrency((prev) => !prev)}
+                  className="flex items-center gap-x-1 cursor-pointer text-sm"
+                  onClick={() => setOpenCurrency(!openCurrency)}
                   ref={dropDownCurRef}
                 >
-                  {currentCurrency} <IoChevronDownOutline />
+                  {currentCurrency == "USD" ? (
+                    <>
+                      <img
+                        src={usa}
+                        alt="icon"
+                        fetchPriority="high"
+                        width={15}
+                      />
+                      {currentCurrency}
+                    </>
+                  ) : currentCurrency=== 'BDT' ? (
+                    <>
+                      <img
+                        src={bd}
+                        alt="icon"
+                        fetchPriority="high"
+                        width={15}
+                      />
+                      {currentCurrency}
+                    </>
+                  ) : (
+                    <>
+                       <img
+                        src={ind}
+                        alt="icon"
+                        fetchPriority="high"
+                        width={15}
+                      />
+                      {currentCurrency}
+                    </>
+                  )}
+                  <IoChevronDownOutline />
                 </div>
 
                 {/* DROPDOWN */}
@@ -163,35 +196,52 @@ const TopBar = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="bg-gray-0 rounded-sm text-body-sm absolute top-[122%] z-50 left-0 shadow-md"
+                      onMouseLeave={() => setOpenCurrency(false)}
+                      className="bg-white rounded-sm text-body-sm absolute top-[122%] w-full z-60 left-1 shadow-md "
                     >
-                      <ul>
+                      <ul className="size-full flex flex-col gap-y-1">
                         {currentCurrency !== "USD" && (
                           <li
-                            className="hover:bg-gray-2 px-3 py-1 cursor-pointer"
-                            onClick={() => setCurrentLan("USD")}
+                            className="hover:bg-neutral-3 hover:text-neutral-6 text-sm  transition-all duration-200  cursor-pointer flex items-center gap-x-1 p-1"
+                            onClick={() => setCurrentCurrency("USD")}
                           >
+                            <img
+                              src={usa}
+                              alt="icon"
+                              fetchPriority="high"
+                              width={15}
+                            />
                             USD
                           </li>
                         )}
-                        <li
-                          className="hover:bg-gray-2 px-3 py-1 cursor-pointer"
-                          onClick={() => setCurrentCurrency("BDT")}
-                        >
-                          BDT
-                        </li>
-                        <li
-                          className="hover:bg-gray-2 px-3 py-1 cursor-pointer"
-                          onClick={() => setCurrentCurrency("INR")}
-                        >
-                          INR
-                        </li>
-                        <li
-                          className="hover:bg-gray-2 px-3 py-1 cursor-pointer"
-                          onClick={() => setCurrentCurrency("EUR")}
-                        >
-                          EUR
-                        </li>
+                        {currentCurrency !== "BDT" && (
+                          <li
+                            className="hover:bg-neutral-3 hover:text-neutral-6 text-sm  transition-all duration-200  cursor-pointer flex items-center gap-x-1 p-1"
+                            onClick={() => setCurrentCurrency("BDT")}
+                          >
+                            <img
+                              src={bd}
+                              alt="icon"
+                              fetchPriority="high"
+                              width={15}
+                            />
+                            BDT
+                          </li>
+                        )}
+                        {currentCurrency !== "INR" && (
+                          <li
+                            className="hover:bg-neutral-3 hover:text-neutral-6 text-sm  transition-all duration-200  cursor-pointer flex items-center gap-x-1 p-1"
+                            onClick={() => setCurrentCurrency("INR")}
+                          >
+                            <img
+                              src={ind}
+                              alt="icon"
+                              fetchPriority="high"
+                              width={15}
+                            />
+                            INR
+                          </li>
+                        )}
                       </ul>
                     </motion.div>
                   )}
