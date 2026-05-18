@@ -10,7 +10,7 @@ import { LuIceCreamBowl } from "react-icons/lu";
 import { GoPlus } from "react-icons/go";
 import Container from "../layouts/Container";
 import NavLinks from "./NavLinks";
-import CategorySidebar from "./Catagorysidebar";
+import CategorySidebar from "./CatagorySidebar";
 import { catagories } from "../../utils/catagoryData";
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
