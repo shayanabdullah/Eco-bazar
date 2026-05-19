@@ -6,6 +6,7 @@ import { BiArrowFromRight } from 'react-icons/bi';
 import { FaArrowUp } from 'react-icons/fa';
 import Hero from '../components/home/Hero';
 import Featured from '../components/home/Featured';
+import CategorySidebar from '../components/CategorySidebar';
 
 const Home = () => {
   return (

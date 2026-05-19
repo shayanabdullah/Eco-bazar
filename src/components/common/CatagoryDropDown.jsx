@@ -4,8 +4,9 @@ import { CgChevronDown } from "react-icons/cg";
 import { IoIosMenu } from "react-icons/io";
 import { useState } from "react";
 import MegaMenuPanel from './MegaMenuPanel.jsx';
+import CategorySidebar from "../CategorySidebar.jsx";
 
-const CategorySidebar = ({ categories, isOpen, onToggle, onMouseEnter, onMouseLeave }) => {
+const CatagoryDropDown = ({ categories, isOpen, onToggle, onMouseEnter, onMouseLeave }) => {
   const [activeCategory, setActiveCategory] = useState(null);
 
   const handleCategoryHover = (category, index) => {
@@ -20,25 +21,24 @@ const CategorySidebar = ({ categories, isOpen, onToggle, onMouseEnter, onMouseLe
     setActiveCategory(null);
     onMouseLeave?.();
   };
-
+  const [isSidebarOpen, setIsSidebarOpen ] = useState(false)
   return (
+   <>
     <div
       className="relative flex items-center h-full"
-      onMouseEnter={onMouseEnter}
+       onMouseEnter={onMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Trigger Button */}
       <button
         className="p-2.5 bg-primary cursor-pointer"
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
+        onClick={()=> setIsSidebarOpen(!isSidebarOpen)}
       >
         <IoIosMenu className="text-4xl text-white" />
       </button>
-
-      {/* "All Categories" label */}
-      <div className="flex items-center justify-between pr-4 pl-6 bg-gray-9 cursor-pointer text-white py-4 min-h-full min-w-[250px] font-poppins font-medium text-sm select-none">
+      
+      <div
+      
+      className="flex items-center justify-between pr-4 pl-6 bg-gray-9 cursor-pointer text-white py-4 min-h-full min-w-[250px] font-poppins font-medium text-sm select-none">
         <h2>All Categories</h2>
         <CgChevronDown
           className={`text-2xl transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
@@ -95,7 +95,12 @@ const CategorySidebar = ({ categories, isOpen, onToggle, onMouseEnter, onMouseLe
         )}
       </AnimatePresence>
     </div>
+
+
+    <CategorySidebar setIsOpen={setIsSidebarOpen} isOpen={isSidebarOpen}/>
+    
+   </>
   );
 };
 
-export default CategorySidebar;
+export default CatagoryDropDown;

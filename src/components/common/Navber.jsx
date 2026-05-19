@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { FiPhoneCall } from "react-icons/fi";
 import { CiApple, CiCoffeeCup } from "react-icons/ci";
 import { TbSalad, TbMeat } from "react-icons/tb";
@@ -9,30 +9,54 @@ import { GiCupcake } from "react-icons/gi";
 import { LuIceCreamBowl } from "react-icons/lu";
 import { GoPlus } from "react-icons/go";
 import Container from "../layouts/Container";
-import NavLinks from "./NavLinks";
-import CategorySidebar from "./CatagorySidebar";
+import CatagoryDropDown from "./CatagoryDropDown";
 import { catagories } from "../../utils/catagoryData";
-// ─── Navbar ───────────────────────────────────────────────────────────────────
 
+// ─── Navbar ───────────────────────────────────────────────────────────────────
 const Navbar = () => {
+
+  const NAV_LINKS = [
+    { label: "Home", to: "/" },
+    { label: "Shop", to: "/shop" },
+    { label: "Blog", to: "/blog" },
+    { label: "About Us", to: "/about" },
+    { label: "Contact Us", to: "/contact" },
+  ];
+  
   const [categoriesOpen, setCategoriesOpen] = useState(false);
 
   return (
     <nav className="bg-gray-8">
       <Container>
         <div className="hidden lg:flex justify-between items-center w-full h-full relative">
-
           {/* Left group: Categories + Nav links */}
           <div className="flex items-center gap-x-8 relative">
-            <CategorySidebar
+            <CatagoryDropDown
               categories={catagories}
               isOpen={categoriesOpen}
               onToggle={() => setCategoriesOpen((p) => !p)}
               onMouseEnter={() => setCategoriesOpen(true)}
               onMouseLeave={() => setCategoriesOpen(false)}
             />
-
-            <NavLinks />
+           <div className="">
+             <ul className="flex items-center gap-x-8">
+              {NAV_LINKS.map(({ label, to }) => (
+                <li key={to}>
+                  <NavLink
+                    to={to}
+                    style={({ isActive }) => ({
+                      color: isActive ? "white" : "#808080",
+                      textDecoration: "none",
+                    })}
+                  >
+                    <span className="font-poppins font-medium text-sm hover:text-white transition-colors duration-300">
+                      {label}
+                    </span>
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+           </div>
           </div>
 
           {/* Right: Phone */}
@@ -40,7 +64,6 @@ const Navbar = () => {
             <FiPhoneCall className="text-xl" />
             <Link to="tel:01998-422037">01998-422037</Link>
           </div>
-
         </div>
       </Container>
     </nav>

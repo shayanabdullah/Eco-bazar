@@ -231,3 +231,7 @@ transition: all 0.2s ease-in-out;
     background: var(--color-primary) !important;
     border-radius: 999px;
   }
+
+  .catagory-scroll::-webkit-scrollbar{
+  width: 2px !important;
+  }
