@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import MainLayouts from "./components/layouts/MainLayouts";
 import PageNotFound from "./pages/PageNotFound";
 import VerifyEmail from "./pages/VerifyEmail";
+import FAQS from './pages/FAQS';
 const App = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/account/register" element={<Register />} />
           <Route path="/account/login" element={<Login />} />
+          <Route path="/help/faq" element={<FAQS />} />
          
           <Route
             path="/verifyemail/success"

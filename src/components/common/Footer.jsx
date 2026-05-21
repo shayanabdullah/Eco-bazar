@@ -12,29 +12,44 @@ import logo from "../../assets/images/logo.webp";
 import payLogo from "../../assets/images/payment-logo.webp";
 import { Link } from "react-router";
 const Footer = () => {
-  const footerData = [
-    {
-      title: "My Account",
-      links: ["My Account", "Order History", "Shopping Cart", "Wishlist"],
-    },
-    {
-      title: "Helps",
-      links: ["Contact", "Faqs", "Terms & Condition", "Privacy Policy"],
-    },
-    {
-      title: "Proxy",
-      links: ["About", "Shop", "Product", "Track Order"],
-    },
-    {
-      title: "Categories",
-      links: [
-        "Fruit & Vegetables",
-        "Meat & Fish",
-        "Bread & Bakery",
-        "Beauty & Health",
-      ],
-    },
-  ];
+ const footerData = [
+  {
+    title: "My Account",
+    links: [
+      { label: "My Account", to: "/my-account" },
+      { label: "Order History", to: "/order-history" },
+      { label: "Shopping Cart", to: "/shopping-cart" },
+      { label: "Wishlist", to: "/wishlist" },
+    ],
+  },
+  {
+    title: "Helps",
+    links: [
+      { label: "Contact", to: "/contact" },
+      { label: "Faqs", to: "/help/faq" },
+      { label: "Terms & Condition", to: "/terms-condition" },
+      { label: "Privacy Policy", to: "/privacy-policy" },
+    ],
+  },
+  {
+    title: "Proxy",
+    links: [
+      { label: "About", to: "/about" },
+      { label: "Shop", to: "/shop" },
+      { label: "Product", to: "/product" },
+      { label: "Track Order", to: "/track-order" },
+    ],
+  },
+  {
+    title: "Categories",
+    links: [
+      { label: "Fruit & Vegetables", to: "/categories/fruits-vegetables" },
+      { label: "Meat & Fish", to: "/categories/meat-fish" },
+      { label: "Bread & Bakery", to: "/categories/bread-bakery" },
+      { label: "Beauty & Health", to: "/categories/beauty-health" },
+    ],
+  },
+];
   return (
     <>
       {/* Newsletter */}
@@ -125,12 +140,14 @@ const Footer = () => {
                   </h2>
                   <ul className="flex flex-col gap-y-3">
                     {setion.links.map((link, index) => (
+                    <Link to={link?.to}>
                       <li
                         key={index}
                         className="font-poppins font-normal text-sm text-gray-4 cursor-pointer hover:text-white hover:underline transition-all duration-300"
                       >
-                        {link}
+                        {link.label}
                       </li>
+                    </Link>
                     ))}
                   </ul>
                 </div>
