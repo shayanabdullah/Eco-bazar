@@ -11,6 +11,8 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+const allImages = [bannerOne, bannerTwo, bannerThree];
+
 const Hero = () => {
   return (
     <>
@@ -18,68 +20,69 @@ const Hero = () => {
         <Container>
           <div className="main grid grid-cols-1 lg:grid-cols-3 gap-6 ">
             <div className="right lg:col-span-2">
-              <Swiper
+             {
+              allImages.length > 0 ? ( <Swiper
                 pagination={{
                   clickable: true,
                 }}
                 modules={[EffectFade, Autoplay, Pagination]}
-               effect="fade"
-                    fadeEffect={{ crossFade: true }}
-                    speed={1500}
-                    autoplay={{
-                        delay: 3500,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,
-                    }}
-                    loop={true}
+                effect="fade"
+                fadeEffect={{ crossFade: true }}
+                speed={1500}
+                autoplay={{
+                  delay: 3500,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                loop={true}
               >
-                <SwiperSlide>
-                  <div className="size-full rounded-md overflow-hidden  max-h-150 cursor-pointer">
-                    <img
-                      src={bannerOne}
-                      alt=""
-                      width={"100%"}
-                      className="w-full min-h-[262px] "
-                      fetchPriority="high"
-                      loading="eager"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="size-full rounded-md overflow-hidden max-h-150 cursor-pointer">
-                    <img
-                      src={bannerThree}
-                      alt=""
-                      width={"100%"}
-                      height={"100%"}
-                      className="w-full "
-                      fetchPriority="high"
-                      loading="eager"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="size-full rounded-md overflow-hidden   max-h-150 cursor-pointer">
-                    <img
-                      src={bannerTwo}
-                      alt=""
-                      width={"100%"}
-                      height={"100%"}
-                      className="w-full "
-                      fetchPriority="high"
-                      loading="eager"
-                    />
-                  </div>
-                </SwiperSlide>
-              </Swiper>
+                {allImages?.map(
+                  (img, index) =>
+                    img && (
+                      <SwiperSlide>
+                        <div className="size-full rounded-md overflow-hidden  max-h-150 cursor-pointer">
+                          <img
+                            src={img}
+                            alt=""
+                            width={"100%"}
+                            className="w-full min-h-[262px] "
+                            fetchPriority="high"
+                            loading="eager"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    ),
+                )}
+              </Swiper>) : (<div className="size-full rounded-md overflow-hidden  max-h-150 cursor-pointer">
+                          <img
+                            src={allImages[0]}
+                            alt=""
+                            width={"100%"}
+                            className="w-full min-h-[262px] "
+                            fetchPriority="high"
+                            loading="eager"
+                          />
+                        </div>)
+             }
             </div>
             <div className="left lg:col-span-1 flex flex-col md:flex-row lg:flex-col gap-6 items-center w-full">
               <div className="size-full cursor-pointer overflow-hidden group rounded-md">
-                <img src={rightBannerOne} alt="banner" fetchPriority="high" loading="eager"  className="group-hover:scale-[1.02] transition-all duration-300"/>
+                <img
+                  src={rightBannerOne}
+                  alt="banner"
+                  fetchPriority="high"
+                  loading="eager"
+                  className="group-hover:scale-[1.02] transition-all duration-300"
+                />
               </div>
               <div className="size-full cursor-pointer overflow-hidden group rounded-md">
-                <img src={rightBannerTwo} alt="banner" fetchPriority="high" loading="eager"  className="group-hover:scale-[1.02] transition-all duration-300"/>
+                <img
+                  src={rightBannerTwo}
+                  alt="banner"
+                  fetchPriority="high"
+                  loading="eager"
+                  className="group-hover:scale-[1.02] transition-all duration-300"
+                />
               </div>
             </div>
           </div>

@@ -36,7 +36,7 @@ import useScrollLock from "./../hooks/useScrollLock";
 import useClickOutside from "../hooks/useClickOutside";
 
 const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
-  const [dropDown, setDropDown] = useState({});
+  const [dropDownIndex, setDropDownIndex] = useState(null);
 
   const categoriesData = [
     {
@@ -227,23 +227,19 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
   ];
 
   const toggleDropdown = (index) => {
-    setDropDown((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-    console.log(dropDown[index]);
+   setDropDownIndex((prevIndex) => prevIndex === index ? null : index)
   };
 
   useScrollLock(isOpen);
   const sideBarRef = useRef();
 
   useClickOutside(sideBarRef, () => setIsOpen(false), "mousedown", isOpen);
-
+ 
   return (
     <>
       <div>
         <div
-          className={`max-w-93 bg-white fixed top-0 h-screen z-105 p-3 md:block hidden w-full transition-all duration-300 border-r border-gray-2 overflow-y-scroll catagory-scroll ${isOpen ? "left-0" : "-left-full"}`}
+          className={`max-w-93 bg-white fixed top-0 h-screen z-105 p-3 md:block  w-full transition-all duration-300 border-r border-gray-2 overflow-y-scroll catagory-scroll ${isOpen ? "left-0" : "-left-full"}`}
           ref={sideBarRef}
         >
           <div className="header w-full border-b border-gray-3/70 py-3 flex items-center justify-between mb-8">
@@ -265,7 +261,6 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
           {/* Drop Down items  */}
           <div className=" flex flex-col gap-y-3">
             {categoriesData.map((item, index) => {
-              const isDropdownOpen = dropDown[index];
 
               return (
                 <div
@@ -274,19 +269,19 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
                   className={`${index !== 0 && "border-t border-gray-2/50"}`}
                 >
                   <div
-                    className={`flex items-center justify-between font-poppins font-medium cursor-pointer text-gray-6 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300 group rounded-md px-3 py-4 ${isDropdownOpen && "bg-primary text-white"}`}
+                    className={`flex items-center justify-between font-poppins font-medium cursor-pointer text-gray-6 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300 group rounded-md px-3 py-4 ${dropDownIndex === index && "bg-primary text-white"}`}
                   >
                     <div className="flex items-center gap-x-3">
                       <i className="text-2xl">{item.icon}</i>
                       <p>{item.category}</p>
                     </div>
                     <div className="group-hover:text-white">
-                      {isDropdownOpen ? <LuMinus /> : <BsPlusLg />}
+                      {dropDownIndex === index ? <LuMinus /> : <BsPlusLg />}
                     </div>
                   </div>
 
                   <AnimatePresence>
-                    {isDropdownOpen && (
+                    {dropDownIndex === index && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}

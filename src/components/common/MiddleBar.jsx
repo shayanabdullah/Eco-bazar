@@ -23,6 +23,9 @@ import { IoIosMenu } from "react-icons/io";
 import { GiCupcake } from "react-icons/gi";
 import useClickOutside from "../../hooks/useClickOutside";
 import useScrollLock from "../../hooks/useScrollLock";
+import CategorySidebar from "../CategorySidebar";
+import { CgChevronDown } from "react-icons/cg";
+
 
 const MiddleBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -121,11 +124,12 @@ useScrollLock(isMenuOpen);
   const menuRef = useRef(null);
   useClickOutside(menuRef, () => setIsMenuOpen(false), 'mousedown', isMenuOpen);
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   
   return (
     <div
-      className="py-6 border-b border-gray-3 lg:border-0"
+      className="lg:py-6 border-b border-gray-3 lg:border-0"
     >
       <Container>
         <nav
@@ -185,8 +189,9 @@ useScrollLock(isMenuOpen);
         </nav>
 
         {/* mobile middle bar */}
-        <div className="lg:hidden py-1 px-4 flex items-center justify-between overflow-x-hidden">
-          <div className="flex items-center gap-x-4">
+        <div className="lg:hidden py-1 px-4 overflow-x-hidden">
+      <div className="flex items-center justify-between py-6">
+            <div className="flex items-center gap-x-4">
             <div
               className="menu-btn"
               onClick={toggleNavigation}
@@ -219,6 +224,14 @@ useScrollLock(isMenuOpen);
             </Link>
           </div>
           </div>
+      </div>
+      <div className="">
+          
+          {
+ (
+          <CategorySidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />)
+          }
+      </div>
 
           {/* mobile side bar */}
           <div
@@ -281,7 +294,7 @@ useScrollLock(isMenuOpen);
                   {/* BUTTON */}
                   <button
                     className="p-2.5 bg-primary cursor-pointer"
-                    onClick={handleCatagoryOpen}
+                    onClick={()=> {setIsSidebarOpen(true), setIsMenuOpen(false)}}
                   >
                     <IoIosMenu className="text-4xl text-white" />
                   </button>
@@ -313,6 +326,7 @@ useScrollLock(isMenuOpen);
                           style={
                             catagory.last && { borderTop: "1px solid #e6e6e6" }
                           }
+                          onClick={()=>{index === catagories.length - 1  && setIsSidebarOpen(true), setIsMenuOpen(false)}}
                         >
                           <i className="text-[26px] text-gray-4 group-hover:text-white! transition-colors duration-300">
                             {catagory.icon}
@@ -362,6 +376,8 @@ useScrollLock(isMenuOpen);
               <PiYoutubeLogoLight />
             </div>
           </div>
+
+
           {/* overlay */}
           {isMenuOpen && (
             <div className="fixed top-0 inset-0 bg-gray-6/70 z-1"></div>
