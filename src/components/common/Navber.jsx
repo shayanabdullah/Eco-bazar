@@ -10,7 +10,7 @@ import { LuIceCreamBowl } from "react-icons/lu";
 import { GoPlus } from "react-icons/go";
 import Container from "../layouts/Container";
 import CatagoryDropDown from "./CatagoryDropDown";
-import { catagories } from "../../utils/catagoryData";
+import { catagoriesMegaMenu } from "../../utils/catagoryData";
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
           {/* Left group: Categories + Nav links */}
           <div className="flex items-center gap-x-8 relative">
             <CatagoryDropDown
-              categories={catagories}
+              categories={catagoriesMegaMenu}
               isOpen={categoriesOpen}
               onToggle={() => setCategoriesOpen((p) => !p)}
               onMouseEnter={() => setCategoriesOpen(true)}

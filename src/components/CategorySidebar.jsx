@@ -1,230 +1,18 @@
 import React, { useRef, useState } from "react";
-import { IoClose } from "react-icons/io5";
-import { RiMenuFold2Line } from "react-icons/ri";
-import { CiApple, CiCoffeeCup } from "react-icons/ci";
-import { TbSalad, TbMeat } from "react-icons/tb";
-import { IoFishOutline } from "react-icons/io5";
-import {
-  PiCookingPot,
-  PiHandSoap,
-  PiPlusSquareLight,
-  PiPopsicleLight,
-} from "react-icons/pi";
-import { GiCupcake } from "react-icons/gi";
-import { LuIceCreamBowl, LuMinus } from "react-icons/lu";
-import { GoPlus } from "react-icons/go";
-import {
-  GiCarrot,
-  GiStrawberry,
-  GiChickenLeg,
-  GiBread,
-  GiMilkCarton,
-  GiPopcorn,
-} from "react-icons/gi";
-import {
-  MdOutlineCleaningServices,
-  MdOutlineChildCare,
-  MdOutlineIcecream,
-  MdOutlineLocalDrink,
-  MdOutlineGridView,
-  MdOutlineBakeryDining,
-} from "react-icons/md";
-import { TbEgg } from "react-icons/tb";
+
 import { BsPlusLg } from "react-icons/bs";
+import { LuMinus } from "react-icons/lu";
 import { AnimatePresence, motion } from "motion/react";
 import useScrollLock from "./../hooks/useScrollLock";
 import useClickOutside from "../hooks/useClickOutside";
+import { allCategoriesSidebar } from "../utils/catagoryData";
 
+import { IoClose } from "react-icons/io5";
+import { RiMenuFold2Line } from "react-icons/ri";
 const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
   const [dropDownIndex, setDropDownIndex] = useState(null);
 
-  const categoriesData = [
-    {
-      category: "Fresh Vegetables",
-      icon: <GiCarrot />,
-
-      subCategories: [
-        "Leafy Greens",
-        "Root Vegetables",
-        "Gourds & Squash",
-        "Beans & Peas",
-        "Mushrooms",
-        "Onion, Garlic & Ginger",
-        "Peppers & Chilies",
-      ],
-    },
-
-    {
-      category: "Fresh Fruits",
-      icon: <CiApple />,
-
-      subCategories: [
-        "Tropical Fruits",
-        "Citrus Fruits",
-        "Berries",
-        "Melons & Watermelons",
-        "Stone Fruits",
-        "Seasonal Fruits",
-        "Imported Fruits",
-      ],
-    },
-
-    {
-      category: "Fish & Seafood",
-      icon: <IoFishOutline />,
-
-      subCategories: [
-        "River Fish",
-        "Sea Fish",
-        "Shrimp & Prawns",
-        "Crab & Lobster",
-        "Fish Fillets",
-        "Dried Fish",
-        "Frozen Seafood",
-      ],
-    },
-
-    {
-      category: "Meat & Poultry",
-      icon: <GiChickenLeg />,
-
-      subCategories: [
-        "Whole Chicken",
-        "Chicken Cuts",
-        "Beef",
-        "Mutton & Goat",
-        "Offal & Organ Meat",
-        "Sausages & Cold Cuts",
-      ],
-    },
-
-    {
-      category: "Dairy & Eggs",
-      icon: <GiMilkCarton />,
-
-      subCategories: [
-        "Milk",
-        "Eggs",
-        "Butter & Margarine",
-        "Cheese",
-        "Cream & Condensed Milk",
-        "Paneer & Tofu",
-      ],
-    },
-
-    {
-      category: "Yogurt & Desserts",
-      icon: <PiPopsicleLight />,
-
-      subCategories: [
-        "Plain Yogurt",
-        "Flavored Yogurt",
-        "Greek Yogurt",
-        "Ice Cream",
-        "Kulfi",
-        "Frozen Desserts & Sorbet",
-      ],
-    },
-
-    {
-      category: "Bakery & Bread",
-      icon: <MdOutlineBakeryDining />,
-
-      subCategories: [
-        "Bread & Loaves",
-        "Buns & Rolls",
-        "Croissants & Pastries",
-        "Cakes & Cupcakes",
-        "Cookies & Biscuits",
-        "Rusk & Crackers",
-      ],
-    },
-
-    {
-      category: "Beverages",
-      icon: <MdOutlineLocalDrink />,
-
-      subCategories: [
-        "Mineral Water",
-        "Soft Drinks & Soda",
-        "Fruit Juices",
-        "Tea",
-        "Coffee",
-        "Energy & Sports Drinks",
-        "Milk-Based Drinks",
-      ],
-    },
-
-    {
-      category: "Cooking Essentials",
-      icon: <PiCookingPot />,
-
-      subCategories: [
-        "Rice & Grains",
-        "Flour & Semolina",
-        "Cooking Oil & Ghee",
-        "Pasta & Noodles",
-        "Spices & Herbs",
-        "Salt & Sugar",
-        "Vinegar & Sauces",
-      ],
-    },
-
-    {
-      category: "Snacks & Packaged Food",
-      icon: <GiPopcorn />,
-
-      subCategories: [
-        "Chips & Crisps",
-        "Nuts & Dried Fruits",
-        "Instant Noodles",
-        "Canned & Jarred Food",
-        "Pickles & Condiments",
-        "Breakfast Cereals",
-      ],
-    },
-
-    {
-      category: "Household & Cleaning",
-      icon: <MdOutlineCleaningServices />,
-
-      subCategories: [
-        "Dishwashing",
-        "Laundry",
-        "Floor & Surface Cleaners",
-        "Toilet Cleaners",
-        "Air Fresheners",
-        "Garbage Bags & Wrap",
-      ],
-    },
-
-    {
-      category: "Personal Care",
-      icon: <PiHandSoap />,
-
-      subCategories: [
-        "Soap & Body Wash",
-        "Shampoo & Conditioner",
-        "Toothpaste & Oral Care",
-        "Skincare",
-        "Deodorants",
-        "Feminine Hygiene",
-      ],
-    },
-
-    {
-      category: "Baby & Kids",
-      icon: <MdOutlineChildCare />,
-
-      subCategories: [
-        "Baby Food & Formula",
-        "Diapers & Wipes",
-        "Baby Skincare",
-        "Kids Snacks",
-        "Baby Accessories",
-      ],
-    },
-  ];
+ 
 
   const toggleDropdown = (index) => {
    setDropDownIndex((prevIndex) => prevIndex === index ? null : index)
@@ -260,7 +48,7 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
 
           {/* Drop Down items  */}
           <div className=" flex flex-col gap-y-3">
-            {categoriesData.map((item, index) => {
+            {allCategoriesSidebar.map((item, index) => {
 
               return (
                 <div

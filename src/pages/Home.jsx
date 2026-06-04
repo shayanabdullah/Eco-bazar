@@ -7,12 +7,14 @@ import { FaArrowUp } from 'react-icons/fa';
 import Hero from '../components/home/Hero';
 import Featured from '../components/home/Featured';
 import CategorySidebar from '../components/CategorySidebar';
+import CatagorySection from '../components/home/CatagorySection';
 
 const Home = () => {
   return (
     <>
     <Hero/>
     <Featured/>
+    <CatagorySection/>
     </>
   )
 }

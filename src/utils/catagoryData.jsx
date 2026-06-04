@@ -34,6 +34,7 @@ import oil from "../assets/images/oil.webp";
 import rice from "../assets/images/rice.webp";
 import pasta from "../assets/images/pasta.webp";
 import spices from "../assets/images/spices.webp";
+
 import vegetableBanner from "../assets/images/vegetableBanner.webp";
 import fruitBanner from "../assets/images/fruitBanner.webp";
 import fishBanner from "../assets/images/fishBanner.webp";
@@ -43,6 +44,7 @@ import icecreamBanner from "../assets/images/icecreamBanner.webp";
 import bakeryBanner from "../assets/images/bakeryBanner.webp";
 import dairyBanner from "../assets/images/dairyBanner.webp";
 import cookingBanner from "../assets/images/cookingBanner.webp";
+
 import { CiApple, CiCoffeeCup } from "react-icons/ci";
 import { TbCategory2, TbMeat, TbSalad } from "react-icons/tb";
 import { IoFishOutline } from "react-icons/io5";
@@ -50,7 +52,31 @@ import { PiCookingPot, PiPopsicleLight } from "react-icons/pi";
 import { GiCupcake } from "react-icons/gi";
 import { LuIceCreamBowl } from "react-icons/lu";
 import { GoPlus } from "react-icons/go";
-export const catagories = [
+
+
+import {
+  PiHandSoap,
+  PiPlusSquareLight,
+} from "react-icons/pi";
+import {
+  GiCarrot,
+  GiStrawberry,
+  GiChickenLeg,
+  GiBread,
+  GiMilkCarton,
+  GiPopcorn,
+} from "react-icons/gi";
+import {
+  MdOutlineCleaningServices,
+  MdOutlineChildCare,
+  MdOutlineIcecream,
+  MdOutlineLocalDrink,
+  MdOutlineGridView,
+  MdOutlineBakeryDining,
+} from "react-icons/md";
+import { TbEgg } from "react-icons/tb";
+
+export const catagoriesMegaMenu = [
   {
     id: 1,
     category: "Fresh Vegetables",
@@ -309,4 +335,342 @@ export const catagories = [
     icon: <GoPlus />,
     last: true,
   },
+];
+
+export const categories = [
+  {
+    id: 1,
+    slug: "fresh-fruits",
+    name: "Fresh Fruits",
+    image: "fresh-fruits.webp",
+  },
+  {
+    id: 2,
+    slug: "fresh-vegetables",
+    name: "Fresh Vegetables",
+    image: "fresh-vegetables.webp",
+  },
+  {
+    id: 3,
+    slug: "meat-fish",
+    name: "Meat & Fish",
+    image: "meat-fish.webp",
+  },
+  {
+    id: 4,
+    slug: "snacks",
+    name: "Snacks",
+    image: "snacks.webp",
+  },
+  {
+    id: 5,
+    slug: "beverages",
+    name: "Beverages",
+    image: "beverages.webp",
+  },
+  {
+    id: 6,
+    slug: "beauty-health",
+    name: "Beauty & Health",
+    image: "beauty-health.webp",
+  },
+  {
+    id: 7,
+    slug: "bread-bakery",
+    name: "Bread & Bakery",
+    image: "bread-bakery.webp",
+  },
+  {
+    id: 8,
+    slug: "baking-needs",
+    name: "Baking Needs",
+    image: "baking-needs.webp",
+  },
+  {
+    id: 9,
+    slug: "cooking",
+    name: "Cooking",
+    image: "cooking.webp",
+  },
+  {
+    id: 10,
+    slug: "diabetic-food",
+    name: "Diabetic Food",
+    image: "diabetic-food.webp",
+  },
+  {
+    id: 11,
+    slug: "dish-detergents",
+    name: "Dish Detergents",
+    image: "dish-detergents.webp",
+  },
+  {
+    id: 12,
+    slug: "oil",
+    name: "Oil",
+    image: "oil.webp",
+  },
+
+  // Extra Categories
+
+  {
+    id: 13,
+    slug: "dairy-eggs",
+    name: "Dairy & Eggs",
+    image: "dairy-eggs.webp",
+  },
+  {
+    id: 14,
+    slug: "rice-grains",
+    name: "Rice & Grains",
+    image: "rice-grains.webp",
+  },
+  {
+    id: 15,
+    slug: "spices-seasonings",
+    name: "Spices & Seasonings",
+    image: "spices-seasonings.webp",
+  },
+  {
+    id: 16,
+    slug: "frozen-foods",
+    name: "Frozen Foods",
+    image: "frozen-foods.webp",
+  },
+  {
+    id: 17,
+    slug: "organic-foods",
+    name: "Organic Foods",
+    image: "organic-foods.webp",
+  },
+  {
+    id: 18,
+    slug: "baby-care",
+    name: "Baby Care",
+    image: "baby-care.webp",
+  },
+  {
+    id: 19,
+    slug: "pet-care",
+    name: "Pet Care",
+    image: "pet-care.webp",
+  },
+  {
+    id: 20,
+    slug: "household-cleaning",
+    name: "Household Cleaning",
+    image: "household-cleaning.webp",
+  },
+  {
+    id: 21,
+    slug: "tea-coffee",
+    name: "Tea & Coffee",
+    image: "tea-coffee.webp",
+  },
+  {
+    id: 22,
+    slug: "instant-food",
+    name: "Instant Food",
+    image: "instant-food.webp",
+  },
+  {
+    id: 23,
+    slug: "seafood",
+    name: "Seafood",
+    image: "seafood.webp",
+  },
+  {
+    id: 24,
+    slug: "nuts-dry-fruits",
+    name: "Nuts & Dry Fruits",
+    image: "nuts-dry-fruits.webp",
+  },
+];
+
+ export const allCategoriesSidebar = [
+    {
+      category: "Fresh Vegetables",
+      icon: <GiCarrot />,
+
+      subCategories: [
+        "Leafy Greens",
+        "Root Vegetables",
+        "Gourds & Squash",
+        "Beans & Peas",
+        "Mushrooms",
+        "Onion, Garlic & Ginger",
+        "Peppers & Chilies",
+      ],
+    },
+
+    {
+      category: "Fresh Fruits",
+      icon: <CiApple />,
+
+      subCategories: [
+        "Tropical Fruits",
+        "Citrus Fruits",
+        "Berries",
+        "Melons & Watermelons",
+        "Stone Fruits",
+        "Seasonal Fruits",
+        "Imported Fruits",
+      ],
+    },
+
+    {
+      category: "Fish & Seafood",
+      icon: <IoFishOutline />,
+
+      subCategories: [
+        "River Fish",
+        "Sea Fish",
+        "Shrimp & Prawns",
+        "Crab & Lobster",
+        "Fish Fillets",
+        "Dried Fish",
+        "Frozen Seafood",
+      ],
+    },
+
+    {
+      category: "Meat & Poultry",
+      icon: <GiChickenLeg />,
+
+      subCategories: [
+        "Whole Chicken",
+        "Chicken Cuts",
+        "Beef",
+        "Mutton & Goat",
+        "Offal & Organ Meat",
+        "Sausages & Cold Cuts",
+      ],
+    },
+
+    {
+      category: "Dairy & Eggs",
+      icon: <GiMilkCarton />,
+
+      subCategories: [
+        "Milk",
+        "Eggs",
+        "Butter & Margarine",
+        "Cheese",
+        "Cream & Condensed Milk",
+        "Paneer & Tofu",
+      ],
+    },
+
+    {
+      category: "Yogurt & Desserts",
+      icon: <PiPopsicleLight />,
+
+      subCategories: [
+        "Plain Yogurt",
+        "Flavored Yogurt",
+        "Greek Yogurt",
+        "Ice Cream",
+        "Kulfi",
+        "Frozen Desserts & Sorbet",
+      ],
+    },
+
+    {
+      category: "Bakery & Bread",
+      icon: <MdOutlineBakeryDining />,
+
+      subCategories: [
+        "Bread & Loaves",
+        "Buns & Rolls",
+        "Croissants & Pastries",
+        "Cakes & Cupcakes",
+        "Cookies & Biscuits",
+        "Rusk & Crackers",
+      ],
+    },
+
+    {
+      category: "Beverages",
+      icon: <MdOutlineLocalDrink />,
+
+      subCategories: [
+        "Mineral Water",
+        "Soft Drinks & Soda",
+        "Fruit Juices",
+        "Tea",
+        "Coffee",
+        "Energy & Sports Drinks",
+        "Milk-Based Drinks",
+      ],
+    },
+
+    {
+      category: "Cooking Essentials",
+      icon: <PiCookingPot />,
+
+      subCategories: [
+        "Rice & Grains",
+        "Flour & Semolina",
+        "Cooking Oil & Ghee",
+        "Pasta & Noodles",
+        "Spices & Herbs",
+        "Salt & Sugar",
+        "Vinegar & Sauces",
+      ],
+    },
+
+    {
+      category: "Snacks & Packaged Food",
+      icon: <GiPopcorn />,
+
+      subCategories: [
+        "Chips & Crisps",
+        "Nuts & Dried Fruits",
+        "Instant Noodles",
+        "Canned & Jarred Food",
+        "Pickles & Condiments",
+        "Breakfast Cereals",
+      ],
+    },
+
+    {
+      category: "Household & Cleaning",
+      icon: <MdOutlineCleaningServices />,
+
+      subCategories: [
+        "Dishwashing",
+        "Laundry",
+        "Floor & Surface Cleaners",
+        "Toilet Cleaners",
+        "Air Fresheners",
+        "Garbage Bags & Wrap",
+      ],
+    },
+
+    {
+      category: "Personal Care",
+      icon: <PiHandSoap />,
+
+      subCategories: [
+        "Soap & Body Wash",
+        "Shampoo & Conditioner",
+        "Toothpaste & Oral Care",
+        "Skincare",
+        "Deodorants",
+        "Feminine Hygiene",
+      ],
+    },
+
+    {
+      category: "Baby & Kids",
+      icon: <MdOutlineChildCare />,
+
+      subCategories: [
+        "Baby Food & Formula",
+        "Diapers & Wipes",
+        "Baby Skincare",
+        "Kids Snacks",
+        "Baby Accessories",
+      ],
+    },
 ];
