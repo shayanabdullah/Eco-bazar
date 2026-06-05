@@ -8,6 +8,7 @@ import PageNotFound from "./pages/PageNotFound";
 import VerifyEmail from "./pages/VerifyEmail";
 import FAQS from './pages/FAQS';
 import AllCatagories from "./pages/AllCatagories";
+import AllPopularProducts from "./pages/AllPopularProducts";
 const App = () => {
   return (
     <>
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/account/login" element={<Login />} />
           <Route path="/help/faq" element={<FAQS />} />
           <Route path="/all-catagories" element={<AllCatagories />} />
+          <Route path="/all-popular-products" element={<AllPopularProducts />} />
          
           <Route
             path="/verifyemail/success"

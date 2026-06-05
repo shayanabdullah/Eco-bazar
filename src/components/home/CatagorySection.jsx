@@ -9,13 +9,13 @@ const CatagorySection = () => {
  <section className='pb-15'>
        <CommonSection title={'Popular Categories'} link={'/all-catagories'}>
         {/* All catagories */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-5">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-5">
         {
             catagoryToShow.map((item)=> (
-                <div className="border border-gray-1 rounded-md px-4 py-4 transition-all duration-300 hover:border-hard-primary group cursor-pointer" key={item.id}>
+                <div className="border border-gray-1 rounded-md px-4 py-4 transition-all duration-300 hover:border-hard-primary group cursor-pointer flex flex-col justify-between" key={item.id}>
                     {/* img */}
-                    <div className='max-h-[130px] h-full overflow-hidden pb-4 flex items-center justify-center'>
-                        <img src={item.image} alt={item.name} className='h-full transition-all duration-300 group-hover:scale-[1.03]' loading='lazy' />
+                    <div className='overflow-hidden pb-4 flex items-center justify-center'>
+                        <img src={item.image} alt={item.name} className='transition-all duration-300 group-hover:scale-[1.03] min-h-32.5! max-h-33 h-full' loading='lazy' />
                     </div>
                     {/* text content */}
                     <div className="flex justify-center">

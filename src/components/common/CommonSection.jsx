@@ -4,9 +4,8 @@ import { Link } from 'react-router';
 import { LuArrowRight } from 'react-icons/lu';
 
 const CommonSection = ({title,link, children}) => {
-
   return (
-    <section className='px-4 md:px-0'>
+    <section className='px-4 lg:px-0'>
         <Container>
             <div className="main">
                 {/* Heading */}

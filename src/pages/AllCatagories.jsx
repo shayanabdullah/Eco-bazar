@@ -6,7 +6,7 @@ const AllCatagories = () => {
     const catagoryToShow = categories;
   return (
     <>  
- <section className='pb-15'>
+ <section className='py-15'>
        <CommonSection title={'Popular Categories'}>
         {/* All catagories */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-5">

@@ -8,6 +8,7 @@ import Hero from '../components/home/Hero';
 import Featured from '../components/home/Featured';
 import CategorySidebar from '../components/CategorySidebar';
 import CatagorySection from '../components/home/CatagorySection';
+import PopularProductSection from '../components/home/PopularProductSection';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
     <Hero/>
     <Featured/>
     <CatagorySection/>
+    <PopularProductSection/>
     </>
   )
 }
