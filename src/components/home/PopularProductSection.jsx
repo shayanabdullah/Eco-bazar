@@ -2,12 +2,31 @@ import React, { useState } from "react";
 import CommonSection from "./../common/CommonSection";
 import { popularProducts } from "../../utils/data";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { FaStar } from "react-icons/fa";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { CiHeart } from "react-icons/ci";
 
 const PopularProductSection = () => {
   const maxtoShow = popularProducts.slice(0, 10);
+
+  const dynamicRating = (rating) => {
+   let ratingArr = [];
+   let halfStar = rating.toString().split('.')[1]
+   let index = Math.floor(rating)
+
+   for(let i=1; i<=5; i++){
+    if(i <= rating){
+      ratingArr.push('full')
+    }else {
+      ratingArr.push(i)
+    }  
+   }
+   if(halfStar){
+   ratingArr[index] = 'half'
+   }
+ return ratingArr;
+ 
+  }
   return (
     <>
       <section className="pb-15">
@@ -62,12 +81,15 @@ const PopularProductSection = () => {
                     </div>
                   </div>
                   {/* rating */}
-                  <div className="flex items-center gap-x-2">
+                  <div className="flex flex-col md:flex-row md:items-center gap-2">
                     <div className="flex items-center ">
-                      <FaStar className="text-warning" />
-                      <FaStar className="text-warning" />
-                      <FaStar className="text-warning" />
-                      <FaStar className="text-warning" />
+                      {
+                        dynamicRating(item.rating).map((rate)=> (
+                          rate === 'full' ? 
+                      <FaStar className="text-warning text-body-md" />
+                      : rate === "half" ? <FaStarHalfAlt className="text-warning text-body-md" /> :  <FaRegStar className="text-gray-4 text-[17px]"/>
+                        ))
+                      }
                     </div>
                     <div className="font-poppins test-sm font-medium text-gray-4">
                       <p>
