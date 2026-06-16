@@ -11,6 +11,25 @@ export const popularProducts = [
   },
   {
     id: 2,
+    name: "Fresh Red Bell Pepper",
+    image: "/popular-products/red-pepper.webp",
+    price: 12.00,
+    rating: 4.27,
+    reviewCount: 238,
+  },
+  {
+    id: 3,
+    name: "Fresh Apple",
+    image: "/popular-products/green-apple.webp",
+    price: 15.00,
+    rating: 4.17,
+    reviewCount: 158,
+    oldPrice: 30.99,
+    sale: 50,
+    badge : "Best Sale"
+  },
+  {
+    id: 4,
     name: "Premium Indian Orange",
     image: "/popular-products/orange.webp",
     price: 20.0,
@@ -18,7 +37,7 @@ export const popularProducts = [
     reviewCount: 128,
   },
   {
-    id: 3,
+    id: 5,
     name: "Organic Chinese Cabbage",
     image: "/popular-products/cabbage.webp",
     price: 12.5,
@@ -26,7 +45,7 @@ export const popularProducts = [
     reviewCount: 216,
   },
   {
-    id: 4,
+    id: 6,
     name: "Fresh Green Leaf Lettuce",
     image: "/popular-products/lettuce.webp",
     price: 9.7,
@@ -34,7 +53,7 @@ export const popularProducts = [
     reviewCount: 43,
   },
   {
-    id: 5,
+    id: 7,
     name: "Farm Fresh Eggplant",
     image: "/popular-products/eggplant.webp",
     price: 34.6,
@@ -42,7 +61,7 @@ export const popularProducts = [
     reviewCount: 291,
   },
   {
-    id: 6,
+    id: 8,
     name: "Golden Fresh Potato",
     image: "/popular-products/potato.webp",
     price: 20.0,
@@ -50,7 +69,7 @@ export const popularProducts = [
     reviewCount: 184,
   },
   {
-    id: 7,
+    id: 9,
     name: "Sweet Yellow Corn",
     image: "/popular-products/corn.webp",
     price: 20.2,
@@ -58,7 +77,7 @@ export const popularProducts = [
     reviewCount: 402,
   },
   {
-    id: 8,
+    id: 10,
     name: "Fresh White Cauliflower",
     image: "/popular-products/cauliflower.webp",
     price: 12.9,
@@ -66,7 +85,7 @@ export const popularProducts = [
     reviewCount: 97,
   },
   {
-    id: 9,
+    id: 11,
     name: "Green Bell Pepper",
     image: "/popular-products/capsicum.webp",
     price: 9,
@@ -76,7 +95,7 @@ export const popularProducts = [
     reviewCount: 253,
   },
   {
-    id: 10,
+    id: 12,
     name: "Fresh Green Chili",
     image: "/popular-products/chili.webp",
     price: 34.0,
@@ -84,7 +103,7 @@ export const popularProducts = [
     reviewCount: 58,
   },
   {
-    id: 11,
+    id: 13,
     name: "Garden Fresh Cucumber",
     image: "/popular-products/cucumber.webp",
     price: 15.0,
@@ -92,7 +111,7 @@ export const popularProducts = [
     reviewCount: 163,
   },
   {
-    id: 12,
+    id: 14,
     name: "Vine Ripe Tomato",
     image: "/popular-products/tomato.webp",
     price: 18.0,
@@ -100,7 +119,7 @@ export const popularProducts = [
     reviewCount: 274,
   },
   {
-    id: 13,
+    id: 15,
     name: "Organic Orange Carrot",
     image: "/popular-products/carrot.webp",
     price: 16.0,
@@ -108,7 +127,7 @@ export const popularProducts = [
     reviewCount: 112,
   },
   {
-    id: 14,
+    id: 16,
     name: "Fresh Red Onion",
     image: "/popular-products/onion.webp",
     price: 22.0,
@@ -116,7 +135,7 @@ export const popularProducts = [
     reviewCount: 209,
   },
   {
-    id: 15,
+    id: 17,
     name: "Organic Ginger Root",
     image: "/popular-products/ginger.webp",
     price: 14.0,

@@ -4,10 +4,10 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { CiHeart } from "react-icons/ci";
-const ProductCard = ({item}) => {
+const ProductCard = ({item, className}) => {
   return (
     <div
-      className="border border-gray-1 transition-all duration-300 hover:border-hard-primary group relative cursor-pointer hover:shadow-md shadow-primary/32"
+      className={`border border-gray-1 transition-all duration-300 hover:border-hard-primary group relative cursor-pointer hover:shadow-md shadow-primary/32 ${className}`}
       key={item.id}
     >
       {/* Img */}

@@ -10,6 +10,7 @@ import CategorySidebar from '../components/CategorySidebar';
 import CatagorySection from '../components/home/CatagorySection';
 import PopularProductSection from '../components/home/PopularProductSection';
 import Deals from '../components/home/Deals';
+import HotDeals from '../components/home/HotDeals';
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
     <CatagorySection/>
     <PopularProductSection/>
     <Deals/>
+    <HotDeals/>
     </>
   )
 }
