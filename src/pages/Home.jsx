@@ -9,6 +9,7 @@ import Featured from '../components/home/Featured';
 import CategorySidebar from '../components/CategorySidebar';
 import CatagorySection from '../components/home/CatagorySection';
 import PopularProductSection from '../components/home/PopularProductSection';
+import Deals from '../components/home/Deals';
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
     <Featured/>
     <CatagorySection/>
     <PopularProductSection/>
+    <Deals/>
     </>
   )
 }
