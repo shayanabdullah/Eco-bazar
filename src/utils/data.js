@@ -13,7 +13,7 @@ export const popularProducts = [
     id: 2,
     name: "Fresh Red Bell Pepper",
     image: "/popular-products/red-pepper.webp",
-    price: 12.00,
+    price: 12.0,
     rating: 4.27,
     reviewCount: 238,
   },
@@ -21,12 +21,12 @@ export const popularProducts = [
     id: 3,
     name: "Fresh Granny Smith Apple",
     image: "/popular-products/green-apple.webp",
-    price: 15.00,
+    price: 15.0,
     rating: 4.17,
     reviewCount: 158,
     oldPrice: 30.99,
     sale: 50,
-    badge : "Best Sale"
+    badge: "Best Sale",
   },
   {
     id: 4,
@@ -141,5 +141,53 @@ export const popularProducts = [
     price: 14.0,
     rating: 4.61,
     reviewCount: 332,
+  },
+];
+
+export const latestNews = [
+  {
+    id: 1,
+    title: "7 Benefits of Adding Fresh Citrus Fruits to Your Daily Diet",
+    image: "/latest-news/orange.webp",
+   tags : [
+    {
+       category: "Healthy Tips",
+    author: "Admin",
+    comments: 18,
+    }
+   ],
+    day: 18,
+    month: "NOV",
+    slug: "benefits-of-fresh-citrus-fruits",
+  },
+  {
+    id: 2,
+    title: "5 Easy High-Protein Breakfast Ideas to Start Your Day",
+    image: "/latest-news/egg-toast.webp",
+    tags: [
+      {
+        category: "Recipes",
+        author: "Admin",
+        comments: 29,
+      },
+    ],
+    day: 29,
+    month: "JAN",
+    slug: "high-protein-breakfast-ideas",
+  },
+  {
+    id: 3,
+    title: "How to Build a Balanced and Colorful Healthy Plate",
+    image: "/latest-news/healthy-salad.webp",
+    tags: [
+      {
+        category: "Nutrition",
+    author: "Admin",
+    comments: 21,
+      }
+    ],
+    day: 21,
+    month: "FEB",
+    slug: "build-a-balanced-healthy-plate",
   },
 ];

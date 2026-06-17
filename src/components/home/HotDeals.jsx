@@ -25,7 +25,25 @@ const HotDeals = () => {
           {maxProdToShow.map((item, index) => (
             <>
               {index === 0 && (
-                <div className="right col-span-2 row-span-2 size-full bg-white px-6 border border-hard-primary pb-6 shadow-[0_15px_40px_rgba(32,181,38,0.12)] group  md:h-full">
+                <div className="right col-span-2 row-span-2 size-full bg-white px-6 border border-hard-primary pb-6 shadow-[0_15px_40px_rgba(32,181,38,0.12)] group  md:h-full relative">
+                  <div className="">
+                    
+      {/* discount badge */}
+      {item.sale  && (
+        <div className="py-1 px-2 rounded-sm bg-danger text-gray-0 font-poppins test-sm font-medium absolute top-3 left-2 capitalize">
+          <p>
+            sale <span className="font-semibold">{item.sale}%</span>
+          </p>
+        </div>
+      )}
+      {maxProdToShow[2].badge && (
+        <div className="py-1 px-2 rounded-sm bg-badge-blue text-gray-0 font-poppins test-sm font-medium absolute top-3 left-25 capitalize">
+          <p>
+             {maxProdToShow[2].badge}
+          </p>
+        </div>
+      )}
+                  </div>
                   <img
                     src={maxProdToShow[2].image}
                     alt="img"

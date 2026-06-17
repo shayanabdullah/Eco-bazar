@@ -11,6 +11,9 @@ import CatagorySection from '../components/home/CatagorySection';
 import PopularProductSection from '../components/home/PopularProductSection';
 import Deals from '../components/home/Deals';
 import HotDeals from '../components/home/HotDeals';
+import DiscountBanner from '../components/home/DiscountBanner';
+import FeatureProducts from '../components/home/FeatureProducts';
+import LatestNews from '../components/home/LatestNews';
 
 const Home = () => {
   return (
@@ -21,6 +24,9 @@ const Home = () => {
     <PopularProductSection/>
     <Deals/>
     <HotDeals/>
+    <DiscountBanner/>
+    <FeatureProducts/>
+    <LatestNews/>
     </>
   )
 }
