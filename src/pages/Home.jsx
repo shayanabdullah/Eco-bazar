@@ -14,6 +14,7 @@ import HotDeals from '../components/home/HotDeals';
 import DiscountBanner from '../components/home/DiscountBanner';
 import FeatureProducts from '../components/home/FeatureProducts';
 import LatestNews from '../components/home/LatestNews';
+import Testimonials from '../components/home/Testimonials';
 
 const Home = () => {
   return (
@@ -27,6 +28,7 @@ const Home = () => {
     <DiscountBanner/>
     <FeatureProducts/>
     <LatestNews/>
+    <Testimonials/>
     </>
   )
 }
