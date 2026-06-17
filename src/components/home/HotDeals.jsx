@@ -25,7 +25,7 @@ const HotDeals = () => {
           {maxProdToShow.map((item, index) => (
             <>
               {index === 0 && (
-                <div className="right col-span-2 row-span-2 size-full bg-white px-6 border border-hard-primary pb-6 shadow-[0_15px_40px_rgba(32,181,38,0.12)] group  md:h-full relative">
+                <div className="right col-span-2 row-span-2 size-full bg-white px-6 border border-hard-primary pb-6 shadow-[0_15px_40px_rgba(32,181,38,0.12)] group  md:h-full relative" key={index}>
                   <div className="">
                     
       {/* discount badge */}

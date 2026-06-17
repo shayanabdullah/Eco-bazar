@@ -191,3 +191,60 @@ export const latestNews = [
     slug: "build-a-balanced-healthy-plate",
   },
 ];
+
+export const testimonials = [
+  {
+    id: 1,
+    name: "Robert Fox",
+    role: "Customer",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    rating: 5,
+    review:
+      "EcoBazar has completely changed how I shop for groceries. The produce is always fresh, delivery is on time, and the quality consistently exceeds my expectations.",
+  },
+  {
+    id: 2,
+    name: "Dianne Russell",
+    role: "Customer",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    rating: 5,
+    review:
+      "I love the variety of organic products available. Ordering is effortless, and the fruits and vegetables always arrive fresh and carefully packed.",
+  },
+  {
+    id: 3,
+    name: "Eleanor Pena",
+    role: "Customer",
+    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    rating: 5,
+    review:
+      "Their same-day delivery service has been a lifesaver for my busy schedule. Great quality products and excellent customer support.",
+  },
+  {
+    id: 4,
+    name: "Cameron Williamson",
+    role: "Verified Buyer",
+    avatar: "https://randomuser.me/api/portraits/men/45.jpg",
+    rating: 4,
+    review:
+      "The prices are fair, and I especially enjoy the weekly deals. EcoBazar has become my go-to store for fresh groceries.",
+  },
+  {
+    id: 5,
+    name: "Savannah Nguyen",
+    role: "Customer",
+    avatar: "https://randomuser.me/api/portraits/women/26.jpg",
+    rating: 5,
+    review:
+      "The freshness guarantee is real. Every order I've received has been beautifully packed and full of high-quality ingredients.",
+  },
+  {
+    id: 6,
+    name: "Devon Lane",
+    role: "Loyal Customer",
+    avatar: "https://randomuser.me/api/portraits/men/54.jpg",
+    rating: 5,
+    review:
+      "From seasonal fruits to pantry essentials, EcoBazar makes healthy shopping simple, convenient, and enjoyable.",
+  },
+];

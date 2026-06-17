@@ -14,7 +14,7 @@ const PopularProductSection = () => {
         <CommonSection title={"Popular Products"} link={'/all-popular-products'}>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {maxtoShow.map((item) => (
-             <ProductCard item={item}/>
+             <ProductCard item={item} key={item.id}/>
             ))}
           </div>
         </CommonSection>
