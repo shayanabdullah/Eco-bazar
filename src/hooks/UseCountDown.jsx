@@ -20,6 +20,7 @@ const timerInterval = setInterval(()=> {
 return () => clearInterval(timerInterval);
 
 }, [countDownDate])
+
 // days = 1000ms x 60 = 60sec (1minutes) x 60 = 1 hour x 24 = 24hour = 1 day
   const days = Math.floor(countDown / (1000 * 60 * 60 * 24));
   const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));

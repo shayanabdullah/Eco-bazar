@@ -7,7 +7,7 @@ import { CiHeart } from "react-icons/ci";
 const ProductCard = ({item, className}) => {
   return (
     <div
-      className={`border border-gray-1 transition-all duration-300 hover:border-hard-primary group relative cursor-pointer hover:shadow-md shadow-primary/32 ${className}`}
+      className={`border border-gray-1 transition-all duration-300 hover:border-hard-primary group bg-white relative cursor-pointer hover:shadow-md shadow-primary/32 ${className}`}
       key={item.id}
     >
       {/* Img */}
@@ -42,12 +42,14 @@ const ProductCard = ({item, className}) => {
           {/* hover quick view  */}
 
           <div className="flex flex-col gap-y-1.5 absolute top-2 right-3">
+            
             <div className="w-7 md:w-10 h-7 md:h-10 rounded-full shadow-md flex items-center justify-center opacity-0 translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 bg-white border border-gray-100 cursor-pointer ">
               <LuEye className="text-gray-9  md:text-xl" />
             </div>
             <div className="w-7 md:w-10 h-7 md:h-10 rounded-full shadow-md flex items-center justify-center opacity-0 translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 bg-white border border-gray-100 cursor-pointer ">
               <CiHeart className="text-gray-9 md:text-xl" />
             </div>
+
           </div>
         </div>
         {/* rating */}

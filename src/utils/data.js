@@ -1,8 +1,8 @@
 export const popularProducts = [
   {
     id: 1,
-    name: "Fresh Granny Smith Apple",
-    image: "/popular-products/apple.webp",
+    name: "Premium Red Apple",
+    image: "/popular-products/red-apple.webp",
     price: 14.99,
     oldPrice: 20.99,
     sale: 50,
@@ -19,7 +19,7 @@ export const popularProducts = [
   },
   {
     id: 3,
-    name: "Fresh Apple",
+    name: "Fresh Granny Smith Apple",
     image: "/popular-products/green-apple.webp",
     price: 15.00,
     rating: 4.17,

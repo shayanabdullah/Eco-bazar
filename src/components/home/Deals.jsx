@@ -44,7 +44,7 @@ const Deals = () => {
 
                     {/* Hours */}
                      <div className="flex flex-col gap-y-2">
-                         <p className="text-center">{hour} 
+                         <p className="text-center">{hour < 10 ? '0'+hour : hour} 
                           <span className="block text-xs font-normal text-center">Hours</span>
                           </p>
                     </div>
@@ -55,7 +55,7 @@ const Deals = () => {
 
                     {/* Minutes */}
                      <div className="flex flex-col gap-y-2">
-                         <p className="text-center">{min} 
+                         <p className="text-center">{min < 10 ? '0'+min : min} 
                           <span className="block text-xs font-normal">mins</span>
                           </p>
                     </div>
@@ -66,7 +66,7 @@ const Deals = () => {
 
                     {/* secs */}
                      <div className="flex flex-col gap-y-2">
-                         <p className="text-center">{sec} 
+                         <p className="text-center">{sec < 10 ? '0'+ sec : sec}
                           <span className="block text-xs font-normal text-center">secs</span>
                           </p>
                     </div>
