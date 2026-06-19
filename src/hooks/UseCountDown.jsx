@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export const UseCountDown = (targetDate='Jun 16, 2027') => {
-  // jei date ta amra dibo mane shesh hobe
+
 const countDownDate = new Date(targetDate).getTime();
 
 
@@ -41,8 +41,7 @@ if (countDown <= 0) {
     day: days,
     hour :hours,
     min :minutes,
-    sec :seconds,
-    
+    sec :seconds,  
   }
 
 }

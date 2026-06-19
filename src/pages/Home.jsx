@@ -15,7 +15,7 @@ import DiscountBanner from '../components/home/DiscountBanner';
 import FeatureProducts from '../components/home/FeatureProducts';
 import LatestNews from '../components/home/LatestNews';
 import Testimonials from '../components/home/Testimonials';
-import Sponser from '../components/home/sponser';
+import Sponser from '../components/home/Sponser';
 import FollowUs from '../components/home/FollowUs';
 
 const Home = () => {
