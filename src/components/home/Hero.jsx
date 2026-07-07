@@ -39,7 +39,7 @@ const Hero = () => {
                 {allImages?.map(
                   (img, index) =>
                     img && (
-                      <SwiperSlide>
+                      <SwiperSlide key={index}>
                         <div className="size-full rounded-md overflow-hidden  max-h-150 cursor-pointer">
                           <img
                             src={img}
@@ -65,7 +65,7 @@ const Hero = () => {
                         </div>)
              }
             </div>
-            <div className="left lg:col-span-1 flex flex-col md:flex-row lg:flex-col gap-6 items-center w-full">
+            <div className="left lg:col-span-1 flex md:flex-row lg:flex-col md:gap-6 gap-x-2 items-center w-full">
               <div className="size-full cursor-pointer overflow-hidden group rounded-md">
                 <img
                   src={rightBannerOne}
