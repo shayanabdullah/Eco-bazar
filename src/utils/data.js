@@ -248,3 +248,48 @@ export const testimonials = [
       "From seasonal fruits to pantry essentials, EcoBazar makes healthy shopping simple, convenient, and enjoyable.",
   },
 ];
+
+export const shopCategories = [
+  {
+    id: 1,
+    name: "Fresh Fruit",
+    products: 25,
+    count: 134,
+  },
+  {
+    id: 2,
+    name: "Vegetables",
+    products: 150,
+    count: null,
+  },
+  {
+    id: 3,
+    name: "Cooking",
+    products: 54,
+    count: null,
+  },
+  {
+    id: 4,
+    name: "Snacks",
+    products: 47,
+    count: null,
+  },
+  {
+    id: 5,
+    name: "Beverages",
+    products: 43,
+    count: null,
+  },
+  {
+    id: 6,
+    name: "Beauty & Health",
+    products: 38,
+    count: null,
+  },
+  {
+    id: 7,
+    name: "Bread & Bakery",
+    products: 15,
+    count: null,
+  },
+];

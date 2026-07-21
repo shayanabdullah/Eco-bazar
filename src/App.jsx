@@ -9,12 +9,14 @@ import VerifyEmail from "./pages/VerifyEmail";
 import FAQS from './pages/FAQS';
 import AllCatagories from "./pages/AllCatagories";
 import AllPopularProducts from "./pages/AllPopularProducts";
+import Shop from './pages/Shop';
 const App = () => {
   return (
     <>
       <Routes>
         <Route element={<MainLayouts />}>
           <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
           <Route path="/account/register" element={<Register />} />
           <Route path="/account/login" element={<Login />} />
           <Route path="/help/faq" element={<FAQS />} />
