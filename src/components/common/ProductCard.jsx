@@ -7,7 +7,7 @@ import { CiHeart } from "react-icons/ci";
 const ProductCard = ({item, className}) => {
   return (
     <div
-      className={`border border-gray-1 transition-all duration-300 hover:border-hard-primary group bg-white relative cursor-pointer hover:shadow-md shadow-primary/32 ${className}`}
+      className={`border flex flex-col justify-between border-gray-1 transition-all duration-300 hover:border-hard-primary group bg-white relative cursor-pointer hover:shadow-md shadow-primary/32 ${className}`}
       key={item.id}
     >
       {/* Img */}
