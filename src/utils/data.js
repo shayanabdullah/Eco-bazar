@@ -1,3 +1,4 @@
+
 export const popularProducts = [
   {
     id: 1,
@@ -8,6 +9,8 @@ export const popularProducts = [
     sale: 50,
     rating: 4.82,
     reviewCount: 347,
+    category: "Fruits",
+    slug: "premium-red-apple",
   },
   {
     id: 2,
@@ -16,6 +19,8 @@ export const popularProducts = [
     price: 12.0,
     rating: 4.27,
     reviewCount: 238,
+    category: "Vegetables",
+    slug: "fresh-red-bell-pepper",
   },
   {
     id: 3,
@@ -27,6 +32,8 @@ export const popularProducts = [
     oldPrice: 30.99,
     sale: 50,
     badge: "Best Sale",
+    category: "Fruits",
+    slug: "fresh-granny-smith-apple",
   },
   {
     id: 4,
@@ -35,6 +42,8 @@ export const popularProducts = [
     price: 20.0,
     rating: 3.67,
     reviewCount: 128,
+    category: "Fruits",
+    slug: "premium-indian-orange",
   },
   {
     id: 5,
@@ -43,6 +52,8 @@ export const popularProducts = [
     price: 12.5,
     rating: 4.24,
     reviewCount: 216,
+    category: "Vegetables",
+    slug: "organic-chinese-cabbage",
   },
   {
     id: 6,
@@ -51,6 +62,8 @@ export const popularProducts = [
     price: 9.7,
     rating: 2.86,
     reviewCount: 43,
+    category: "Vegetables",
+    slug: "fresh-green-leaf-lettuce",
   },
   {
     id: 7,
@@ -59,6 +72,8 @@ export const popularProducts = [
     price: 34.6,
     rating: 4.51,
     reviewCount: 291,
+    category: "Vegetables",
+    slug: "farm-fresh-eggplant",
   },
   {
     id: 8,
@@ -67,6 +82,8 @@ export const popularProducts = [
     price: 20.0,
     rating: 3.92,
     reviewCount: 184,
+    category: "Vegetables",
+    slug: "golden-fresh-potato",
   },
   {
     id: 9,
@@ -75,14 +92,20 @@ export const popularProducts = [
     price: 20.2,
     rating: 4.73,
     reviewCount: 402,
+    category: "Vegetables",
+    slug: "sweet-yellow-corn",
   },
   {
     id: 10,
     name: "Fresh White Cauliflower",
     image: "/popular-products/cauliflower.webp",
     price: 12.9,
+    oldPrice: 30.99,
+    sale: 50,
     rating: 3.41,
     reviewCount: 97,
+    category: "Vegetables",
+    slug: "fresh-white-cauliflower",
   },
   {
     id: 11,
@@ -93,6 +116,7 @@ export const popularProducts = [
     sale: 50,
     rating: 4.17,
     reviewCount: 253,
+    slug: "green-bell-pepper",
   },
   {
     id: 12,
@@ -101,22 +125,27 @@ export const popularProducts = [
     price: 34.0,
     rating: 2.95,
     reviewCount: 58,
+    slug: "fresh-green-chili",
   },
   {
     id: 13,
     name: "Garden Fresh Cucumber",
     image: "/popular-products/cucumber.webp",
     price: 15.0,
+    category: "Vegetables",
     rating: 4.05,
     reviewCount: 163,
+    slug: "garden-fresh-cucumber",
   },
   {
     id: 14,
     name: "Vine Ripe Tomato",
     image: "/popular-products/tomato.webp",
     price: 18.0,
+    category: "Vegetables",
     rating: 4.36,
     reviewCount: 274,
+    slug: "vine-ripe-tomato",
   },
   {
     id: 15,
@@ -125,6 +154,8 @@ export const popularProducts = [
     price: 16.0,
     rating: 3.82,
     reviewCount: 112,
+    category: "Vegetables",
+    slug: "organic-orange-carrot",
   },
   {
     id: 16,
@@ -133,6 +164,8 @@ export const popularProducts = [
     price: 22.0,
     rating: 4.18,
     reviewCount: 209,
+    category: "Vegetables",
+    slug: "fresh-red-onion",
   },
   {
     id: 17,
@@ -141,6 +174,8 @@ export const popularProducts = [
     price: 14.0,
     rating: 4.61,
     reviewCount: 332,
+    category: "Vegetables",
+    slug: "organic-ginger-root",
   },
 ];
 
@@ -149,13 +184,13 @@ export const latestNews = [
     id: 1,
     title: "7 Benefits of Adding Fresh Citrus Fruits to Your Daily Diet",
     image: "/latest-news/orange.webp",
-   tags : [
-    {
-       category: "Healthy Tips",
-    author: "Admin",
-    comments: 18,
-    }
-   ],
+    tags: [
+      {
+        category: "Healthy Tips",
+        author: "Admin",
+        comments: 18,
+      },
+    ],
     day: 18,
     month: "NOV",
     slug: "benefits-of-fresh-citrus-fruits",
@@ -182,9 +217,9 @@ export const latestNews = [
     tags: [
       {
         category: "Nutrition",
-    author: "Admin",
-    comments: 21,
-      }
+        author: "Admin",
+        comments: 21,
+      },
     ],
     day: 21,
     month: "FEB",
@@ -293,3 +328,4 @@ export const shopCategories = [
     count: null,
   },
 ];
+

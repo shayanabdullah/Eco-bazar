@@ -1,6 +1,6 @@
 // Replace these placeholder image paths with real (transparent-bg) product PNGs.
 // They're rendered inside white containers, so transparent PNGs will look correct.
-
+import video from '../assets/images/video.png'
 export const product = {
   id: "chinese-cabbage",
   name: "Chinese Cabbage",
@@ -52,8 +52,7 @@ export const product = {
     },
   ],
   promoVideo: {
-    image:
-      "https://placehold.co/700x460/E5E7EB/9CA3AF?text=Promo+Video",
+    image:video
   },
   promoBenefits: [
     {
@@ -69,35 +68,3 @@ export const product = {
   ],
 };
 
-export const relatedProducts = [
-  {
-    id: "green-apple",
-    name: "Green Apple",
-    price: 14.99,
-    originalPrice: 20.99,
-    salePercent: 50,
-    rating: 4,
-    image: "https://placehold.co/400x400/FFFFFF/D1D5DB?text=Green+Apple",
-  },
-  {
-    id: "chinese-cabbage-2",
-    name: "Chanise Cabbage",
-    price: 14.99,
-    rating: 4,
-    image: "https://placehold.co/400x400/FFFFFF/D1D5DB?text=Chinese+Cabbage",
-  },
-  {
-    id: "green-capsicum",
-    name: "Green Capsicum",
-    price: 14.99,
-    rating: 4,
-    image: "https://placehold.co/400x400/FFFFFF/D1D5DB?text=Green+Capsicum",
-  },
-  {
-    id: "ladies-finger",
-    name: "Ladies Finger",
-    price: 14.99,
-    rating: 4,
-    image: "https://placehold.co/400x400/FFFFFF/D1D5DB?text=Ladies+Finger",
-  },
-];

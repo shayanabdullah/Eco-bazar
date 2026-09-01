@@ -6,13 +6,15 @@ export default function ProductGallery({ images = [], productName = "" }) {
   const thumbTrackRef = useRef(null);
 
   const scrollThumbs = (direction) => {
-    if (!thumbTrackRef.current) return;
-    const amount = 90;
-    thumbTrackRef.current.scrollBy({
-      top: direction === "up" ? -amount : amount,
-      left: 0,
-      behavior: "smooth",
-    });
+
+    setActiveIndex((prev) => direction === 'down'? prev+1: prev-1);
+
+    if (activeIndex >= images.length-1  && direction === 'down') {
+      setActiveIndex(0);
+    }
+    if (activeIndex <= 0 && direction === 'up') {
+      setActiveIndex(images.length-1);
+    }
   };
 
   return (
@@ -22,7 +24,7 @@ export default function ProductGallery({ images = [], productName = "" }) {
         <button
           type="button"
           onClick={() => scrollThumbs("up")}
-          className="text-gray-00 hover:text-gray-700 transition-colors"
+          className="text-gray-900 hover:text-gray-700 transition-colors cursor-pointer"
           aria-label="Scroll thumbnails up"
         >
           <ChevronUp className="w-5 h-5" />
@@ -30,14 +32,14 @@ export default function ProductGallery({ images = [], productName = "" }) {
 
         <div
           ref={thumbTrackRef}
-          className="flex flex-col gap-3 max-h-[420px] overflow-y-auto scrollbar-none"
+          className="flex flex-col gap-4 max-h-full overflow-y-auto scrollbar-none"
         >
           {images.map((src, i) => (
             <button
               key={i}
               type="button"
               onClick={() => setActiveIndex(i)}
-              className={`w-16 h-16 shrink-0 rounded-md border bg-white overflow-hidden transition-all ${
+              className={`w-20 h-20 shrink-0 rounded-md border bg-white overflow-hidden transition-all ${
                 activeIndex === i
                   ? "border-2 border-[#00B712]"
                   : "border-gray-200  hover:border-gray-400"
@@ -55,7 +57,7 @@ export default function ProductGallery({ images = [], productName = "" }) {
         <button
           type="button"
           onClick={() => scrollThumbs("down")}
-          className="text-gray-900 hover:text-gray-700 transition-colors"
+          className="text-gray-900 hover:text-gray-700 transition-colors cursor-pointer"
           aria-label="Scroll thumbnails down"
         >
           <ChevronDown className="w-5 h-5" />
@@ -72,7 +74,7 @@ export default function ProductGallery({ images = [], productName = "" }) {
       </div>
 
       {/* Horizontal thumbnails - mobile */}
-      <div className="flex md:hidden gap-3 overflow-x-auto order-3 pb-1">
+      <div className="flex md:hidden gap-3 overflow-x-auto justify-between order-3 pb-1">
         {images.map((src, i) => (
           <button
             key={i}

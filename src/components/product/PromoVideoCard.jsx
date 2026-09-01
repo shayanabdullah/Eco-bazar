@@ -7,7 +7,7 @@ export default function PromoVideoCard({ video, benefits = [] }) {
     <div className="flex flex-col gap-4">
       <button
         type="button"
-        className="relative rounded-xl overflow-hidden group w-full aspect-[16/10.5]"
+        className="relative rounded-xl overflow-hidden group w-full aspect-auto"
         aria-label="Play promotional video"
       >
         <img
@@ -17,9 +17,7 @@ export default function PromoVideoCard({ video, benefits = [] }) {
         />
         <span className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
         <span className="absolute inset-0 flex items-center justify-center">
-          <span className="w-14 h-14 rounded-full bg-[#00B712] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-            <Play className="w-5 h-5 text-white fill-white ml-0.5" />
-          </span>
+        
         </span>
       </button>
 

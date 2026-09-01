@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { FiPhoneCall } from "react-icons/fi";
-import { CiApple, CiCoffeeCup } from "react-icons/ci";
-import { TbSalad, TbMeat } from "react-icons/tb";
-import { IoFishOutline } from "react-icons/io5";
-import { PiCookingPot, PiPopsicleLight } from "react-icons/pi";
-import { GiCupcake } from "react-icons/gi";
-import { LuIceCreamBowl } from "react-icons/lu";
-import { GoPlus } from "react-icons/go";
 import Container from "../layouts/Container";
 import CatagoryDropDown from "./CatagoryDropDown";
 import { catagoriesMegaMenu } from "../../utils/catagoryData";

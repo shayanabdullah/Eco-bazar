@@ -5,12 +5,12 @@ export default function QuantitySelector({ quantity, onChange }) {
   const increment = () => onChange(quantity + 1);
 
   return (
-    <div className="flex items-center border rounded-full px-1.5 py-1.5 shrink-0">
+    <div className="flex items-center gap-x-1 border border-gray-1 rounded-full p-2 shrink-0">
       <button
         type="button"
         onClick={decrement}
         disabled={quantity <= 1}
-        className="w-8 h-8 flex items-center justify-center rounded-full text-gray-600 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent transition-colors" 
+        className="p-2  flex items-center justify-center rounded-full text-gray-9 bg-gray-1 disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer" 
         aria-label="Decrease quantity"
       >
         <Minus className="w-4 h-4" />
@@ -21,7 +21,7 @@ export default function QuantitySelector({ quantity, onChange }) {
       <button
         type="button"
         onClick={increment}
-        className="w-8 h-8 flex items-center justify-center rounded-full text-gray-600 hover:bg-gray-100 transition-colors" 
+        className="p-2  flex items-center justify-center rounded-full text-gray-9 bg-gray-1 disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer" 
         aria-label="Increase quantity"
       >
         <Plus className="w-4 h-4" />

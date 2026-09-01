@@ -5,7 +5,7 @@ export default function DescriptionTab({ product }) {
   const { paragraphs, checklist, closingParagraph } = product.descriptionTab;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
       <div className="space-y-5 text-sm leading-relaxed text-gray-60">
         {paragraphs.map((p, i) => (
           <p key={i}>{p}</p>

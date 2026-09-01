@@ -4,12 +4,14 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { CiHeart } from "react-icons/ci";
+import { Link } from "react-router";
 const ProductCard = ({item, className}) => {
   return (
     <div
       className={`border flex flex-col justify-between border-gray-1 transition-all duration-300 hover:border-hard-primary group bg-white relative cursor-pointer hover:shadow-md shadow-primary/32 ${className}`}
       key={item.id}
     >
+     <Link to={`/products/${item.slug}`}>
       {/* Img */}
       <div className="overflow-hidden">
         <img
@@ -80,6 +82,7 @@ const ProductCard = ({item, className}) => {
           </p>
         </div>
       )}
+     </Link>
     </div>
   );
 };
