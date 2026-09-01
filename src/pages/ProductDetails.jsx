@@ -1,0 +1,44 @@
+import { useState } from "react";
+import ProductGallery from "../components/product/ProductGallery";
+import ProductInfo from "../components/product/ProductInfo";
+import ProductTabs from "../components/product/ProductTabs";
+import DescriptionTab from "../components/product/DescriptionTab";
+import AdditionalInfoTab from "../components/product/AdditionalInfoTab";
+import CustomerFeedbackTab from "../components/product/CustomerFeedbackTab";
+import RelatedProducts from "../components/product/RelatedProducts";
+import { product, relatedProducts } from "../data/products";
+import { reviews } from "../data/reviews";
+
+export default function ProductDetails() {
+  const [activeTab, setActiveTab] = useState("description");
+
+  const handleAddToCart = (quantity) => {
+    console.log(`Add ${quantity} × ${product.name} to cart`);
+  };
+
+  return (
+    <div className="bg-white min-h-screen">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        {/* Gallery + Info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+          <ProductGallery images={product.images} productName={product.name} />
+          <ProductInfo product={product} onAddToCart={handleAddToCart} />
+        </div>
+
+        {/* Tabs */}
+        <div className="mt-12 md:mt-16">
+          <ProductTabs activeTab={activeTab} onChange={setActiveTab} />
+
+          <div className="pt-8">
+            {activeTab === "description" && <DescriptionTab product={product} />}
+            {activeTab === "additional" && <AdditionalInfoTab product={product} />}
+            {activeTab === "feedback" && <CustomerFeedbackTab reviews={reviews} />}
+          </div>
+        </div>
+
+        {/* Related products */}
+        <RelatedProducts products={relatedProducts} />
+      </div>
+    </div>
+  );
+}

@@ -10,6 +10,7 @@ import FAQS from './pages/FAQS';
 import AllCatagories from "./pages/AllCatagories";
 import AllPopularProducts from "./pages/AllPopularProducts";
 import Shop from './pages/Shop';
+import ProductDetails from './pages/ProductDetails';
 const App = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const App = () => {
         <Route element={<MainLayouts />}>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/product" element={<ProductDetails />} />
           <Route path="/account/register" element={<Register />} />
           <Route path="/account/login" element={<Login />} />
           <Route path="/help/faq" element={<FAQS />} />
