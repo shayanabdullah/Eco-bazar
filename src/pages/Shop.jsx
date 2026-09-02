@@ -17,7 +17,7 @@ const Shop = () => {
     useEffect(() => {
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 500)
     }, []);
 
    return (

@@ -23,7 +23,7 @@ export default function ProductInfo({ product, onAddToCart }) {
   };
 
   return (
-    <div className="relative flex flex-col gap-5">
+    <div className="relative flex flex-col gap-y-5 max-h-fit">
       {/* Title + stock badge */}
       <div>
         <div className="flex items-center flex-wrap gap-3">
@@ -57,14 +57,18 @@ export default function ProductInfo({ product, onAddToCart }) {
       {/* Price */}
       <div className="flex items-center gap-3 pb-5 border-b border-gray-200">
         <span className="text-gray-400 line-through text-xl">
-          ${product.originalPrice.toFixed(2)}
+          {product.originalPrice && `$${product.originalPrice?.toFixed(2)}`}
         </span>
         <span className="text-2xl font-poppins font-medium text-hard-primary">
-          ${product.price.toFixed(2)}
+          {product.price && `$${product.price?.toFixed(2)}`}
         </span>
-        <span className="text-sm font-medium bg-red-50 text-red-500 px-2.5 py-1 rounded-full">
-          {product.discountPercent}% Off
-        </span>
+      {
+        product.discountPercent > 0 && (
+          <span className="text-sm font-medium bg-red-50 text-red-500 px-2.5 py-1 rounded-full">
+            {product.discountPercent}% Off
+          </span>
+        )
+      }
       </div>
 
       {/* Brand + share */}

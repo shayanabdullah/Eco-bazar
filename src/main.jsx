@@ -7,11 +7,14 @@ import { Provider } from 'react-redux'
 import {store} from './redux/store'
 import { ToastContainer } from 'react-toastify';
 import 'swiper/css';
+import { QuickViewProvider } from './context/QuickViewContext.jsx';
 createRoot(document.getElementById('root')).render(
 <Provider store={store}>
   <BrowserRouter>
-    <App />
+  <QuickViewProvider>
+      <App />
     <ToastContainer />
+  </QuickViewProvider>
   </BrowserRouter>
 </Provider>
 )

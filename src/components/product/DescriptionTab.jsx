@@ -2,7 +2,7 @@ import { Check } from "lucide-react";
 import PromoVideoCard from "./PromoVideoCard";
 
 export default function DescriptionTab({ product }) {
-  const { paragraphs, checklist, closingParagraph } = product.descriptionTab;
+  const { paragraphs, checklist, closingParagraph } = product?.descriptionTab || {};
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">

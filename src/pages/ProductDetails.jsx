@@ -9,11 +9,13 @@ import RelatedProducts from "../components/product/RelatedProducts";
 import { reviews } from "../data/reviews";
 import { popularProducts } from "../utils/data";
 import { productDetails } from "../data/productDetaIls";
+import QuickView from "../components/common/QuickView";
 import { useParams } from "react-router";
 import Container from "../components/layouts/Container";
 
 export default function ProductDetails() {
  const { slug } = useParams();
+ const [isOpen, setIsOpen] = useState(false);
 
 const product = Object.values(productDetails).find(
   (item) => item.slug === slug
@@ -33,8 +35,10 @@ const product = Object.values(productDetails).find(
   };
  
 
+
   return (
     <div className="bg-white min-h-screen">
+      
      <Container>
        <div className=" px-4 md:px-6 py-8 md:py-12">
         {/* Gallery + Info */}
@@ -55,7 +59,8 @@ const product = Object.values(productDetails).find(
         </div>
 
         {/* Related products */}
-        <RelatedProducts products={relatedProducts} />
+        <RelatedProducts products={relatedProducts} isOpen={isOpen} setIsOpen={setIsOpen} />
+     
       </div>
      </Container>
     </div>

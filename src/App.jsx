@@ -11,6 +11,7 @@ import AllCatagories from "./pages/AllCatagories";
 import AllPopularProducts from "./pages/AllPopularProducts";
 import Shop from './pages/Shop';
 import ProductDetails from './pages/ProductDetails';
+import QuickView from "./components/common/QuickView";
 const App = () => {
   return (
     <>
@@ -18,7 +19,7 @@ const App = () => {
         <Route element={<MainLayouts />}>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/products/:slug" element={<ProductDetails />} />
+          <Route path="products/:slug" element={<ProductDetails />} />
           <Route path="/account/register" element={<Register />} />
           <Route path="/account/login" element={<Login />} />
           <Route path="/help/faq" element={<FAQS />} />
@@ -40,6 +41,7 @@ const App = () => {
            <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
+      <QuickView />
     </>
   );
 };

@@ -34,7 +34,7 @@ export default function ProductGallery({ images = [], productName = "" }) {
           ref={thumbTrackRef}
           className="flex flex-col gap-4 max-h-full overflow-y-auto scrollbar-none"
         >
-          {images.map((src, i) => (
+          {images?.map((src, i) => (
             <button
               key={i}
               type="button"
@@ -75,7 +75,7 @@ export default function ProductGallery({ images = [], productName = "" }) {
 
       {/* Horizontal thumbnails - mobile */}
       <div className="flex md:hidden gap-3 overflow-x-auto justify-between order-3 pb-1">
-        {images.map((src, i) => (
+        {images?.map((src, i) => (
           <button
             key={i}
             type="button"
@@ -86,11 +86,13 @@ export default function ProductGallery({ images = [], productName = "" }) {
                 : "border-gray-200 hover:border-gray-400"
             }`}
           >
-            <img
-              src={src}
-              alt={`${productName} thumbnail ${i + 1}`}
-              className="w-full h-full object-contain"
-            />
+            {src && (
+              <img
+                src={src}
+                alt={`${productName} thumbnail ${i + 1}`}
+                className="w-full h-full object-contain"
+              />
+            )}
           </button>
         ))}
       </div>

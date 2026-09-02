@@ -10,7 +10,7 @@ import { IoSearchOutline } from "react-icons/io5";
 const MobileBottomNav = () => {
   return (
     <section className="lg:hidden">
-      <div className="fixed bottom-0 w-full py-2 px-8 bg-green-gray-8 flex items-center justify-between md:justify-center md:gap-x-20 z-29">
+      <div className="fixed bottom-0 w-full py-2 px-8 bg-green-gray-8 flex items-center justify-between md:justify-center md:gap-x-20 z-500">
 
         <div className="home ">
          
