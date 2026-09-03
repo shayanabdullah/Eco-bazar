@@ -5,6 +5,7 @@ import { latestNews } from '../../utils/data'
 import { GoTag } from 'react-icons/go'
 import { FaUserLarge } from "react-icons/fa6";
 import { FaArrowRight, FaRegCommentAlt } from 'react-icons/fa'
+import { Link } from 'react-router'
 
 const LatestNews = () => {
   return (
@@ -14,7 +15,8 @@ const LatestNews = () => {
                 <div className="main grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {
                         latestNews.map((news) => (
-                            <div className="overflow-hidden group border border-gray-1 rounded-lg hover:drop-shadow-2xl transition-all duration-300 " key={news.id}>
+                            <Link to='/blog' key={news.id}>
+                            <div className="overflow-hidden group border border-gray-1 rounded-lg hover:drop-shadow-2xl transition-all duration-300 " >
                                 {/* img */}
                                 <div className="img relative">
                                     <img src={news.image} alt="img" className='transition-all duration-300 group-hover:scale-[1.02]' />
@@ -55,6 +57,8 @@ const LatestNews = () => {
                                 </button>
                                 </div>
                             </div>
+
+                            </Link>
                         ))
                     }
                 </div>

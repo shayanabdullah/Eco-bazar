@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router";
 
 const MegaMenuPanel = ({ activeCategory }) => {
   if (!activeCategory) return null;
@@ -15,6 +16,7 @@ const MegaMenuPanel = ({ activeCategory }) => {
         {/* Sub-categories + Popular Items */}
         <div className="grid grid-cols-2 gap-6 w-[70%]">
           {/* Sub-categories */}
+         <Link to='/shop'>
           <div className="border-r border-gray-200 pr-6 min-w-[180px]">
             <h2 className="font-poppins font-semibold text-base text-primary pb-4">
               {activeCategory.category}
@@ -28,11 +30,12 @@ const MegaMenuPanel = ({ activeCategory }) => {
                   {item}
                 </p>
               ))}
-              <p className="font-poppins font-medium text-primary flex items-center gap-x-2 cursor-pointer hover:underline mt-4 text-sm">
+              <Link to={'/shop'} className="font-poppins font-medium text-primary flex items-center gap-x-2 cursor-pointer hover:underline mt-4 text-sm">
                 View All {activeCategory.category} <FaArrowRight />
-              </p>
+              </Link>
             </div>
           </div>
+         </Link>
 
           {/* Popular Items */}
           <div className="pl-2">
@@ -40,11 +43,13 @@ const MegaMenuPanel = ({ activeCategory }) => {
               Popular Items
             </h2>
             <div className="flex flex-col gap-y-3">
+            <Link to='/shop'>
               {activeCategory.popularItems.map((item, i) => (
                 <div
                   key={i}
                   className="flex items-center gap-x-4 pb-3 border-b border-gray-100 cursor-pointer group"
                 >
+
                   <img
                     src={item.image}
                     alt={item.name}
@@ -62,15 +67,17 @@ const MegaMenuPanel = ({ activeCategory }) => {
                   </div>
                 </div>
               ))}
-              <p className="font-poppins font-medium text-primary text-sm flex items-center gap-x-2 cursor-pointer hover:underline mt-1">
+                  <Link to={'/shop'} className="font-poppins font-medium text-primary text-sm flex items-center gap-x-2 cursor-pointer hover:underline mt-1">
                 View All <FaArrowRight />
-              </p>
+              </Link>
+            </Link>
             </div>
           </div>
         </div>
 
         {/* Banner */}
         <div className="w-[30%] overflow-hidden rounded-lg group">
+          <Link to='/shop'>
           <img
             src={activeCategory.banner.image}
             alt={activeCategory.banner.title}
@@ -78,6 +85,8 @@ const MegaMenuPanel = ({ activeCategory }) => {
             loading="lazy"
             className="w-full min-h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-300 cursor-pointer"
           />
+          
+          </Link>
         </div>
       </div>
     </motion.div>

@@ -9,6 +9,7 @@ import { allCategoriesSidebar } from "../utils/catagoryData";
 
 import { IoClose } from "react-icons/io5";
 import { RiMenuFold2Line } from "react-icons/ri";
+import { Link } from "react-router";
 const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
   const [dropDownIndex, setDropDownIndex] = useState(null);
 
@@ -79,12 +80,13 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
                         className="dropdown w-full pl-13 pt-3 pb-3 flex flex-col gap-y-2"
                       >
                         {item?.subCategories?.map((sub, index) => (
-                          <p
+                          <Link to='/shop'
                             key={index}
+                            onClick={() => setIsOpen(false)}
                             className="font-poppins font-medium text-base text-gray-5 hover:underline cursor-pointer"
                           >
                             {sub}
-                          </p>
+                          </Link>
                         ))}
                       </motion.div>
                     )}

@@ -10,14 +10,14 @@ import { IoSearchOutline } from "react-icons/io5";
 const MobileBottomNav = () => {
   return (
     <section className="lg:hidden">
-      <div className="fixed bottom-0 w-full py-2 px-8 bg-green-gray-8 flex items-center justify-between md:justify-center md:gap-x-20 z-500">
+      <div className="fixed bottom-0 w-full py-2 px-8 bg-green-100/90 flex items-center justify-between md:justify-center md:gap-x-20 z-500">
 
         <div className="home ">
          
           <NavLink
             to={"/"}
             style={({ isActive }) => ({
-              color: isActive ? "#edf2ee" : "#ffffffb9",
+              color: isActive ? "green" : "#1A1A1A",
               textDecoration: "none",
             })}
             className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium uppercase w-full'}
@@ -31,7 +31,7 @@ const MobileBottomNav = () => {
           <NavLink
             to={"/shop"}
             style={({ isActive }) => ({
-                color: isActive ? "#edf2ee" : "#ffffffb9",
+                 color: isActive ? "green" : "#1A1A1A",
               textDecoration: "none",
             })}
             className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium uppercase w-full'}
@@ -44,7 +44,7 @@ const MobileBottomNav = () => {
           <NavLink
             to={"/cart"}
             style={({ isActive }) => ({
-              color: isActive ? "#edf2ee" : "#ffffffb9",
+               color: isActive ? "green" : "#1A1A1A",
               textDecoration: "none",
             })}
             className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium  w-full uppercase'}
@@ -60,7 +60,7 @@ const MobileBottomNav = () => {
           <NavLink
             to={"/search"}
             style={({ isActive }) => ({
-              color: isActive ? "#edf2ee" : "#ffffffb9",
+               color: isActive ? "green" : "#1A1A1A",
               textDecoration: "none",
             })}
             className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium  w-full uppercase'}
@@ -73,7 +73,7 @@ const MobileBottomNav = () => {
           <NavLink
             to={"/account/login"}
             style={({ isActive }) => ({
-              color: isActive ? "#edf2ee" : "#ffffffb9",
+               color: isActive ? "green" : "#1A1A1A",
               textDecoration: "none",
             })}
             className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium uppercase w-full'}

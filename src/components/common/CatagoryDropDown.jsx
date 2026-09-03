@@ -5,6 +5,7 @@ import { IoIosMenu } from "react-icons/io";
 import { useState } from "react";
 import MegaMenuPanel from "./MegaMenuPanel.jsx";
 import CategorySidebar from "../CategorySidebar.jsx";
+import { Link } from "react-router";
 
 const CatagoryDropDown = ({
   categories,
@@ -78,7 +79,7 @@ const CatagoryDropDown = ({
                       >
                         {category.icon}
                       </i>
-                      <p className="flex-1">{category.category}</p>
+                      <Link to='/shop' className="flex-1">{category.category}</Link>
                       {!isLast && (
                         <HiOutlineChevronRight
                           className={`text-lg transition-colors duration-200 ${isActive ? "text-primary" : "text-gray-400"}`}

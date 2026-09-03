@@ -5,6 +5,7 @@ import summer from "../../../public/summerSale.webp";
 import meat from "../../../public/meat.webp";
 import { UseCountDown } from "../../hooks/UseCountDown";
 import { IoWarningOutline } from "react-icons/io5";
+import { Link } from "react-router";
 
 const Deals = () => {
   const { day, hour, min, sec, expired, message } = UseCountDown("Jun 17 2027");
@@ -15,7 +16,9 @@ const Deals = () => {
       <Container>
         <div className="main grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {banners.map((img, index) => (
-            <div
+            <Link to='/shop' key={index}>
+
+              <div
               className="overflow-hidden cursor-pointer relative w-full group"
               key={index}
             >
@@ -79,6 +82,7 @@ const Deals = () => {
              }
               <img src={img} alt="deals" className="group-hover:scale-[1.02] transition-all duration-300"/>
             </div>
+            </Link>
           ))}
  
         </div>

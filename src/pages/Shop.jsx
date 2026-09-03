@@ -28,7 +28,7 @@ const Shop = () => {
           <div className="w-full grid grid-cols-1 md:grid-cols-4 items-center justify-between ">
             {/* Filter Button */}
             <div className="left col-span-1 ">
-              <button onClick={() => setOpen(true)} className="py-3.5 px-8 rounded-[40px] flex items-center gap-x-3 text-sm bg-primary  font-poppins font-semibold text-white cursor-pointer">
+              <button onClick={() => setOpen(true)} className="py-2.5 md:py-3.5 px-6  md:px-8 rounded-[40px] flex items-center gap-x-3 text-sm bg-primary  font-poppins font-semibold text-white cursor-pointer">
                 Filter
                 <BsSliders className="text-xl" />
               </button>
@@ -36,7 +36,7 @@ const Shop = () => {
             
 
             {/* Sort */}
-            <div className="w-full flex flex-col md:flex-row items-center justify-between col-span-3">
+            <div className="w-full flex items-center justify-between col-span-3 mt-4">
               <div className="flex items-center gap-3">
                 <span className="text-sm text-gray-500">Sort by:</span>
 
