@@ -58,7 +58,6 @@ export const popularTags = [
   "Organic Oil",
   "Recipe",
   "Skincare",
-  "Snacks",
   "Sugar-Free",
   "Summer Drinks",
   "Tips",

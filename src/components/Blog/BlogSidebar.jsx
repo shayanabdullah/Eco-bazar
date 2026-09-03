@@ -186,7 +186,8 @@ export default function BlogSidebar({
       </div>
     </aside>
   {/* Mobile Sidebar */}
-       <aside ref={menuRef} className={` md:hidden space-y-8 max-w-[355px] z-100 absolute min-h-screen top-0 bg-white pt-10 pb-5 px-4 border border-gray-200 rounded-xl transition-all duration-300 ${isOpen ? "left-0 translate-x-0" : "-left-full"}`}>
+       <aside ref={menuRef} className={` md:hidden space-y-8 max-w-[355px] z-999 fixed overflow-y-auto
+    overscroll-contain h-dvh top-0 bg-white pt-10 pb-5 px-4 border border-gray-200  rounded-tr-xl transition-all duration-300 ${isOpen ? "left-0 translate-x-0" : "-left-full"}`}>
         
         <i className="absolute top-2 right-2 text-2xl cursor-pointer" onClick={() => setIsOpen(false)}>
           <HiX/>

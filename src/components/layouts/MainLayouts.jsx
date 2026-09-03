@@ -4,6 +4,7 @@ import TopBar from "../common/TopBar";
 import MiddleBar from "../common/MiddleBar";
 import Navber from "../common/Navber";
 import Footer from "../common/Footer";
+import ScrollToTopBtn from "../common/ScrollToTopBtn";
 import MobileBottomNav from "../MobileBottomNav";
 import Breadcrums from "../common/Breadcrums";
 
@@ -18,6 +19,7 @@ const MainLayouts = () => {
       </div>
       {pathName !== "/" && <Breadcrums />}
       <Outlet />
+      <ScrollToTopBtn />
       <MobileBottomNav />
       <Footer />
     </>

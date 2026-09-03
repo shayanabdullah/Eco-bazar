@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import BlogSidebar from "./BlogSidebar";
+import BlogSidebar from "./BlogSideBar";
 import BlogList from "./BlogList";
 import { blogPosts, popularTags, galleryImages } from "../../data/blog";
 import { FaChevronRight, FaHouse } from "react-icons/fa6";

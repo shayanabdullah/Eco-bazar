@@ -1,5 +1,6 @@
 import { FaSliders, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import BlogCard from "./BlogCard";
+import { useScrollToTop } from "../../hooks/useScrollToTop";
 
 const POSTS_PER_PAGE = 6;
 
@@ -47,6 +48,8 @@ export default function BlogList({
     </div>
   );
 
+  
+const { scrollToTop } = useScrollToTop();
   return (
     <>
       {/* Sort bar + filter toggle */}
@@ -119,7 +122,10 @@ export default function BlogList({
             <>
               <button
                 type="button"
-                onClick={() => setCurrentPage(1)}
+                onClick={() => {
+                  setCurrentPage(1);
+                  scrollToTop();
+                }}
                 className={`w-9 h-9 flex items-center justify-center rounded-full text-sm font-medium transition-colors ${
                   1 === currentPage
                     ? "bg-[#00B712] text-white"
@@ -136,7 +142,10 @@ export default function BlogList({
             <button
               key={num}
               type="button"
-              onClick={() => setCurrentPage(num)}
+              onClick={() => {
+                setCurrentPage(num);
+                scrollToTop();
+              }}
               className={`w-9 h-9 flex items-center justify-center rounded-full text-sm font-medium transition-colors ${
                 num === currentPage
                   ? "bg-[#00B712] text-white"
@@ -154,7 +163,10 @@ export default function BlogList({
               )}
               <button
                 type="button"
-                onClick={() => setCurrentPage(totalPages)}
+                onClick={() => {
+                  setCurrentPage(totalPages);
+                  scrollToTop();
+                }}
                 className={`w-9 h-9 flex items-center justify-center rounded-full text-sm font-medium transition-colors ${
                   currentPage === totalPages
                     ? "bg-[#00B712] text-white"

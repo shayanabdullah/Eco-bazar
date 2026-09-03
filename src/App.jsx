@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Routes, Route } from "react-router";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
@@ -15,7 +15,9 @@ import QuickView from "./components/common/QuickView";
 import SingleBlog from "./components/Blog/SingleBlog";
 import BlogPage from "./components/Blog/BlogPage";
 import About from "./pages/About";
+import { useScrollToNavigation } from './hooks/useScrollToNavigation';
 const App = () => {
+  useScrollToNavigation();
   return (
     <>
       <Routes>

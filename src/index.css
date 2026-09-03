@@ -89,6 +89,10 @@ button {
   cursor: pointer;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --color-soft-primary: #84d187;
   --color-primary: #00b207;
