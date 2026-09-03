@@ -11,6 +11,8 @@ export default function BlogList({
   setCurrentPage,
   totalResults,
   loading,
+  isOpen,
+  setIsOpen,
 }) {
   const totalPages = Math.max(
     1,
@@ -53,6 +55,7 @@ export default function BlogList({
           <button
             type="button"
             className="lg:hidden flex items-center gap-2 bg-[#00B712] hover:bg-[#00A010] text-white text-sm font-medium rounded-full px-5 h-10 transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
           >
             Filter
             <FaSliders className="w-4 h-4" />
@@ -91,9 +94,10 @@ export default function BlogList({
 
       {/* Empty state */}
       {!loading && paginatedPosts.length === 0 && (
-        <div className="py-16 text-center">
+        <div className="py-16 text-center  text-gray-500 bg-gray-50 rounded-xl">
+          <h1 className="text-xl font-semibold mb-2 text-[# 1a1a1a]">No Blog Posts Found.</h1>
           <p className="text-gray-500 text-sm">
-            No posts found matching your filters.
+            Try searching with a different keyword or removing filters.
           </p>
         </div>
       )}

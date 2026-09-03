@@ -85,6 +85,9 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+button {
+  cursor: pointer;
+}
 
 @theme {
   --color-soft-primary: #84d187;

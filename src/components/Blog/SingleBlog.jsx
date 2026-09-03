@@ -39,7 +39,9 @@ export default function SingleBlog() {
           </div>
 
           {/* Sidebar */}
+          <Link to="/blog">
           <BlogSidebar />
+          </Link>
         </div>
       </div>
     </div>

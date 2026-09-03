@@ -79,30 +79,14 @@ export default function BlogPage() {
     return result;
   }, [posts, searchQuery, selectedCategory, selectedTag, sortBy]);
 
+  // Mobile Sidebar
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white text-gray-800 font-poppins">
-      {/* Breadcrumb */}
-      <div className="bg-gray-50 border-b border-gray-200 py-4 px-4 sm:px-8">
-        <div className="max-w-330 mx-auto flex items-center gap-2 text-xs text-gray-500">
-          <button
-            onClick={() => {
-              window.location.href = "/";
-            }}
-            aria-label="Home"
-            className="hover:text-emerald-600 transition-colors flex items-center"
-          >
-            <FaHouse className="w-3.5 h-3.5" />
-          </button>
-
-          <FaChevronRight className="w-3.5 h-3.5 text-gray-400" />
-
-          <span className="text-emerald-600 font-medium">Blog</span>
-        </div>
-      </div>
-
       {/* Main */}
       <main className="max-w-330 mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-8 items-start">
           {/* Sidebar */}
           <div className="lg:col-span-3">
             <BlogSidebar
@@ -116,6 +100,8 @@ export default function BlogPage() {
               popularTags={popularTags}
               galleryImages={galleryImages}
               recentPosts={posts}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
             />
           </div>
 
@@ -129,6 +115,8 @@ export default function BlogPage() {
               setCurrentPage={setCurrentPage}
               loading={loading}
               totalResults={filteredPosts.length}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
             />
           </div>
         </div>

@@ -14,6 +14,7 @@ import ProductDetails from "./pages/ProductDetails";
 import QuickView from "./components/common/QuickView";
 import SingleBlog from "./components/Blog/SingleBlog";
 import BlogPage from "./components/Blog/BlogPage";
+import About from "./pages/About";
 const App = () => {
   return (
     <>
@@ -30,6 +31,7 @@ const App = () => {
             path="/all-popular-products"
             element={<AllPopularProducts />}
           />
+          <Route path="/about" element={<About />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<SingleBlog />} />
 

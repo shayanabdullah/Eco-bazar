@@ -18,7 +18,7 @@ export default function BlogCard({ post }) {
         <img
           src={post.image}
           alt={post.title}
-          className="w-full aspect-[4/3] object-cover"
+          className="w-full  object-cover"
         />
         <div className="absolute top-3 left-3 bg-white rounded-md px-2.5 py-1.5 text-center leading-none shadow-sm">
           <span className="block text-sm font-bold text-gray-900">
@@ -38,17 +38,17 @@ export default function BlogCard({ post }) {
       </Link>
 
       <div className="p-5">
-        <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
-          <span className="flex items-center gap-1">
-            <FaTag className="w-3.5 h-3.5" />
+        <div className="flex items-center gap-3 text-xs text-gray-500 mb-3 ">
+          <span className="flex items-center gap-1 ">
+            <FaTag className="w-3.5 h-3.5 text-warning" />
             {post.category}
           </span>
           <span className="flex items-center gap-1">
-            <FaUser className="w-3.5 h-3.5" />
+            <FaUser className="w-3.5 h-3.5 text-primary" />
             By {post.author}
           </span>
           <span className="flex items-center gap-1">
-            <FaComment className="w-3.5 h-3.5" />
+            <FaComment className="w-3.5 h-3.5 text-primary" />
             {post.commentsCount} Comments
           </span>
         </div>
