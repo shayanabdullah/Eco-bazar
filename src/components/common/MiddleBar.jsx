@@ -129,14 +129,16 @@ const MiddleBar = () => {
       <Container>
         <nav className="hidden lg:flex justify-between items-center ">
           {/* Logo */}
-          <div className="logo flex items-center gap-x-1">
-            <img src={logo} alt="logo" loading="lazy" />
-            <Link to={"/"}>
-              <h2 className="font-poppins font-medium text-heading-05 text-green-gray-9">
-                Ecobazar
-              </h2>
-            </Link>
-          </div>
+             <div className="">
+                <Link to={"/"}>
+                  <img
+                    src={logo}
+                    alt="logo"
+                    loading="lazy"
+                    className="w-28 sm:w-32 lg:w-auto"
+                  />
+                </Link>
+              </div>
 
           {/* Search Box */}
           <div className="inputs  flex items-center relative">

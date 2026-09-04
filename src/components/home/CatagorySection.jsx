@@ -9,7 +9,7 @@ const CatagorySection = () => {
       <section className="pb-15">
         <CommonSection title={"Popular Categories"} link={"/all-catagories"}>
           {/* All catagories */}
-          <div className="flex lg:grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 md:gap-x-6 overflow-scroll">
+          <div className="flex lg:grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 md:gap-x-6 overflow-x-scroll md:overflow-hidden">
             {catagoryToShow.map((item) => (
               <div
                 className="border border-gray-1 rounded-md px-4 py-3 md:py-4 transition-all duration-300 hover:border-hard-primary group cursor-pointer flex flex-col justify-between shrink-0"

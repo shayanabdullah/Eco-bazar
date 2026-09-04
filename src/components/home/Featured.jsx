@@ -43,8 +43,8 @@ const Featured = () => {
                     <div className="card flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-1.5 lg:gap-x-4 p-1 lg:p-0" key={item.id}>
                 <item.icon className='text-heading-04 text-primary shrink-0 scale-[0.75] lg:scale-100'/>
                 <div className="flex flex-col gap-y-1">
-                    <h2 className='font-poppins font-semibold text-[11px] sm:text-[13px] lg:text-base text-logoc leading-[120%] lg:pb-2'>{item.title}</h2>
-                    <p className='text-[9px] sm:text-[11px] lg:defaultfs text-grynine mt-0.5 lg:mt-0 leading-[130%] lg:leading-normal'>{item.description}</p>
+                    <h2 className='font-poppins font-semibold text-[11px] sm:text-[13px] lg:text-base text-gray-9 leading-[120%] lg:pb-2'>{item.title}</h2>
+                    <p className='text-[9px] sm:text-[11px] lg:text-sm text-gray-4 mt-0.5 lg:mt-0 leading-[130%] lg:leading-normal'>{item.description}</p>
                 </div>
             </div>
                 ))
