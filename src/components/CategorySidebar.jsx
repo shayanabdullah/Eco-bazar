@@ -35,7 +35,7 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
             <div className="">
             
               <h2 className="font-semibold text-base md:text-xl  text-gray-9">
-               Explore Category & Shop
+               Explore Category 
               </h2>
             </div>
             <IoClose

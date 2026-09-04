@@ -16,12 +16,11 @@ import SingleBlog from "./components/Blog/SingleBlog";
 import BlogPage from "./components/Blog/BlogPage";
 import About from "./pages/About";
 import { useScrollToNavigation } from './hooks/useScrollToNavigation';
-import MapComponent from "./utils/Map";
+import Contact from "./pages/Contact";
 const App = () => {
   useScrollToNavigation();
   return (
     <>
- 
       <Routes>
         <Route element={<MainLayouts />}>
           <Route path="/" element={<Home />} />
@@ -34,6 +33,8 @@ const App = () => {
           <Route
             path="/all-popular-products"
             element={<AllPopularProducts />}
+          />
+          <Route path="/contact" element={<Contact />}
           />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<BlogPage />} />

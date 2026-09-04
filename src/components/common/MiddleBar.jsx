@@ -274,65 +274,7 @@ const MiddleBar = () => {
               ))}
             </div>
 
-            {/* categories */}
-            <div className="mb-10">
-              {/* Categories */}
-              <div className="drop-down  h-full relative">
-                <div className="flex items-center">
-                  {/* BUTTON */}
-                  <button
-                    className="p-2.5 bg-primary cursor-pointer"
-                    onClick={() => {
-                      (setIsSidebarOpen(true), setIsMenuOpen(false));
-                    }}
-                  >
-                    <IoIosMenu className="text-4xl text-white" />
-                  </button>
-
-                  {/* TEXT BOX */}
-                  <div
-                    onClick={handleCatagoryOpen}
-                    className="w-full flex items-center justify-between pr-4 pl-6 bg-gray-9 cursor-pointer text-white! py-4 min-h-full  font-poppins font-medium text-body-md group"
-                  >
-                    <h2>All Categories</h2>
-
-                    <div>
-                      <IoChevronDown
-                        className={`text-2xl cursor-pointer transition-transform duration-400 ${categoriesOpen && "rotate-180 "}`}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* categories */}
-
-                <AnimatePresence>
-                  {categoriesOpen && (
-                    <div className=" border border-gray-1  bg-white w-full font-poppins font-normal text-body-sm text-green-gray-9 rounded-sm mb-5">
-                      {catagories?.map((catagory, index) => (
-                        <div
-                          className="w-full py-4 px-5 flex gap-x-3 items-center cursor-pointer hover:bg-primary hover:text-white transition-colors duration-300 group"
-                          key={index}
-                          style={
-                            catagory.last && { borderTop: "1px solid #e6e6e6" }
-                          }
-                          onClick={() => {
-                            (index === catagories.length - 1 &&
-                              setIsSidebarOpen(true),
-                              setIsMenuOpen(false));
-                          }}
-                        >
-                          <i className="text-[26px] text-gray-4 group-hover:text-white! transition-colors duration-300">
-                            {catagory.icon}
-                          </i>
-                          <p>{catagory.category}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
+       
 
             {/* cart, wishlist */}
             <div className="flex flex-col gap-y-4 mb-5">
