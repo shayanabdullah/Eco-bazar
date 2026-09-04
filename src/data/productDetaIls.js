@@ -1,6 +1,6 @@
 
 import { popularProducts } from "../utils/data";
-import video from '../assets/images/video.png'
+import video from '../assets/images/about-delivery.webp'
 
 const productContent = {
   1: {
