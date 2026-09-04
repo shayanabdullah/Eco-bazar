@@ -8,7 +8,7 @@ const DiscountBanner = () => {
   
 
   return (
-    <section className="py-15 px-4 lg:px-0">
+    <section className="py-15 ">
       <Container>
         <div className="main size-full group overflow-hidden rounded-[10px]">
           <Link to='/shop'>

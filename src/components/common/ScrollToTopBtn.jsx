@@ -10,7 +10,7 @@ const ScrollToTopBtn = () => {
             <button
                 type="button"
                 onClick={scrollToTop}
-                className={`fixed bottom-20 md:bottom-12  bg-primary p-3 md:p-4 rounded-full shadow-md transition-all duration-300 hover:bg-primary/80 ${isVisible ? 'opacity-100 right-3 md:right-30' : 'opacity-0 -right-1/2'}  animate-bounce `}
+                className={`fixed bottom-20 md:bottom-12 z-9999 border border-white bg-primary p-3 md:p-4 rounded-full shadow-md transition-all duration-300 hover:bg-primary/80 ${isVisible ? 'opacity-100 right-3 md:right-30' : 'opacity-0 -right-1/2'}  animate-bounce `}
             >
                <FaChevronUp className="text-white md:text-3xl" />
             </button>

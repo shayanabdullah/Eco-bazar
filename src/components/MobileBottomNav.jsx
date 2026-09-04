@@ -1,90 +1,70 @@
-import React from "react";
-import { BsPersonFill, BsShop } from "react-icons/bs";
-import { FaShoppingBasket } from "react-icons/fa";
-import { GoHome } from "react-icons/go";
-import { NavLink } from "react-router";
-import { SlHandbag } from "react-icons/sl";
-import { MdOutlineHome } from "react-icons/md";
-import { IoSearchOutline } from "react-icons/io5";
+import { Link, NavLink, useLocation } from "react-router";
+import { HiSquares2X2, HiOutlineShoppingBag } from "react-icons/hi2";
+import {  AiOutlineUser } from "react-icons/ai";
+import { useState } from "react";
+
+import CategorySidebar from "./CategorySidebar";
+import { IoHomeOutline } from "react-icons/io5";
 
 const MobileBottomNav = () => {
+  const { pathname } = useLocation();
+  const isHomeActive = pathname === "/";
+  const isActive = (path) => {
+    if (pathname.includes(path)) {
+      return true;
+    }
+  };
+  const [mobileCategoryOpen, setMobileCategoryOpen] = useState(false);
+  const user = false;
   return (
     <section className="lg:hidden">
-      <div className="fixed bottom-0 w-full py-2 px-8 bg-green-100/90 flex items-center justify-between md:justify-center md:gap-x-20 z-500">
+      <div className="lg:hidden fixed bottom-0 left-0 w-full bg-white shadow-[0_-4px_15px_rgba(0,0,0,0.08)] z-80 flex justify-between items-center px-6 py-2.5 border-t border-gray-100 font-pop pb-safe">
+        <Link
+          to="/"
+          className={`flex flex-col items-center gap-1 transition-colors ${isHomeActive ? "text-primary" : "text-gray-500 hover:text-primary"}`}
+        >
+          <IoHomeOutline size={22} />
+          <span className="text-[10px] font-medium tracking-wide uppercase">
+            Home
+          </span>
+        </Link>
+        <button
+          className={`flex flex-col items-center gap-1 transition-colors ${mobileCategoryOpen ? "text-primary" : "text-gray-500 hover:text-primary"}`}
+          onClick={() => setMobileCategoryOpen(!mobileCategoryOpen)}
+        >
+          <HiSquares2X2 size={22} />
+          <span className="text-[10px] font-medium tracking-wide uppercase text-gray-5">
+            Category
+          </span>
+        </button>
+        <button
+          className={`flex flex-col items-center gap-1 transition-colors relative text-gray-5 `}
+        >
+          <div className="relative">
+            <HiOutlineShoppingBag size={22} />
 
-        <div className="home ">
-         
-          <NavLink
-            to={"/"}
-            style={({ isActive }) => ({
-              color: isActive ? "green" : "#1A1A1A",
-              textDecoration: "none",
-            })}
-            className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium uppercase w-full'}
-          >
-             <GoHome className="text-2xl" />
-             home
-          </NavLink>
-        </div>
-
-        <div className="Shop ">
-          <NavLink
-            to={"/shop"}
-            style={({ isActive }) => ({
-                 color: isActive ? "green" : "#1A1A1A",
-              textDecoration: "none",
-            })}
-            className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium uppercase w-full'}
-          >
-             <FaShoppingBasket className="text-2xl" />
-             Shop
-          </NavLink>
-        </div>
-        <div className="Cart relative">
-          <NavLink
-            to={"/cart"}
-            style={({ isActive }) => ({
-               color: isActive ? "green" : "#1A1A1A",
-              textDecoration: "none",
-            })}
-            className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium  w-full uppercase'}
-          >
-            <span className="absolute -top-2 -right-0.5 w-4 h-4 flex items-center justify-center  rounded-full bg-badge-blue text-white font-poppins font-medium text-[10px]">
-              2
+            <span className="absolute -top-1 -right-2 flex items-center justify-center min-w-4 lg:min-w-5 h-4 lg:min-h-5 bg-[#2C742F] text-white text-[9px] lg:text-[11px] font-semibold font-pop rounded-full border-[1.5px] lg:border-2 border-white px-1 shadow-sm">
+              3
             </span>
-             <SlHandbag className="text-2xl" />
-             Cart
-          </NavLink>
-        </div>
-        <div className="Search ">
-          <NavLink
-            to={"/search"}
-            style={({ isActive }) => ({
-               color: isActive ? "green" : "#1A1A1A",
-              textDecoration: "none",
-            })}
-            className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium  w-full uppercase'}
-          >
-             <IoSearchOutline  className="text-2xl" />
-             Search
-          </NavLink>
-        </div>
-        <div className="account ">
-          <NavLink
-            to={"/account/login"}
-            style={({ isActive }) => ({
-               color: isActive ? "green" : "#1A1A1A",
-              textDecoration: "none",
-            })}
-            className={'text-[11px] sm:text-sm flex flex-col items-center justify-center gap-y-1 font-poppins font-medium uppercase w-full'}
-          >
-             <BsPersonFill  className="text-2xl" />
-             account
-          </NavLink>
-        </div>
+          </div>
+          <span className="text-[10px] font-medium tracking-wide uppercase ">
+            Cart
+          </span>
+        </button>
+        <Link
+          to="account/login"
+          className={`flex flex-col items-center gap-1 transition-colors ${isActive("account/login") ? "text-primary" : "text-gray-500 hover:text-primary"}`}
+        >
+          <AiOutlineUser size={22} />
 
- 
+          <span className="text-[10px] font-medium tracking-wide uppercase truncate max-w-[60px] text-center">
+            {user
+              ? user.name?.split(" ")[0] || user.firstName || "Account"
+              : "Account"}
+          </span>
+        </Link>
       </div>
+  <CategorySidebar isOpen={mobileCategoryOpen} setIsOpen={setMobileCategoryOpen} />
     </section>
   );
 };

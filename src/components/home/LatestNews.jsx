@@ -10,7 +10,6 @@ import { Link } from 'react-router'
 const LatestNews = () => {
   return (
     <section className='py-15'>
-        <Container>
             <CommonSection title={"Latest News"} className={'text-center! w-full'}>
                 <div className="main grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {
@@ -63,7 +62,6 @@ const LatestNews = () => {
                     }
                 </div>
             </CommonSection>
-        </Container>
     </section>
   )
 }

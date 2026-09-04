@@ -12,7 +12,7 @@ import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
 
 const Testimonials = () => {
   return (
-    <section className="py-15 px-4 lg:px-0 bg-[#F2F2F2]">
+    <section className="py-15 bg-[#F2F2F2]">
       <Container>
         <div className="relative">
           <div className="pb-8 flex justify-between">

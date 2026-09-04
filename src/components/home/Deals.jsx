@@ -12,7 +12,7 @@ const Deals = () => {
 
   const banners = [bestDeal, meat, summer];
   return (
-    <section className="py-15 px-4 lg:px-0">
+    <section className="py-15 ">
       <Container>
         <div className="main grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {banners.map((img, index) => (
@@ -80,7 +80,7 @@ const Deals = () => {
               </div>
               )
              }
-              <img src={img} alt="deals" className="group-hover:scale-[1.02] transition-all duration-300"/>
+              <img src={img} alt="deals" className="group-hover:scale-[1.02] transition-all duration-300 max-w-[300px] shrink-0! md:max-w-full mx-auto"/>
             </div>
             </Link>
           ))}

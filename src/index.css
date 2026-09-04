@@ -148,7 +148,7 @@ html {
 }
 
 .divider {
-  @apply after:absolute after:content-[''] after:h-full after:w-px after:left-1/2 after:top-0 after:-translate-x-1/2 after:bg-gray-1 after:rounded-full;
+  @apply after:absolute after:content-[''] after:h-full after:w-px after:left-1/2 after:top-0 after:-translate-x-1/2 after:bg-gray-2 after:rounded-full;
 }
 
 .tooltip::before {

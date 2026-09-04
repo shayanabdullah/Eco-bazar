@@ -11,7 +11,7 @@ import { FaInstagram } from 'react-icons/fa'
 const FollowUs = () => {
     const posts = [post1,post2,post6, post3,post4,post5,]
   return (
-    <section className='px-4 lg:px-0 pb-15'>
+    <section className=' pb-15'>
         <Container>
             <div className="main">
                 <div className="heading w-full text-center pb-8">

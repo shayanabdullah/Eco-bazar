@@ -31,8 +31,8 @@ const AllPopularProducts = () => {
     return ratingArr;
   };
   return (
-    <section className="px-4 lg:px-0 py-15">
-      <Container>
+    <section className="py-15">
+      <Container>   
         {/* Heading */}
         <div className="heading flex items-center justify-between pb-8">
           <div className="">

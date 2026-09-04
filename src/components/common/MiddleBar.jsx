@@ -1,13 +1,12 @@
 import { AnimatePresence } from "motion/react";
 import React, { useRef, useState } from "react";
 import Container from "./../layouts/Container";
-import logo from "../../assets/images/logo.webp";
+import logo from "../../assets/images/logo.png";
 import { Link, NavLink } from "react-router";
 import { BsHeart } from "react-icons/bs";
 import { LuFacebook, LuSearch } from "react-icons/lu";
 import { SlHandbag } from "react-icons/sl";
-import { HiMenuAlt2 } from "react-icons/hi";
-import { IoClose, IoChevronDown } from "react-icons/io5";
+import { IoClose, IoChevronDown, IoMenuOutline } from "react-icons/io5";
 import { CiApple, CiCoffeeCup } from "react-icons/ci";
 import { TbMeat, TbSalad } from "react-icons/tb";
 import { IoFishOutline } from "react-icons/io5";
@@ -24,8 +23,7 @@ import { GiCupcake } from "react-icons/gi";
 import useClickOutside from "../../hooks/useClickOutside";
 import useScrollLock from "../../hooks/useScrollLock";
 import CategorySidebar from "../CategorySidebar";
-import { CgChevronDown } from "react-icons/cg";
-
+import { Search } from "lucide-react";
 
 const MiddleBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -104,17 +102,17 @@ const MiddleBar = () => {
       last: true,
     },
   ];
-useScrollLock(isMenuOpen);
+  useScrollLock(isMenuOpen);
 
-    const toggleNavigation = () => {
-    setIsMenuOpen((prev) => !prev)
-  }
-    const handleCLick = () => {
-      if(isMenuOpen === false) return
-      
-    setIsMenuOpen(false)
-    }
-  
+  const toggleNavigation = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+  const handleCLick = () => {
+    if (isMenuOpen === false) return;
+
+    setIsMenuOpen(false);
+  };
+
   const [categoriesOpen, setCategoriesOpen] = useState(false);
 
   const handleCatagoryOpen = () => {
@@ -122,26 +120,19 @@ useScrollLock(isMenuOpen);
   };
 
   const menuRef = useRef(null);
-  useClickOutside(menuRef, () => setIsMenuOpen(false), 'mousedown', isMenuOpen);
+  useClickOutside(menuRef, () => setIsMenuOpen(false), "mousedown", isMenuOpen);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  
   return (
-    <div
-      className="lg:py-6 border-b border-gray-3 lg:border-0"
-    >
+    <div className="lg:py-6 border border-gray-200 lg:border-0">
       <Container>
-        <nav
-          className="hidden lg:flex justify-between items-center "
-        >
+        <nav className="hidden lg:flex justify-between items-center ">
           {/* Logo */}
           <div className="logo flex items-center gap-x-1">
             <img src={logo} alt="logo" loading="lazy" />
             <Link to={"/"}>
-              <h2
-                className="font-poppins font-medium text-heading-05 text-green-gray-9"
-              >
+              <h2 className="font-poppins font-medium text-heading-05 text-green-gray-9">
                 Ecobazar
               </h2>
             </Link>
@@ -189,49 +180,58 @@ useScrollLock(isMenuOpen);
         </nav>
 
         {/* mobile middle bar */}
-        <div className="lg:hidden py-1 px-4 overflow-x-hidden">
-      <div className="flex items-center justify-between py-6">
+        <div className="lg:hidden py-1  overflow-x-hidden">
+          <div className="flex flex-wrap lg:flex-nowrap items-center justify-between py-3 lg:py-6 gap-y-3 lg:gap-y-0">
             <div className="flex items-center gap-x-4">
-            <div
-              className="menu-btn"
-              onClick={toggleNavigation}
-            >
-              <HiMenuAlt2 className="text-3xl cursor-pointer" />
+             
+              <div className="">
+                <Link to={"/"}>
+                  <img
+                    src={logo}
+                    alt="logo"
+                    loading="lazy"
+                    className="w-28 sm:w-32 lg:w-auto"
+                  />
+                </Link>
+              </div>
             </div>
-            <div className="logo flex items-center gap-x-1">
-              <img src={logo} alt="logo" loading="lazy" />
+
+            <div className="flex items-center gap-x-3">
+              {/* WISHLIST */}
               <Link to={"/"}>
-                <h2
-                  className="font-poppins font-medium text-2xl text-green-gray-9"
-                >
-                  Ecobazar
-                </h2>
+                <BsHeart className="text-lg md:text-2xl " />
               </Link>
+               <div className="menu-btn" onClick={toggleNavigation}>
+                <IoMenuOutline className="text-3xl cursor-pointer" />
+              </div>
             </div>
+
+          {/* Search bar */}
+          <form className="flex w-full shadow-sm lg:shadow-none rounded-full lg:rounded-none">
+            <div className="relative w-full" bis_skin_checked="1">
+              <input
+                placeholder="Search products..."
+                className="w-full border border-gray-200 lg:border-brdr lg:focus:border-primary border-r-0 font-pop text-[13px] lg:text-[15px] text-black placeholder:text-gray-400 font-normal leading-5.5 ps-10 lg:ps-11 py-2.5 lg:py-3.5 rounded-l-full lg:rounded-none lg:rounded-l-md outline-none transition-colors"
+                type="text"
+                value=""
+              />
+              <Search className="absolute top-1/2 -translate-y-1/2 left-3 lg:left-4 size-4 lg:size-5 text-gray-400 lg:text-logoc" />
+            </div>
+            <button
+              type="submit"
+              className="bg-primary text-white text-[13px] lg:text-sm font-semibold font-pop leading-[120%] px-5 lg:px-6 py-2.5 lg:py-4 rounded-r-full lg:rounded-none lg:rounded-r-md hover:bg-opacity-90 transition cursor-pointer shrink-0"
+            >
+              Search
+            </button>
+          </form>
           </div>
-          <div className="flex items-center gap-x-5">
-               {/* WISHLIST */}
-            <Link to={"/"}>
-              <BsHeart className="text-2xl " />
-            </Link>
-          {/* CART */}
-          <div className="cart relative ">
-            <span className="absolute -top-2 -right-0.5 w-4 h-4 flex items-center justify-center  rounded-full bg-hard-primary text-white font-poppins font-medium text-[10px]">
-              2
-            </span>
-            <Link>
-              <SlHandbag className="text-[26px]" />
-            </Link>
+
+          <div className="">
+              <CategorySidebar
+                isOpen={isSidebarOpen}
+                setIsOpen={setIsSidebarOpen}
+              />
           </div>
-          </div>
-      </div>
-      <div className="">
-          
-          {
- (
-          <CategorySidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />)
-          }
-      </div>
 
           {/* mobile side bar */}
           <div
@@ -240,32 +240,21 @@ useScrollLock(isMenuOpen);
           >
             {/* logo */}
             <div className="flex justify-between items-center pb-4">
-              <div className="logo flex items-center gap-x-1">
-                <img src={logo} alt="logo" loading="lazy" />
+              <div className="logo ">
                 <Link to={"/"}>
-                  <h2
-                    className="font-poppins font-medium text-2xl text-green-gray-9"
-                  >
-                    Ecobazar
-                  </h2>
+                  <img
+                    src={logo}
+                    alt="logo"
+                    loading="lazy"
+                    className="w-28 sm:w-32 lg:w-auto"
+                  />
                 </Link>
               </div>
               <div className="close" onClick={() => setIsMenuOpen(false)}>
                 <IoClose className="text-3xl cursor-pointer" />
               </div>
             </div>
-            {/* Search bar */}
-            <div className="inputs flex flex-col items-center relative gap-y-2 pb-4">
-              <LuSearch className="text-2xl absolute top-3  left-2" />
-              <input
-                type="text"
-                className="border border-gray-1 py-3 pl-10 rounded-md! outline-0 min-w-full  font-poppins text-body-md text-gray-5 focus-within:border-gray-3 "
-                placeholder="Search"
-              />
-              <button className="py-2.5 px-6 font-poppins font-semibold text-white text-body-lg bg-primary rounded-md cursor-pointer w-full ">
-                Search
-              </button>
-            </div>
+
             {/* Nav links */}
             <div className="pt-4 flex flex-col justify-center gap-y-4 pb-8">
               {mobileNavLinks.map((link, index) => (
@@ -281,7 +270,6 @@ useScrollLock(isMenuOpen);
                   onClick={handleCLick}
                 >
                   {link.navItem}{" "}
-                 
                 </NavLink>
               ))}
             </div>
@@ -294,7 +282,9 @@ useScrollLock(isMenuOpen);
                   {/* BUTTON */}
                   <button
                     className="p-2.5 bg-primary cursor-pointer"
-                    onClick={()=> {setIsSidebarOpen(true), setIsMenuOpen(false)}}
+                    onClick={() => {
+                      (setIsSidebarOpen(true), setIsMenuOpen(false));
+                    }}
                   >
                     <IoIosMenu className="text-4xl text-white" />
                   </button>
@@ -326,7 +316,11 @@ useScrollLock(isMenuOpen);
                           style={
                             catagory.last && { borderTop: "1px solid #e6e6e6" }
                           }
-                          onClick={()=>{index === catagories.length - 1  && setIsSidebarOpen(true), setIsMenuOpen(false)}}
+                          onClick={() => {
+                            (index === catagories.length - 1 &&
+                              setIsSidebarOpen(true),
+                              setIsMenuOpen(false));
+                          }}
                         >
                           <i className="text-[26px] text-gray-4 group-hover:text-white! transition-colors duration-300">
                             {catagory.icon}
@@ -364,7 +358,11 @@ useScrollLock(isMenuOpen);
             </div>
 
             {/* Sign in */}
-            <Link to="/account/login" onClick={handleCLick} className="py-3 w-full border border-gray-3 hover:border-primary transition-colors duration-200 flex justify-center rounded-md font-poppins font-medium text-gray-7 hover:text-primary cursor-pointer mb-5">
+            <Link
+              to="/account/login"
+              onClick={handleCLick}
+              className="py-3 w-full border border-gray-3 hover:border-primary transition-colors duration-200 flex justify-center rounded-md font-poppins font-medium text-gray-7 hover:text-primary cursor-pointer mb-5"
+            >
               Sign Up / Sign In
             </Link>
             {/* socal media icon */}
@@ -376,7 +374,6 @@ useScrollLock(isMenuOpen);
               <PiYoutubeLogoLight />
             </div>
           </div>
-
 
           {/* overlay */}
           {isMenuOpen && (

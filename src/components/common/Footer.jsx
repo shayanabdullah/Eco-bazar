@@ -53,7 +53,7 @@ const Footer = () => {
   return (
     <>
       {/* Newsletter */}
-      <section className="py-10 px-4 lg:px-0 bg-[#f7f7f7]">
+      <section className="py-10 bg-[#f7f7f7]">
         <Container>
           <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-x-28 gap-y-5">
             <div className="text-box">
@@ -89,7 +89,7 @@ const Footer = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-9 px-4 lg:px-0">
+      <footer className="bg-gray-9 ">
         <Container>
           {/* Footer top */}
           <div className="py-8 lg:py-15 grid grid-cols-1 lg:grid-cols-3 gap-y-10">

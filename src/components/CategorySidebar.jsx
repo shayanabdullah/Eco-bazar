@@ -28,17 +28,14 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
     <>
       <div>
         <div
-          className={`max-w-93 bg-white fixed top-0 h-screen z-105 p-3 md:block  w-full transition-all duration-300 border-r border-gray-2 overflow-y-scroll catagory-scroll ${isOpen ? "left-0" : "-left-full"}`}
+          className={`max-w-[300px] md:max-w-[400px] bg-white fixed top-0 h-screen z-105 md:block  w-full transition-all duration-300 border-r border-gray-2 overflow-y-scroll catagory-scroll ${isOpen ? "left-0" : "-left-full"}`}
           ref={sideBarRef}
         >
-          <div className="header w-full border-b border-gray-3/70 py-3 flex items-center justify-between mb-8">
-            <div className="flex items-center gap-x-3  text-primary ">
-              <RiMenuFold2Line
-                className="text-2xl cursor-pointer"
-                onClick={() => setIsOpen(false)}
-              />
-              <h2 className="font-poppins font-semibold text-2xl">
-                All Categories
+          <div className="header w-full border-b border-gray-3/70 p-5 bg-gray-0/70 flex items-center justify-between mb-4">
+            <div className="">
+            
+              <h2 className="font-semibold text-base md:text-xl  text-gray-9">
+               Explore Category & Shop
               </h2>
             </div>
             <IoClose
@@ -48,7 +45,10 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
           </div>
 
           {/* Drop Down items  */}
-          <div className=" flex flex-col gap-y-3">
+          <h3 className="px-4 text-[13px] md:text-[15px] font-bold text-gray-7 mb-2 uppercase tracking-wider">
+            All Categories
+          </h3>
+          <div className=" flex flex-col px-2">
             {allCategoriesSidebar.map((item, index) => {
 
               return (
@@ -58,11 +58,11 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
                   className={`${index !== 0 && "border-t border-gray-2/50"}`}
                 >
                   <div
-                    className={`flex items-center justify-between font-poppins font-medium cursor-pointer text-gray-6 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300 group rounded-md px-3 py-4 ${dropDownIndex === index && "bg-primary text-white"}`}
+                    className={`flex items-center justify-between font-poppins font-medium cursor-pointer text-gray-6 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300 group rounded-md  p-3 ${dropDownIndex === index && "bg-primary text-white"}`}
                   >
                     <div className="flex items-center gap-x-3">
                       <i className="text-2xl">{item.icon}</i>
-                      <p>{item.category}</p>
+                      <p className="font-medium text-[15px] text-gray-700 group-hover:text-white">{item.category}</p>
                     </div>
                     <div className="group-hover:text-white">
                       {dropDownIndex === index ? <LuMinus /> : <BsPlusLg />}
@@ -97,7 +97,7 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
           </div>
         </div>
       </div>
-      {isOpen && <div className="fixed top-0 inset-0 bg-gray-9/80 z-1" />}
+      {isOpen && <div className="fixed top-0 inset-0 bg-gray-9/80 z-100" />}
     </>
   );
 };

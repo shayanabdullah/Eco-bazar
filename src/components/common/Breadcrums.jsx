@@ -10,7 +10,7 @@ const Breadcrums = () => {
  
   return (
     <div>
-        <div className="bg size-full py-5 px-3 lg:px-0 lg:py-12"
+        <div className="bg size-full py-5 lg:py-12"  
         style={{background : `url(${bredcrum}) no-repeat center center/cover`}}
         >
          <Container>

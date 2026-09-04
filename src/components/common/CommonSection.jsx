@@ -5,7 +5,7 @@ import { LuArrowRight } from 'react-icons/lu';
 
 const CommonSection = ({title,link, children, className}) => {
   return (
-    <section className='px-4 lg:px-0'>
+    <section className=''>
         <Container>
             <div className="main">
                 {/* Heading */}

@@ -24,7 +24,7 @@ const {openQuickView} = useQuickView();
           title={"Hot Deals"}
           className={"text-2xl! md:text-heading-05!"}
         />
-        <div className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 lg:grid-cols-5 px-4 lg:px-0">
+        <div className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 lg:grid-cols-5">
           {maxProdToShow.map((item, index) => (
             <>
             {/* First Big sale product */}

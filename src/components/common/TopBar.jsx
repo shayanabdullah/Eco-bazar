@@ -36,15 +36,15 @@ const TopBar = () => {
   return (
     <header className="py-3 border-b border-gray-1">
       <Container>
-        <div className=" hidden lg:flex justify-between items-center font-poppins text-body-xs text-gray-6 font-normal">
+        <div className="flex justify-between items-center font-poppins text-body-xs text-gray-6 font-normal">
           {/* LEFT */}
-          <div className="flex items-center gap-x-1">
+          <div className=" tems-center gap-x-1 hidden lg:flex">
             <LuMapPin className="text-body-sm" />
             Store Location: Lincoln- 344, Illinois, Chicago, USA
           </div>
 
           {/* RIGHT */}
-          <div className="flex items-center gap-x-10 ">
+          <div className="flex items-center gap-x-10 justify-between  w-full md:w-fit px-3 md:px-0 ">
             <div className="flex items-center gap-x-5 relative divider">
               {/* LANGUAGE */}
               <div className="flex items-center ">
@@ -63,20 +63,10 @@ const TopBar = () => {
                       />
                       {currentlan}
                     </>
-                  ) : currentlan == "BN" ? (
-                    <>
-                      <img
-                        src={bd}
-                        alt="icon"
-                        fetchPriority="high"
-                        width={15}
-                      />
-                      {currentlan}
-                    </>
                   ) : (
                     <>
                       <img
-                        src={jp}
+                        src={bd}
                         alt="icon"
                         fetchPriority="high"
                         width={15}
@@ -96,7 +86,7 @@ const TopBar = () => {
                       exit={{ opacity: 0, y: -10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
                       onMouseLeave={() => setOpenLan(false)}
-                      className="bg-gray-0 rounded-sm text-body-sm absolute top-[122%] w-1/2 z-50 left-0 shadow-md "
+                      className="bg-gray-50 rounded-sm text-body-sm absolute top-[122%] w-1/2 z-50 left-0 shadow-md "
                     >
                       <ul className="size-full flex flex-col gap-y-1">
                         {currentlan !== "Eng" && (
@@ -127,20 +117,7 @@ const TopBar = () => {
                             BN
                           </li>
                         )}
-                        {currentlan !== "JP" && (
-                          <li
-                            className="hover:bg-gray-2 hover:text-gray-7 transition-all duration-200  cursor-pointer flex items-center gap-x-1 p-1"
-                            onClick={() => setCurrentLan("JP")}
-                          >
-                            <img
-                              src={jp}
-                              alt="icon"
-                              fetchPriority="high"
-                              width={15}
-                            />
-                            JP
-                          </li>
-                        )}
+                      
                       </ul>
                     </motion.div>
                   )}
@@ -150,7 +127,7 @@ const TopBar = () => {
               {/* CURRENCY */}
               <div className="flex items-center relative">
                 <div
-                  className="flex items-center gap-x-1 cursor-pointer text-sm"
+                  className="flex items-center gap-x-1 cursor-pointer "
                   onClick={() => setOpenCurrency(!openCurrency)}
                   ref={dropDownCurRef}
                 >
@@ -164,20 +141,10 @@ const TopBar = () => {
                       />
                       {currentCurrency}
                     </>
-                  ) : currentCurrency=== 'BDT' ? (
+                  ) : (
                     <>
                       <img
                         src={bd}
-                        alt="icon"
-                        fetchPriority="high"
-                        width={15}
-                      />
-                      {currentCurrency}
-                    </>
-                  ) : (
-                    <>
-                       <img
-                        src={ind}
                         alt="icon"
                         fetchPriority="high"
                         width={15}
@@ -228,20 +195,7 @@ const TopBar = () => {
                             BDT
                           </li>
                         )}
-                        {currentCurrency !== "INR" && (
-                          <li
-                            className="hover:bg-neutral-3 hover:text-neutral-6 text-sm  transition-all duration-200  cursor-pointer flex items-center gap-x-1 p-1"
-                            onClick={() => setCurrentCurrency("INR")}
-                          >
-                            <img
-                              src={ind}
-                              alt="icon"
-                              fetchPriority="high"
-                              width={15}
-                            />
-                            INR
-                          </li>
-                        )}
+                       
                       </ul>
                     </motion.div>
                   )}
@@ -250,20 +204,14 @@ const TopBar = () => {
             </div>
             {/* AUTH */}
             <Link to={"/account/login"}>
-            <div className="capitalize cursor-pointer">
-              <p>Sign in / Sign Up</p>
-            </div>
+              <div className="capitalize cursor-pointer">
+                <p>Sign in / Sign Up</p>
+              </div>
             </Link>
           </div>
         </div>
 
-        {/* mobilo topbar */}
-        <div className="w-full flex justify-center lg:hidden ">
-          <div className="flex items-center gap-x-1 text-body-xs font-poppins font-medium">
-            <LuMapPin className="text-body-sm" />
-            Store Location: Lincoln- 344, Illinois, Chicago, USA
-          </div>
-        </div>
+      
       </Container>
     </header>
   );
