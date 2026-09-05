@@ -10,6 +10,7 @@ import { Autoplay, EffectFade, Pagination, Navigation } from "swiper/modules";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Link } from "react-router";
 
 const allImages = [bannerOne, bannerTwo, bannerThree];
 
@@ -39,17 +40,17 @@ const Hero = () => {
                   {allImages?.map(
                     (img, index) =>
                       img && (
-                        <SwiperSlide key={index}>
-                          <div className="size-full rounded-md overflow-hidden  max-h-150 cursor-pointer">
+                        <SwiperSlide key={index} className="rounded-md overflow-hidden">
+                          <Link to='shop' className="size-full rounded-md overflow-hidden max-h-150 cursor-pointer">
                             <img
                               src={img}
                               alt=""
                               width={"100%"}
-                              className="w-full max-h-57.5 md:max-h-full "
+                              className="w-full max-h-57.5 md:max-h-150 "
                               fetchPriority="high"
                               loading="eager"
                             />
-                          </div>
+                          </Link>
                         </SwiperSlide>
                       ),
                   )}

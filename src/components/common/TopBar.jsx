@@ -74,7 +74,7 @@ const TopBar = () => {
                       {currentlan}
                     </>
                   )}
-                  <IoChevronDownOutline />
+                  <IoChevronDownOutline className={`transition-transform duration-300 transform ${openLan ? "rotate-180" : "rotate-0"}`} size={15} />
                 </div>
 
                 {/* DROPDOWN */}
@@ -152,7 +152,7 @@ const TopBar = () => {
                       {currentCurrency}
                     </>
                   )}
-                  <IoChevronDownOutline />
+                  <IoChevronDownOutline className={`transition-transform duration-300 transform ${openCurrency ? "rotate-180" : "rotate-0"}`} size={15} />
                 </div>
 
                 {/* DROPDOWN */}

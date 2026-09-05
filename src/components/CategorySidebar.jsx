@@ -58,11 +58,11 @@ const CategorySidebar = ({ isOpen = false, setIsOpen }) => {
                   className={`${index !== 0 && "border-t border-gray-2/50"}`}
                 >
                   <div
-                    className={`flex items-center justify-between font-poppins font-medium cursor-pointer text-gray-6 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300 group rounded-md  p-3 ${dropDownIndex === index && "bg-primary text-white"}`}
+                    className={`flex items-center justify-between font-poppins font-medium cursor-pointer text-gray-6 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300 group rounded-md  p-3 ${dropDownIndex === index && "bg-primary text-white!"}`}
                   >
                     <div className="flex items-center gap-x-3">
                       <i className="text-2xl">{item.icon}</i>
-                      <p className="font-medium text-[15px] text-gray-700 group-hover:text-white">{item.category}</p>
+                      <p className={`font-medium text-[15px] text-gray-700 group-hover:text-white ${dropDownIndex === index && "text-white"}`}>{item.category}</p>  
                     </div>
                     <div className="group-hover:text-white">
                       {dropDownIndex === index ? <LuMinus /> : <BsPlusLg />}

@@ -1,20 +1,48 @@
 import { useState, useRef } from "react";
 import { ChevronUp, ChevronDown } from "lucide-react";
+function ZoomableImage({ src, alt, zoomLevel = 2 }) {
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [origin, setOrigin] = useState("50% 50%");
+
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setOrigin(`${x}% ${y}%`);
+  };
+
+  return (
+    <div
+      className="relative w-full h-full overflow-hidden cursor-zoom-in"
+      onMouseEnter={() => setIsZoomed(true)}
+      onMouseLeave={() => setIsZoomed(false)}
+      onMouseMove={handleMouseMove}
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="max-h-[420px] w-full h-full object-contain transition-transform duration-200 ease-out"
+        style={{
+          transformOrigin: origin,
+          transform: isZoomed ? `scale(${zoomLevel})` : "scale(1)",
+        }}
+      />
+    </div>
+  );
+}
 
 export default function ProductGallery({ images = [], productName = "" }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const thumbTrackRef = useRef(null);
 
   const scrollThumbs = (direction) => {
-
-    setActiveIndex((prev) => direction === 'down'? prev+1: prev-1);
-
-    if (activeIndex >= images.length-1  && direction === 'down') {
-      setActiveIndex(0);
-    }
-    if (activeIndex <= 0 && direction === 'up') {
-      setActiveIndex(images.length-1);
-    }
+    if (!thumbTrackRef.current) return;
+    const amount = 90;
+    thumbTrackRef.current.scrollBy({
+      top: direction === "up" ? -amount : amount,
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -24,7 +52,7 @@ export default function ProductGallery({ images = [], productName = "" }) {
         <button
           type="button"
           onClick={() => scrollThumbs("up")}
-          className="text-gray-900 hover:text-gray-700 transition-colors cursor-pointer"
+          className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
           aria-label="Scroll thumbnails up"
         >
           <ChevronUp className="w-5 h-5" />
@@ -32,17 +60,17 @@ export default function ProductGallery({ images = [], productName = "" }) {
 
         <div
           ref={thumbTrackRef}
-          className="flex flex-col gap-4 max-h-full overflow-y-auto scrollbar-none"
+          className="flex flex-col gap-3 max-h-[420px] overflow-y-auto scrollbar-none"
         >
-          {images?.map((src, i) => (
+          {images.map((src, i) => (
             <button
               key={i}
               type="button"
               onClick={() => setActiveIndex(i)}
-              className={`w-20 h-20 shrink-0 rounded-md border bg-white overflow-hidden transition-all ${
+              className={`w-16 h-16 shrink-0 rounded-md border bg-white overflow-hidden transition-all ${
                 activeIndex === i
                   ? "border-2 border-[#00B712]"
-                  : "border-gray-200  hover:border-gray-400"
+                  : "border-gray-200 dark:border-gray-700 hover:border-gray-400"
               }`}
             >
               <img
@@ -57,7 +85,7 @@ export default function ProductGallery({ images = [], productName = "" }) {
         <button
           type="button"
           onClick={() => scrollThumbs("down")}
-          className="text-gray-900 hover:text-gray-700 transition-colors cursor-pointer"
+          className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
           aria-label="Scroll thumbnails down"
         >
           <ChevronDown className="w-5 h-5" />
@@ -66,16 +94,12 @@ export default function ProductGallery({ images = [], productName = "" }) {
 
       {/* Main image */}
       <div className="order-1 md:order-2 flex-1 bg-white rounded-lg flex items-center justify-center min-h-[320px] md:min-h-[460px] p-6">
-        <img
-          src={images[activeIndex]}
-          alt={productName}
-          className="max-h-[420px] w-full object-contain"
-        />
+        <ZoomableImage src={images[activeIndex]} alt={productName} />
       </div>
 
       {/* Horizontal thumbnails - mobile */}
-      <div className="flex md:hidden gap-3 overflow-x-auto justify-between order-3 pb-1">
-        {images?.map((src, i) => (
+      <div className="flex md:hidden gap-3 overflow-x-auto order-3 pb-1">
+        {images.map((src, i) => (
           <button
             key={i}
             type="button"
@@ -83,16 +107,14 @@ export default function ProductGallery({ images = [], productName = "" }) {
             className={`w-16 h-16 shrink-0 rounded-md border bg-white overflow-hidden transition-all ${
               activeIndex === i
                 ? "border-2 border-[#00B712]"
-                : "border-gray-200 hover:border-gray-400"
+                : "border-gray-200 dark:border-gray-700"
             }`}
           >
-            {src && (
-              <img
-                src={src}
-                alt={`${productName} thumbnail ${i + 1}`}
-                className="w-full h-full object-contain"
-              />
-            )}
+            <img
+              src={src}
+              alt={`${productName} thumbnail ${i + 1}`}
+              className="w-full h-full object-contain"
+            />
           </button>
         ))}
       </div>

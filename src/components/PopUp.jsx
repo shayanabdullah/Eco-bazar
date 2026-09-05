@@ -4,7 +4,7 @@ import { CgClose } from "react-icons/cg";
 import useClickOutside from "../hooks/useClickOutside.jsx";
 import { motion } from 'motion/react';
 const PopUp = () => {
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
   const [dontShow, setDontShow] = useState(false);
 
   useEffect(() => {
@@ -13,10 +13,14 @@ const PopUp = () => {
     if (!hasShowPopup) {
       const timer = setTimeout(() => {
         setShowPopup(true);
-      }, 10000);
+      }, 2000);
+      
 
       return () => clearTimeout(timer);
     }
+    else {
+        setShowPopup(false);
+      }
   }, []);
 
   const handleClose = () => {
@@ -43,10 +47,10 @@ const PopUp = () => {
         <>
           <motion.section initial={{ scale: 0 }} animate={{ scale: 1 }} className="relative z-102">
             <div
-              className="main flex flex-col md:flex-row items-center max-w-218 w-[98%] md:w-full rounded-md shadow-xl shadow-gray-7 fixed top-1/2 left-1/2 -translate-1/2 bg-white z-100"
+              className="main flex flex-col md:flex-row items-center max-w-218 w-[90%] md:w-full rounded-md shadow-xl shadow-gray-7 fixed top-1/2 left-1/2 -translate-1/2 bg-white z-100"
               ref={popRef}
             >
-              <div className="right max-w-[80%] md:max-w-[43%] w-full p-2.5">
+              <div className="right max-w-full md:max-w-[43%] w-full px-4 pt-4">
                 <img
                   src={popImg}
                   alt="pop"
@@ -55,12 +59,12 @@ const PopUp = () => {
                   width={"100%"}
                 />
               </div>
-              <div className="left py-8 md:py-12.5 md:px-10 px-5 relative">
-                <div className="heading w-full text-center pb-8">
-                  <h2 className="font-poppins font-semibold text-2xl md:text-heading-03">
+              <div className="left pt-3 pb-4 md:py-12.5 md:px-10 px-4 relative">
+                <div className="heading w-full text-center pb-5 md:pb-8">
+                  <h2 className="font-poppins font-semibold text-xl md:text-heading-03">
                     Subcribe to Our Newsletter
                   </h2>
-                  <p className="font-poppins font-semibold tetx-base text-gray-4">
+                  <p className="font-poppins font-semibold text-xs md:text-base text-gray-4">
                     Subscribe to our newlletter and Save your{" "}
                     <span className="text-warning">20% money</span> with
                     discount code today.
@@ -71,10 +75,10 @@ const PopUp = () => {
                     <div className="input w-full relative">
                       <input
                         type="text"
-                        className="py-3.5 pl-6 bg-white border border-gray-2 focus-within:outline-gray-3 rounded-full font-poppins font-normal text-body-sm lg:text-body-md text-gray-5 w-full "
+                        className="py-3.5 pl-6 bg-white border border-gray-2 focus-within:outline-gray-3 rounded-full font-poppins font-normal text-body-xs lg:text-body-md text-gray-5 w-full "
                         placeholder="Your email address"
                       />
-                      <button className="py-3.5 px-10 bg-primary text-white font-poppins font-semibold text-body-sm lg:text-body-md rounded-full cursor-pointer absolute top-0.5 right-0">
+                      <button className="py-3.5 px-10 bg-primary text-white font-poppins font-semibold text-body-xs lg:text-body-md rounded-full cursor-pointer absolute top-0.5 right-0">
                         Subscribe
                       </button>
                     </div>
@@ -103,7 +107,7 @@ const PopUp = () => {
               </div>
             </div>
           </motion.section>
-          <div className="overlay absolute inset-0 h-screen w-screen top-0 bg-black/80 z-99"></div>
+          <div className="overlay fixed inset-0 h-screen w-screen top-0 bg-black/80 z-99"></div>
         </>
       )}
     </>

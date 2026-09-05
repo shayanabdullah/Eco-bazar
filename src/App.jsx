@@ -17,6 +17,7 @@ import BlogPage from "./components/Blog/BlogPage";
 import About from "./pages/About";
 import { useScrollToNavigation } from './hooks/useScrollToNavigation';
 import Contact from "./pages/Contact";
+import PopUp from "./components/PopUp";
 const App = () => {
   useScrollToNavigation();
   return (
@@ -57,6 +58,7 @@ const App = () => {
       </Routes>
 
       <QuickView />
+      <PopUp/>
     </>
   );
 };

@@ -31,7 +31,7 @@ import CatagoryDropDown from "./CatagoryDropDown";
 import { catagoriesMegaMenu } from "../../utils/catagoryData";
 import { navMenus } from "../../data/menuData";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import useClickOutside from "../../hooks/useClickOutside";
 
 const menuIcons = {
@@ -98,7 +98,7 @@ const Navbar = () => {
                   key={menu.id}
                   className="relative"
                   onMouseEnter={() => setOpenMenu(menu.id)}
-                  onMouseLeave={(e) => setOpenMenu(null)}
+                  onMouseLeave={() => setOpenMenu(null)}
                 >
                   <button
                     type="button"
@@ -116,23 +116,18 @@ const Navbar = () => {
                         {menu.badge}
                       </span>
                     )}
-                    <ChevronDown size={15} />
+                    <ChevronDown size={15} className={`transition-transform duration-300 transform ${openMenu === menu.id ? "rotate-180" : "rotate-0"}`} />
                   </button>
-                  {openMenu === menu.id && (
-                    <motion.div
-                      className="absolute left-0 top-[calc(100%+12px)] z-50 w-56"
-                      initial={{ opacity: 0, y: -8, scale: 0.97 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ duration: 0.2 }}
+                      <motion.div
+                      className={`absolute left-0 top-[calc(100%+12px)] z-50 w-56 transition-all duration-300 ${openMenu === menu.id ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}
+                   
                     >
                       {/* Invisible hover bridge */}
                       <div className="absolute -top-3 left-0 h-3 w-full" />
 
                       {/* Actual dropdown */}
-                      <div
+                      <motion.div
                         className="overflow-hidden rounded-sm border border-gray-200 bg-white shadow-lg"
-                        onMouseEnter={() => setOpenMenu(menu.id)}
-                        onMouseLeave={() => setOpenMenu(null)}
                       >
                         {menu.items.map((item) => {
                           const Icon = menuIcons[item.icon] || Tag;
@@ -155,9 +150,9 @@ const Navbar = () => {
                             </Link>
                           );
                         })}
-                      </div>
+                      </motion.div>
                     </motion.div>
-                  )}
+                
                 </li>
               ))}
             </ul>

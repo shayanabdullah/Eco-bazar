@@ -69,7 +69,7 @@ const Shop = () => {
     <div>
       <Container>
         {/* Shop Header */}
-        <div className="pt-8 pb-6 flex justify-between items-center px-2">
+        <div className="pt-8 pb-6 flex justify-between items-center ">
           <div className="w-full grid grid-cols-1 md:grid-cols-4 items-center justify-between ">
             {/* Filter Button */}
             <div className="left col-span-1 ">
@@ -125,7 +125,7 @@ const Shop = () => {
               <NoProductsFound />
             </div>
           ) : (
-            <div className="right col-span-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 px-3">
+            <div className="right col-span-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 ">
               {sortedProducts.map((item) => (
                 <React.Fragment key={item.id}>
                   {loading && <ProductCardSkeleton />}
