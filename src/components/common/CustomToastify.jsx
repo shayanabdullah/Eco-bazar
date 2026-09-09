@@ -1,57 +1,67 @@
 import React from "react";
-import { 
-  BiCheckCircle, 
-  BiErrorCircle, 
-  BiLoaderAlt, 
-  BiInfoCircle 
+import {
+  BiCheckCircle,
+  BiErrorCircle,
+  BiLoaderAlt,
+  BiInfoCircle,
 } from "react-icons/bi";
 
-const CustomToastify = ({ type, title, message, theme='light' }) => {
-    const isDark = theme === "dark";
-const config = {
+const CustomToastify = ({ type, title, message, theme = "light" }) => {
+  const isDark = theme === "dark";
+
+  const config = {
     success: {
       icon: <BiCheckCircle className="text-2xl" />,
       bg: isDark ? "bg-green-950" : "bg-green-50",
       border: isDark ? "border-green-900" : "border-green-200",
       accent: isDark ? "text-green-400" : "text-green-600",
+      text: isDark ? "text-green-100" : "text-gray-700",
     },
     error: {
       icon: <BiErrorCircle className="text-2xl" />,
       bg: isDark ? "bg-red-950" : "bg-red-50",
       border: isDark ? "border-red-900" : "border-red-300",
       accent: isDark ? "text-red-400" : "text-red-600",
+      text: isDark ? "text-red-100" : "text-gray-700",
     },
     loading: {
       icon: <BiLoaderAlt className="text-2xl animate-spin" />,
       bg: isDark ? "bg-blue-950" : "bg-blue-50",
       border: isDark ? "border-blue-900" : "border-blue-200",
       accent: isDark ? "text-blue-400" : "text-blue-600",
+      text: isDark ? "text-blue-100" : "text-gray-700",
     },
     info: {
       icon: <BiInfoCircle className="text-2xl" />,
       bg: isDark ? "bg-zinc-900" : "bg-gray-50",
       border: isDark ? "border-zinc-800" : "border-gray-200",
       accent: isDark ? "text-zinc-400" : "text-gray-600",
+      text: isDark ? "text-zinc-100" : "text-gray-700",
     },
-  };;
+  };
 
   const style = config[type] || config.info;
 
   return (
-    <div className={`flex items-start gap-4 p-1 w-full ${style.bg} ${style.border} border-l-4 rounded-md p-4`}>
-      <div className={`${style.accent} mt-0.5`}>
-        {style.icon}
-      </div>
-      <div className="flex flex-col w-full">
+    <div
+      className={`flex items-start gap-3 w-full ${style.bg} ${style.border} border-l-4 rounded-md p-4 shadow-sm`}
+    >
+      <div className={`${style.accent} mt-0.5 shrink-0`}>{style.icon}</div>
+
+      <div className="flex flex-col w-full min-w-0">
         {title && (
-          <h4 className={`font-bold  leading-none mb-1 ${style.accent} capitalize`}>
+          <h4 className={`font-bold leading-none mb-1 ${style.accent} capitalize`}>
             {title}
           </h4>
         )}
-        <p className="text-gray-700 text-sm md:text-sm leading-snug capitalize">
-          {message}
-        </p>
+        {message && (
+          <p className={`text-sm md:text-sm leading-snug break-words ${style.text}`}>
+            {message}
+          </p>
+        )}
       </div>
+
+    
     </div>
   );
 };

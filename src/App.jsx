@@ -42,15 +42,15 @@ const App = () => {
           <Route path="/blog/:slug" element={<SingleBlog />} />
 
           <Route
-            path="/verifyemail/success"
+            path="/verify-email/success/:token"
             element={<VerifyEmail status="success" />}
           />
           <Route
-            path="/verifyemail/failed"
+            path="/verify-email/failed"
             element={<VerifyEmail status="failed" />}
           />
           <Route
-            path="/verifyemail/already-verified"
+            path="/verify-email/already-verified"
             element={<VerifyEmail status="already-verified" />}
           />
           <Route path="*" element={<PageNotFound />} />

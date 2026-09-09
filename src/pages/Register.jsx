@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Container from "../components/layouts/Container";
-import bg from "../assets/images/breadcrum-bg.webp";
-import { GoHome } from "react-icons/go";
-import { BiChevronLeft, BiChevronRight, BiError } from "react-icons/bi";
-import { LuEye, LuEyeOff } from "react-icons/lu";
+import { LuEye, LuEyeOff, LuLoaderCircle } from "react-icons/lu";
 import { Link, useNavigate } from "react-router";
 import axios from "axios";
-import { Bounce, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import CustomToastify from "../components/common/CustomToastify";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
+
   const [registrationData, setRegistrationData] = useState({
-    name: "",
+    fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -20,143 +18,82 @@ const Register = () => {
   });
 
   const navigate = useNavigate();
-  const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    terms: "",
-  });
   const [loading, setLoading] = useState(false);
-  const [userData, setUserData] = useState("");
-  const { email, password, confirmPassword, name } = registrationData;
+  const { fullName, email, password, confirmPassword, terms } = registrationData;
 
   const handleShow = () => {
     setShowPass((prev) => !prev);
   };
 
+ 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name !== "terms") {
-      setRegistrationData({
-        ...registrationData,
-        [name]: value,
-      });
-    } else {
-      setRegistrationData({
-        ...registrationData,
-        terms: !registrationData.terms,
-      });
-    }
 
-    setErrors((prev) => ({
+    setRegistrationData((prev) => ({
       ...prev,
-      [name]: "",
+      [name]: value,
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (loading) return;
+
     setLoading(true);
 
     try {
-      if (registrationData.name && registrationData.email && registrationData.password && registrationData.confirmPassword && !registrationData.terms) {
-        setErrors((prev) => ({
-          ...prev,
-          terms: "Please accept the terms and conditions.",
-        }));
-        setLoading(false);
-        return;
-      }
-      const user = await axios.post(
-        "https://ecobazar-api.onrender.com/api/auth/register",
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/auth/registration`,
         registrationData,
       );
 
-      setUserData(user?.data);
-      const { success, message } = user?.data;
-
-      if (success) {
-        setMessage(message);
-        toast(
-          <CustomToastify
-            type="loading"
-            title="Account Creating... "
-            message="Please wait while we create your account."
-          />,
-          {
-            position: "top-center",
-            hideProgressBar: true,
-            autoClose: 1000,
-          },
-        );
-        setRegistrationData({
-          email: "",
-          password: "",
-          confirmPassword: "",
-          terms: false,
-        });
-        const successToast = setTimeout(() => {
-          toast(
-            <CustomToastify
-              type="success"
-              title="Account Created"
-              message="Check your email to verify your account."
-            />,
-            {
-              position: "top-center",
-              hideProgressBar: true,
-              autoClose: 5000,
-            },
-          );
-          navigate("/account/login");
-        }, 1000);
-        clearTimeout(successToast);
+      if (!data.success) {
+        throw new Error(data.message);
       }
-    } catch (error) {
-      const message = error.response?.data?.message || "";
 
-      const newErrors = {
-        name: "",
+      toast(
+        <CustomToastify
+          type="success"
+          title="Account Created"
+          message="Check your email to verify your account."
+        />,
+        {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 4000,
+        },
+      );
+
+      setRegistrationData({
+        fullName: "",
         email: "",
         password: "",
         confirmPassword: "",
-      };
-
-      if (message.toLowerCase().includes("name")) {
-        newErrors.name = message;
-      }
-
-      if (message.toLowerCase().includes("email")) {
-        newErrors.email = message;
-      }
-
-      if (
-        message.toLowerCase().includes("password") &&
-        !message.toLowerCase().includes("confirm") &&
-        !message.toLowerCase().includes("match")
-      ) {
-        newErrors.password = message;
-      }
-
-      if (
-        message.toLowerCase().includes("confirm") ||
-        message.toLowerCase().includes("match")
-      ) {
-        newErrors.confirmPassword = message;
-      }
-
-      setErrors(newErrors);
-
-      toast(<CustomToastify type="error" title="Error" message={message} />, {
-        position: "top-center",
-        hideProgressBar: true,
-        autoClose: 2000,
+        terms: false,
       });
+
+      navigate("/account/login");
+    } catch (error) {
+      const errorMessage = axios.isAxiosError(error)
+        ? error.response?.data?.message || "Unable to create your account."
+        : "Something went wrong. Please try again.";
+
+      toast(
+        <CustomToastify
+          type="error"
+          title="Registration Failed"
+          message={errorMessage}
+        />,
+        {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 4000,
+        },
+      );
     } finally {
-      const timer = setTimeout(() => {
-        setLoading(false);
-      }, 1000);
+      setLoading(false);
     }
   };
 
@@ -171,115 +108,85 @@ const Register = () => {
                   Create Account
                 </h2>
               </div>
-              <div className="inputs flex flex-col gap-y-3 pb-4">
-                <input
-                  type="text"
-                  name="name"
-                  className={`py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200 ${errors.name ? "border-red-500" : ""}`}
-                  placeholder="Enter your Name"
-                  onChange={handleChange}
-                  value={name}
-                />
-                {errors.name && (
-                  <p className="text-red-500 text-xs -mt-1 flex items-center gap-2">
-                    <BiError className="text-lg" /> {errors.name}
-                  </p>
-                )}
-                <input
-                  type="text"
-                  name="email"
-                  className={`py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200 ${errors.email ? "border-red-500" : ""}`}
-                  placeholder="Email"
-                  onChange={handleChange}
-                  value={email}
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-xs -mt-1 flex items-center gap-2">
-                    <BiError className="text-lg" /> {errors.email}
-                  </p>
-                )}
-                <div className="password relative">
+              <form onSubmit={handleSubmit}>
+                <div className="inputs flex flex-col gap-y-3 pb-4">
                   <input
-                    type={showPass ? "text" : "password"}
-                    className={`py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200 ${errors.password ? "border-red-500" : ""}`}
-                    placeholder="Password"
-                    name="password"
+                    type="text"
+                    name="fullName"
+                    className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200"
+                    placeholder="Enter your Name"
                     onChange={handleChange}
-                    value={password}
-                    required
+                    value={fullName}
                   />
-                  <i
-                    className="absolute top-[35%] right-4 -translate-y-[35%] text-xl cursor-pointer"
-                    onClick={handleShow}
-                  >
-                    {showPass ? <LuEyeOff /> : <LuEye />}
-                  </i>
-                  {errors.password && (
-                    <p className="text-red-500 text-xs mt-1 flex items-center gap-2">
-                      <BiError className="text-lg" /> {errors.password}
-                    </p>
-                  )}
-                </div>
-                <div className="password relative">
                   <input
-                    type="password"
-                    className={`py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200 ${errors.confirmPassword ? "border-red-500" : ""}`}
-                    placeholder="Confirm Password"
+                    type="text"
+                    name="email"
+                    className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200"
+                    placeholder="Email"
                     onChange={handleChange}
-                    name="confirmPassword"
-                    value={confirmPassword}
+                    value={email}
                   />
-                  {errors.confirmPassword && (
-                    <p className="text-red-500 text-xs mt-1 flex items-center gap-2">
-                      <BiError className="text-lg" /> {errors.confirmPassword}
-                    </p>
-                  )}
+                  <div className="password relative">
+                    <input
+                      type={showPass ? "text" : "password"}
+                      className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200"
+                      placeholder="Password"
+                      name="password"
+                      onChange={handleChange}
+                      value={password}
+                    />
+                    <i
+                      className="absolute top-[32%] right-4  text-xl cursor-pointer"
+                      onClick={handleShow}
+                    >
+                      {showPass ? <LuEyeOff /> : <LuEye />}
+                    </i>
+                  </div>
+                  <div className="password relative">
+                    <input
+                      type={"password"}
+                      className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200"
+                      placeholder="Confirm Password"
+                      onChange={handleChange}
+                      name="confirmPassword"
+                      value={confirmPassword}
+                    />
+                
+                  </div>
                 </div>
-              </div>
-              <div className="w-full flex items-center justify-between pb-3">
-                <div className="flex items-center gap-x-2">
+                <div className="w-full pb-3">
                   <input
                     type="checkbox"
                     name="terms"
                     id="terms"
                     className="accent-primary check"
-                    onChange={handleChange}
+                    onChange={() => {
+                      setRegistrationData((prev) => ({
+                        ...prev,
+                        terms: !prev.terms,
+                      }));
+                    }}
+                    checked={terms}
+                    hidden
                   />
-                   <label
+                  <label
                     htmlFor="terms"
-                    className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6 label relative cursor-pointer"
+                    className="font-poppins font-normal text-body-sm text-gray-6 label relative cursor-pointer pb-2"
                   >
                     Accept all terms & Conditions
                   </label>
-                <div className="">
-                   
-                  {errors.terms && (
-                    <p className="text-red-500 text-xs mt-1 flex items-center gap-2">
-                      <BiError className="text-lg" />
-                      {errors.terms}
-                    </p>
-                  )}
                 </div>
-                </div>
-              </div>
 
-              <button
-                onClick={handleSubmit}
-                className={`w-full rounded-full py-2.5 md:py-3.5 bg-primary cursor-pointer font-poppins font-semibold text-xs sm:text-body-sm text-white mb-5 ${loading ? " bg-hard-primary! opacity-50 cursor-not-allowed" : ""}`}
+                <button
+                type="submit"
+                disabled={loading}
+                className={`w-full rounded-full py-2.5 md:py-3.5 bg-primary font-poppins font-semibold text-xs sm:text-body-sm text-white mb-5
+                   ${loading ? "opacity-50 cursor-not-allowed!  bg-hard-primary! flex gap-x-3 justify-center" : "cursor-pointer"}`}
               >
-                {loading ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-transparent border-2 border-white border-t-primary animate-spin"></span>
-                    <span className="animate-pulse">
-                      {message && !errors
-                        ? "Redirecting to Login..."
-                        : "Creating Account..."}
-                    </span>
-                  </span>
-                ) : (
-                  "Create Account"
-                )}
+                { loading &&  <LuLoaderCircle className="animate-spin" size={20} />}
+                {loading ? "Creating Account..." : "Create Account"}
               </button>
+              </form>
 
               <div className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6 text-center ">
                 <p>
