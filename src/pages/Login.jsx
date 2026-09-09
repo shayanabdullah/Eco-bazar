@@ -1,140 +1,101 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Container from "../components/layouts/Container";
-import bg from "../assets/images/breadcrum-bg.webp";
-import { GoHome } from "react-icons/go";
-import { BiChevronLeft, BiChevronRight, BiError } from "react-icons/bi";
-import { LuEye, LuEyeOff } from "react-icons/lu";
+import { LuEye, LuEyeOff, LuLoaderCircle } from "react-icons/lu";
 import { Link, useNavigate } from "react-router";
 import axios from "axios";
 import { toast } from "react-toastify";
 import CustomToastify from "../components/common/CustomToastify";
-import { motion } from 'motion/react';
+import FloatingInput from "../components/common/FloatingInput";
+
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
     remember: false,
   });
-  const [userData, setUserData] = useState("");
+
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate()
-  const token = localStorage.getItem("token") || sessionStorage.getItem("token");
-
-  useEffect(() => {
-    if (token) {
-      console.log("user exits", token);
-    } else {
-      console.log("no user");
-    }
-  }, []);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name !== "remember") {
-      setLoginData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    } else {
-      setLoginData((prev) => ({
-        ...prev,
-        remember: prev.remember ? false : true,
-      }));
-    }
-  };
-
-  const handleSubmit = async () => {
-    setLoading(true);
-    setUserData("");
-    try {
-      const { email, password } = loginData;
-      const userData = await axios.post(
-        "http://localhost:5000/login",
-        loginData,
-      );
-      setUserData(userData?.data);
-      const { success, message, token } = userData?.data;
-      const { remember } = loginData;
-      if (success && token) {
-        if (remember) {
-          localStorage.setItem("token", token);
-        } else {
-          sessionStorage.setItem("token", token);
-        }
-      }
-      
-      if(!success){
-           setErrorMessage(message);
-        toast(<CustomToastify type="error" title="Error" message={message} />, {
-          position: "top-center",
-          hideProgressBar: true,
-          autoClose: 2000,
-        });
-      }else {
-        setMessage(message);
-        toast(
-          <CustomToastify
-            type="loading"
-            title="loging to your account... "
-            message="Please wait while we login to your account."
-          />,
-          {
-            position: "top-center",
-            hideProgressBar: true,
-            autoClose: 1000,
-          },
-        );
-        setLoginData({
-          email: "",
-          password: "",
-          remember: false,
-        });
-         const successToast = setTimeout(() => {
-          toast(
-            <CustomToastify
-              type="success"
-              title={message}
-              message="you can start shopping now"
-            />,
-            {
-              position: "top-center",
-              hideProgressBar: true,
-              autoClose: 5000,
-            },
-          );
-          navigate('/')
-        }, 1000);
-      }
-    } catch (error) {
-      
-      toast(
-        <CustomToastify
-          type="error"
-          title="Error"
-          message={
-            error.response?.data?.message ||
-            "An error occurred. Please try again."
-          }
-        />,
-        {
-          position: "top-center",
-          hideProgressBar: true,
-          autoClose: 2000,
-        },
-      );
-    } finally{ 
-      const timer = setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    }
-  };
+  const [error, setError] = useState("");
+  const { email, password, remember } = loginData;
 
   const handleShow = () => {
     setShowPass((prev) => !prev);
   };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setLoginData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (loading) return;
+
+    setLoading(true);
+
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/auth/login`,
+        loginData,
+      );
+      console.log(data);
+
+      if (!data.success) {
+        throw new Error(data.message);
+      }
+
+      toast(
+        <CustomToastify
+          type="success"
+          title="Welcome Back!"
+          message="You’ve been signed in successfully."
+        />,
+        {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 4000,
+        },
+      );
+
+      setLoginData({
+        email: "",
+        password: "",
+      });
+
+      navigate("/account/login");
+    } catch (error) {
+      const errorMessage = axios.isAxiosError(error)
+        ? error.response?.data?.message ||
+          "Unable to sign you in. Please check your credentials and try again."
+        : "Something went wrong while signing you in. Please try again shortly.";
+
+      setError(errorMessage);
+
+      toast(
+        <CustomToastify
+          type="error"
+          title="Login Failed"
+          message={errorMessage}
+        />,
+        {
+          position: "top-center",
+          hideProgressBar: true,
+          autoClose: 4000,
+        },
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <section className="relative">
@@ -142,86 +103,80 @@ const Login = () => {
           <div className="main w-full md:py-20 py-10 flex flex-col justify-center md:items-center px-4 md:px-0">
             <div className="p-4 md:p-6 shadow-2xl border border-gray-1 shadow-[#F2F2F2]  rounded-lg">
               <div className="text pb-5 text-center">
-                <h2 className="font-poppins font-semibold text-[26px] md:text-3xl text-gray-9">
-                  Sign In
+                <h2 className="font-poppins font-semibold text-2xl sm:text-3xl text-gray-9">
+                Sign In
                 </h2>
               </div>
-              <div className="inputs flex flex-col gap-y-3 pb-4">
-                <input
-                  type="text"
-                  className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3"
-                  placeholder="Email"
-                  name="email"
-                  onChange={handleChange}
-                  value={loginData.email}
-                />
-                <div className="password relative">
-                  <input
-                    type={showPass ? "text" : "password"}
-                    className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 relative"
-                    placeholder="Password"
-                    name="password"
+              <form onSubmit={handleSubmit}>
+                <div className="inputs flex flex-col gap-y-3 pb-4">
+                  <FloatingInput
+                    id="email"
+                    name="email"
+                    type="text"
+                    label="Email"
+                    value={email}
                     onChange={handleChange}
-                    value={loginData.password}
+                    required
                   />
-                  <i
-                    className="absolute top-1/2 right-4 -translate-y-1/2 text-xl cursor-pointer"
-                    onClick={handleShow}
-                  >
-                    {showPass ? <LuEyeOff /> : <LuEye />}
-                  </i>
+
+                  <FloatingInput
+                    id="password"
+                    name="password"
+                    type={showPass ? "text" : "password"}
+                    label="Password"
+                    value={password}
+                    onChange={handleChange}
+                    required
+                    rightElement={
+                      <i
+                        className="text-xl cursor-pointer text-gray-4"
+                        onClick={handleShow}
+                      >
+                        {showPass ? <LuEyeOff /> : <LuEye />}
+                      </i>
+                    }
+                  />
                 </div>
-              </div>
-              <div className="w-full flex items-center justify-between pb-5">
-                <div className="flex items-center gap-x-2">
+                <div className="w-full pb-3">
                   <input
                     type="checkbox"
                     name="remember"
                     id="remember"
-                    checked={loginData.remember}
-                    onChange={handleChange}
-                    className="check"
+                    className="accent-primary check"
+                    onChange={() => {
+                      setLoginData((prev) => ({
+                        ...prev,
+                        remember: !prev.remember,
+                      }));
+                    }}
+                    checked={remember}
+                    hidden
                   />
                   <label
                     htmlFor="remember"
-                    className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6 label"
+                    className="font-poppins font-normal text-body-sm text-gray-6 label relative cursor-pointer pb-2"
                   >
                     Remember me
                   </label>
                 </div>
-                <p className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6 hover:underline cursor-pointer">
-                  Forget Password
-                </p>
-              </div>
-               {errorMessage && (
-                              <p className="text-red-500 text-xs pb-5 flex items-center gap-x-2 max-w-100">
-                                {" "}
-                                <BiError className="text-xl" /> {errorMessage}
-                              </p>
-                            )}
-             <motion.button
-                whileTap={{scale: 1.02, transition: 0.3}}
-                onClick={handleSubmit}
-                className={`w-full rounded-full py-2.5 md:py-3.5 bg-primary cursor-pointer font-poppins font-semibold text-xs sm:text-body-sm text-white mb-5 ${loading ? " bg-hard-primary! opacity-50 cursor-not-allowed" : ""}`}
-              >
-                {loading ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-transparent border-2 border-white border-t-primary animate-spin"></span>
-                    <span className="animate-pulse">
-                      {message && !errorMessage &&
-                         "Login..."
-                        }
-                    </span>
-                  </span>
-                ) : (
-                  "Login"
-                )}
-              </motion.button>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`w-full rounded-full py-2.5 md:py-3.5 bg-primary font-poppins font-semibold text-xs sm:text-body-md text-white mb-5 ${loading ? "opacity-50 cursor-not-allowed! bg-hard-primary! flex gap-x-3 justify-center" : "cursor-pointer"}`}
+                >
+                  {loading && (
+                    <LuLoaderCircle className="animate-spin" size={20} />
+                  )}
+                  {loading ? "Login In..." : "Login"}
+                </button>
+              </form>
+
               <div className="font-poppins font-normal text-xs sm:text-body-sm text-gray-6 text-center ">
                 <p>
-                  Don’t have account?{" "}
+                  Don't have an account?{" "}
                   <span className="font-medium text-gray-9 underline">
-                    <Link to={"/account/register"}>Register</Link>
+                    <Link to="/account/register">Create an account</Link>
                   </span>
                 </p>
               </div>

@@ -53,7 +53,7 @@ const MobileBottomNav = () => {
         </button>
         <Link
           to="account/login"
-          className={`flex flex-col items-center gap-1 transition-colors ${isActive("account/login") ? "text-primary" : "text-gray-500 hover:text-primary"}`}
+          className={`flex flex-col items-center gap-1 transition-colors ${isActive("account") ? "text-primary" : "text-gray-500 hover:text-primary"}`}
         >
           <AiOutlineUser size={22} />
 

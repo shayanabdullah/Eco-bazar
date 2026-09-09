@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router";
 import axios from "axios";
 import { toast } from "react-toastify";
 import CustomToastify from "../components/common/CustomToastify";
+import FloatingInput from "../components/common/FloatingInput";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -14,18 +15,17 @@ const Register = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    terms: false,
+
   });
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { fullName, email, password, confirmPassword, terms } = registrationData;
 
   const handleShow = () => {
     setShowPass((prev) => !prev);
   };
-
- 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -80,6 +80,8 @@ const Register = () => {
         ? error.response?.data?.message || "Unable to create your account."
         : "Something went wrong. Please try again.";
 
+      setError(errorMessage);
+
       toast(
         <CustomToastify
           type="error"
@@ -110,49 +112,53 @@ const Register = () => {
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="inputs flex flex-col gap-y-3 pb-4">
-                  <input
-                    type="text"
+                  <FloatingInput
+                    id="fullName"
                     name="fullName"
-                    className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200"
-                    placeholder="Enter your Name"
-                    onChange={handleChange}
-                    value={fullName}
-                  />
-                  <input
                     type="text"
-                    name="email"
-                    className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200"
-                    placeholder="Email"
+                    label="Full Name"
+                    value={fullName}
+                    error={error}
                     onChange={handleChange}
-                    value={email}
+                    required
                   />
-                  <div className="password relative">
-                    <input
-                      type={showPass ? "text" : "password"}
-                      className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200"
-                      placeholder="Password"
-                      name="password"
-                      onChange={handleChange}
-                      value={password}
-                    />
-                    <i
-                      className="absolute top-[32%] right-4  text-xl cursor-pointer"
-                      onClick={handleShow}
-                    >
-                      {showPass ? <LuEyeOff /> : <LuEye />}
-                    </i>
-                  </div>
-                  <div className="password relative">
-                    <input
-                      type={"password"}
-                      className="py-3.5 px-4 border border-gray-1 w-full rounded-md font-poppins font-normal text-sm md:text-body-md placeholder:text-gray-4 text-gray-4 md:min-w-118 outline-gray-3 transition-all duration-200"
-                      placeholder="Confirm Password"
-                      onChange={handleChange}
-                      name="confirmPassword"
-                      value={confirmPassword}
-                    />
-                
-                  </div>
+
+                  <FloatingInput
+                    id="email"
+                    name="email"
+                    type="text"
+                    label="Email"
+                    value={email}
+                    onChange={handleChange}
+                    required
+                  />
+
+                  <FloatingInput
+                    id="password"
+                    name="password"
+                    type={showPass ? "text" : "password"}
+                    label="Password"
+                    value={password}
+                    onChange={handleChange}
+                    required
+                    rightElement={
+                      <i
+                        className="text-xl cursor-pointer text-gray-4"
+                        onClick={handleShow}
+                      >
+                        {showPass ? <LuEyeOff /> : <LuEye />}
+                      </i>
+                    }
+                  />
+
+                  <FloatingInput
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    label="Confirm Password"
+                    value={confirmPassword}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="w-full pb-3">
                   <input
