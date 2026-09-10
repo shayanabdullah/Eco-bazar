@@ -45,7 +45,7 @@ const TopBar = () => {
 
           {/* RIGHT */}
           <div className="flex items-center gap-x-10 justify-between  w-full md:w-fit px-3 md:px-0 ">
-            <div className="flex items-center gap-x-5 relative divider">
+            <div className="flex items-center gap-x-5 relative ">
               {/* LANGUAGE */}
               <div className="flex items-center ">
                 <div
@@ -123,7 +123,7 @@ const TopBar = () => {
                   )}
                 </AnimatePresence>
               </div>
-
+<div className="divider h-5"/>
               {/* CURRENCY */}
               <div className="flex items-center relative">
                 <div

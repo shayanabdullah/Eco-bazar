@@ -61,7 +61,8 @@ export default function CommentSection({ comments: initialComments = [] }) {
                 <FaUser className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
-                  value={form.name}
+                  value={form.name }
+                  placeholder="John Doe"
                   onChange={handleChange("name")}
                   className="w-full h-11 pl-10 pr-4 rounded-md border border-gray-200 bg-white text-sm focus:outline-none focus:border-[#00B712] transition-colors"
                 />
@@ -76,6 +77,7 @@ export default function CommentSection({ comments: initialComments = [] }) {
                 <input
                   type="email"
                   value={form.email}
+                  placeholder="example@example.com"
                   onChange={handleChange("email")}
                   className="w-full h-11 pl-10 pr-4 rounded-md border border-gray-200 bg-white text-sm focus:outline-none focus:border-[#00B712] transition-colors"
                 />

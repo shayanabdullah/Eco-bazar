@@ -22,7 +22,7 @@ export const popularProducts = [
     category: "Vegetables",
     slug: "fresh-red-bell-pepper",
   },
-  {
+  { 
     id: 3,
     name: "Fresh Granny Smith Apple",
     image: "/popular-products/green-apple.webp",

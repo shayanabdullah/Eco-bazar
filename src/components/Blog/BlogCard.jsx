@@ -6,19 +6,21 @@ import {
   FaArrowRight,
   FaPlay,
 } from "react-icons/fa6";
+import axios from "axios";
 
 export default function BlogCard({ post }) {
+
   return (
     <article
-      className={`bg-white rounded-lg border overflow-hidden transition-colors ${
+      className={`bg-white rounded-lg border overflow-hidden transition-colors group ${
         post.highlighted ? "border-[#00B712]" : "border-gray-200"
       }`}
     >
-      <Link to={`/blog/${post.slug}`} className="relative block">
+      <Link to={`/blog/${post.slug}`} className="relative block overflow-hidden">
         <img
           src={post.image}
           alt={post.title}
-          className="w-full  object-cover"
+          className="w-full  object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute top-3 left-3 bg-white rounded-md px-2.5 py-1.5 text-center leading-none shadow-sm">
           <span className="block text-sm font-bold text-gray-900">

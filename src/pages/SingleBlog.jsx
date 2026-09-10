@@ -1,8 +1,8 @@
 import { useParams, Link } from "react-router";
-import BlogSidebar from "./BlogSidebar";
-import ArticleContent from "./ArticleContent";
-import CommentSection from "./CommentSection";
-import { blogPosts } from "../../data/blog";
+import BlogSidebar from "../components/Blog/BlogSidebar";
+import ArticleContent from "../components/Blog/ArticleContent";
+import CommentSection from "../components/Blog/CommentSection";
+import { blogPosts } from "../data/blog";
 
 export default function SingleBlog() {
   const { slug } = useParams();

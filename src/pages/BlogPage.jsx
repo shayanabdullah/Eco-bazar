@@ -1,13 +1,12 @@
 import { useState, useMemo, useEffect } from "react";
-import BlogSidebar from "./BlogSidebar";
-import BlogList from "./BlogList";
-import { blogPosts, popularTags, galleryImages } from "../../data/blog";
-import { FaChevronRight, FaHouse } from "react-icons/fa6";
+import BlogSidebar from "../components/Blog/BlogSidebar";
+import BlogList from "../components/Blog/BlogList";
+import { blogPosts, popularTags, galleryImages } from "../data/blog";
 
 export default function BlogPage() {
   const posts = blogPosts;
 
-  // Search & Filter state
+ 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedTag, setSelectedTag] = useState(null);
@@ -15,7 +14,7 @@ export default function BlogPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  // Categories
+
   const categories = useMemo(() => {
     const counts = {};
 
@@ -29,7 +28,7 @@ export default function BlogPage() {
     }));
   }, []);
 
-  // Loading + page reset on filter change
+ 
   useEffect(() => {
     setLoading(true);
     setCurrentPage(1);
@@ -41,7 +40,7 @@ export default function BlogPage() {
     return () => clearTimeout(timer);
   }, [searchQuery, selectedCategory, selectedTag, sortBy]);
 
-  // Filter & Sort
+ 
   const filteredPosts = useMemo(() => {
     let result = [...posts];
 
@@ -79,7 +78,7 @@ export default function BlogPage() {
     return result;
   }, [posts, searchQuery, selectedCategory, selectedTag, sortBy]);
 
-  // Mobile Sidebar
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (

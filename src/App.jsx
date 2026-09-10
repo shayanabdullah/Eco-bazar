@@ -12,12 +12,14 @@ import AllPopularProducts from "./pages/AllPopularProducts";
 import Shop from "./pages/Shop";
 import ProductDetails from "./pages/ProductDetails";
 import QuickView from "./components/common/QuickView";
-import SingleBlog from "./components/Blog/SingleBlog";
-import BlogPage from "./components/Blog/BlogPage";
 import About from "./pages/About";
 import { useScrollToNavigation } from './hooks/useScrollToNavigation';
 import Contact from "./pages/Contact";
 import PopUp from "./components/PopUp";
+import BlogPage from './pages/BlogPage';
+import SingleBlog from "./pages/SingleBlog";
+import CartSidebar from './components/cart/CartSidebar';
+
 const App = () => {
   useScrollToNavigation();
   return (
@@ -58,6 +60,8 @@ const App = () => {
       </Routes>
 
       <QuickView />
+      <CartSidebar 
+      />
       <PopUp/>
     </>
   );

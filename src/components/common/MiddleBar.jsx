@@ -25,8 +25,10 @@ import {
 } from "lucide-react";
 import { categories } from "../../utils/catagoryData";
 import { navMenus } from "../../data/menuData";
+import { useCart } from "../../context/useCart.js";
 
 const MiddleBar = () => {
+  const { isCartOpen, toggleCart } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   useScrollLock(isMenuOpen);
 
@@ -60,9 +62,9 @@ const MiddleBar = () => {
             </Link>
           </div>
 
-             {/* Search bar */}
+          {/* Search bar */}
           <div className="flex relative w-full lg:max-w-xl mx-0 lg:mx-8 order-last lg:order-0">
-              <form className="flex w-full shadow-sm lg:shadow-none rounded-full lg:rounded-none ">
+            <form className="flex w-full shadow-sm lg:shadow-none rounded-full lg:rounded-none ">
               <div className="relative w-full" bis_skin_checked="1">
                 <input
                   placeholder="Search products..."
@@ -82,28 +84,32 @@ const MiddleBar = () => {
           </div>
 
           {/*   CART, WISHLIST */}
-          <div className="flex items-center relative divider gap-x-8">
+          <div className="flex items-center  gap-x-6 ">
             {/* WISHLIST */}
-            <Link to={"/"}>
-              <BsHeart className="text-2xl " />
-            </Link>
+            <div className="">
+              <Link to={"/"}>
+                <BsHeart className="text-[28px] " />
+              </Link>
+            </div>
+            {/* Divider */}
+            <div className="divider h-9" />
+
             {/* CART */}
-            <div className="flex items-center gap-x-3">
-              <div className="cart relative">
-                <span className="absolute -top-2 -right-0.5 w-4 h-4 flex items-center justify-center  rounded-full bg-hard-primary text-white font-poppins font-medium text-[10px]">
-                  2
-                </span>
-                <Link>
-                  <SlHandbag className="text-[26px]" />
-                </Link>
-              </div>
-              <div className="cart quantity pl-2">
-                <h2 className="font-poppins text-body-xs text-gray-7 ">
+            <div
+              onClick={toggleCart}
+              className="flex items-center gap-x-3 "
+            >
+              <button
+                
+                className="cart rounded-full  text-gray-7 transition-colors hover:text-primary"
+              >
+                <SlHandbag className="text-heading-05" />
+              </button>
+              <div className="">
+                <p className="text-xs font-poppins text-gray-700 leading-[120%] mb-1">
                   Shopping cart:
-                </h2>
-                <p className="font-poppins text-body-sm font-medium text-gray-9 pb-2">
-                  $57.00
                 </p>
+                <p className="font-medium text-sm text-gray-9">$57.00</p>
               </div>
             </div>
           </div>

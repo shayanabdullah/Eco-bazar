@@ -65,34 +65,34 @@ export const popularTags = [
 ];
 
 export const galleryImages = [
-  "https://placehold.co/200x200/FFFFFF/D1D5DB?text=1",
-  "https://placehold.co/200x200/FFFFFF/D1D5DB?text=2",
-  "https://placehold.co/200x200/FFFFFF/D1D5DB?text=3",
-  "https://placehold.co/200x200/FFFFFF/D1D5DB?text=4",
-  "https://placehold.co/200x200/FFFFFF/D1D5DB?text=5",
-  "https://placehold.co/200x200/FFFFFF/D1D5DB?text=6",
-  "https://placehold.co/200x200/FFFFFF/D1D5DB?text=7",
-  "https://placehold.co/200x200/FFFFFF/D1D5DB?text=8",
+  "https://images.unsplash.com/photo-1542838132-92c53300491e",
+  "https://images.unsplash.com/photo-1498837167922-ddd27525d352",
+  "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+  "https://images.unsplash.com/photo-1547592180-85f173990554",
+  "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea",
+  "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af",
+  "https://images.unsplash.com/photo-1608198093002-ad4e005484ec",
+  "https://images.unsplash.com/photo-1556910103-1c02745aae4d",
 ];
 
 export const recentlyAdded = [
   {
     id: "r1",
-    title: "Curabitur porttitor orci eget nequ accumsan.",
+    title: "Fresh ingredients for everyday cooking",
     date: "Apr 25, 2021",
-    image: "https://placehold.co/100x100/FFFFFF/D1D5DB?text=Blog",
+    image: "https://images.unsplash.com/photo-1542838132-92c53300491e",
   },
   {
     id: "r2",
-    title: "Donec mattis arcu faucibus suscipit viverra.",
+    title: "Simple and healthy kitchen ideas",
     date: "Apr 25, 2021",
-    image: "https://placehold.co/100x100/FFFFFF/D1D5DB?text=Blog",
+    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352",
   },
   {
     id: "r3",
-    title: "Quisque posuere tempus rutrum. Integer velit ex.",
+    title: "Making healthier food choices",
     date: "Apr 25, 2021",
-    image: "https://placehold.co/100x100/FFFFFF/D1D5DB?text=Blog",
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
   },
 ];
 
@@ -100,7 +100,8 @@ export const blogPosts = [
   {
     id: "post-1",
     slug: "top-3-healthy-cooking-oils",
-    image: "https://placehold.co/620x420/FFFFFF/D1D5DB?text=Blog+1",
+    image:
+      "https://images.unsplash.com/photo-1527756898251-203e9ce0d9c4?q=80&auto=format&fit=crop&w=1200&h=675",
     day: "18",
     month: "NOV",
     timestamp: 1751587200000,
@@ -113,12 +114,11 @@ export const blogPosts = [
     tags: ["Healthy", "Low fat", "Vitamins"],
     article: {
       heroImage:
-        "https://placehold.co/1100x520/FFFFFF/D1D5DB?text=Cooking+Oils",
+        "https://images.unsplash.com/photo-1527756898251-203e9ce0d9c4?q=80&auto=format&fit=crop&w=1200&h=675",
       title: "Top 3 Healthy Cooking Oils You Must Have In Your Kitchen",
       writer: {
         name: "Cameron Williamson",
-        avatar:
-          "https://placehold.co/64x64/E5E7EB/6B7280?text=CW",
+        avatar: "https://placehold.co/64x64/E5E7EB/6B7280?text=CW",
         date: "18 November, 2025",
         readTime: "6 min read",
       },
@@ -130,35 +130,26 @@ export const blogPosts = [
         "Sunflower oil has a mild flavor and works well for many types of cooking. Keeping a versatile oil like this in your kitchen can make everyday frying and cooking simple and convenient.",
       ],
       inlineImages: [
-        "https://placehold.co/540x420/FFFFFF/D1D5DB?text=Olive+Oil",
-        "https://placehold.co/540x420/D8ECE0/D1D5DB?text=Mustard+Oil",
+        "https://images.unsplash.com/photo-1527756898251-203e9ce0d9c4?q=80auto=format&fit=crop&w=1200&h=675",
+        "https://images.unsplash.com/photo-1757801333069-f7b3cabaec4a?auto=format&fit=crop&w=780&h=605&q=80",
       ],
       closingParagraph:
         "There is no single cooking oil that is perfect for every recipe. Choosing an oil based on the type of cooking, flavor you want, and how you use it in your overall diet is a practical approach for everyday meals.",
       promo: {
-        eyebrow: "SUMMER SALES",
-        title: "Fresh Fruit",
-        discountLabel: "UP TO",
-        discountValue: "56%",
-        discountSuffix: "Off",
-        ctaLabel: "Shop Now",
-        image:
-          "https://placehold.co/700x260/1A1A1A/D1D5DB?text=Fresh+Fruit",
+        image: "/blog-banner.webp",
       },
       comments: [
         {
           id: "c1",
           name: "Annette Black",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=AB",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=AB",
           date: "26 Nov, 2025",
           text: "This was a helpful guide. I learned more about when to use different cooking oils.",
         },
         {
           id: "c2",
           name: "Devon Lane",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=DL",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=DL",
           date: "24 Nov, 2025",
           text: "I have been using mustard oil for years, so it was nice to see it included.",
         },
@@ -169,7 +160,8 @@ export const blogPosts = [
   {
     id: "post-2",
     slug: "liquid-vs-bar-dishwashing",
-    image: "https://placehold.co/620x420/D6EFFF/D1D5DB?text=Blog+2",
+    image:
+      "https://images.unsplash.com/photo-1740990620256-e900bc020d9a?auto=format&fit=crop&w=1200&h=675&q=80",
     day: "10",
     month: "NOV",
     timestamp: 1750896000000,
@@ -179,18 +171,16 @@ export const blogPosts = [
     title: "Liquid vs Bar Dishwashing: Which Is Better For Your Home?",
     summary:
       "A detailed comparison of liquid and bar dishwashing soaps covering effectiveness, cost, eco-friendliness, and skin concerns.",
-    tags: ["Healthy", "Vitamins"],
+    tags: ["Healthy", "Vitamins", "Dishwashing", "Kitchen"],
     highlighted: false,
 
     article: {
       heroImage:
-        "https://placehold.co/1100x520/D6EFFF/6B7280?text=Dishwashing+Guide",
-      title:
-        "Liquid vs Bar Dishwashing: Which Is Better For Your Home?",
+        "https://images.unsplash.com/photo-1740990620256-e900bc020d9a?auto=format&fit=crop&w=1200&h=675&q=80",
+      title: "Liquid vs Bar Dishwashing: Which Is Better For Your Home?",
       writer: {
         name: "Cameron Williamson",
-        avatar:
-          "https://placehold.co/64x64/E5E7EB/6B7280?text=CW",
+        avatar: "https://placehold.co/64x64/E5E7EB/6B7280?text=CW",
         date: "10 November, 2025",
         readTime: "5 min read",
       },
@@ -202,35 +192,26 @@ export const blogPosts = [
         "The best choice depends on your kitchen routine, storage space, and personal preference. Both can work effectively when used properly and according to their instructions.",
       ],
       inlineImages: [
-        "https://placehold.co/540x420/FFFFFF/D1D5DB?text=Liquid+Soap",
-        "https://placehold.co/540x420/E8F5E9/D1D5DB?text=Dishwashing+Bar",
+        "https://images.unsplash.com/photo-1755127761410-0c00c398c308?auto=format&fit=crop&w=800&h=620&q=80",
+        "https://images.unsplash.com/photo-1740990620256-e900bc020d9a?auto=format&fit=crop&w=1200&h=675&q=80",
       ],
       closingParagraph:
         "Whether you choose liquid or bar soap, keeping your dishes clean also depends on using the right amount, washing tools, and good kitchen hygiene habits.",
       promo: {
-        eyebrow: "FRESH DEALS",
-        title: "Kitchen Essentials",
-        discountLabel: "UP TO",
-        discountValue: "30%",
-        discountSuffix: "Off",
-        ctaLabel: "Shop Now",
-        image:
-          "https://placehold.co/700x260/1A1A1A/D1D5DB?text=Kitchen+Essentials",
+        image: "/blog-banner.webp",
       },
       comments: [
         {
           id: "c1",
           name: "Annette Black",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=AB",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=AB",
           date: "16 Nov, 2025",
           text: "I usually prefer liquid soap because it is easier for me to measure.",
         },
         {
           id: "c2",
           name: "Devon Lane",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=DL",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=DL",
           date: "13 Nov, 2025",
           text: "Interesting comparison. I have always used dishwashing bars at home.",
         },
@@ -241,7 +222,8 @@ export const blogPosts = [
   {
     id: "post-3",
     slug: "seasonal-fruits-you-must-add",
-    image: "https://placehold.co/620x420/FFFFFF/D1D5DB?text=Blog+3",
+    image:
+      "https://images.unsplash.com/photo-1674212466621-3a19431cd70b?auto=format&fit=crop&w=1200&h=675&q=80",
     day: "05",
     month: "OCT",
     timestamp: 1749081600000,
@@ -255,13 +237,11 @@ export const blogPosts = [
 
     article: {
       heroImage:
-        "https://placehold.co/1100x520/FFF7E6/6B7280?text=Seasonal+Fruits",
-      title:
-        "10 Seasonal Fruits You Must Add To Your Diet This Week",
+        "https://images.unsplash.com/photo-1674212466621-3a19431cd70b?auto=format&fit=crop&w=1400&h=788&q=80",
+      title: "10 Seasonal Fruits You Must Add To Your Diet This Week",
       writer: {
         name: "Sarah",
-        avatar:
-          "https://placehold.co/64x64/E5E7EB/6B7280?text=SA",
+        avatar: "https://placehold.co/64x64/E5E7EB/6B7280?text=SA",
         date: "5 October, 2025",
         readTime: "7 min read",
       },
@@ -273,35 +253,26 @@ export const blogPosts = [
         "When buying fruit, look for produce that is fresh, appropriately ripe for when you plan to eat it, and free from obvious damage. Proper storage can also help preserve freshness at home.",
       ],
       inlineImages: [
-        "https://placehold.co/540x420/FFF7E6/D1D5DB?text=Fresh+Fruit",
-        "https://placehold.co/540x420/E8F5E9/D1D5DB?text=Fruit+Basket",
+        "https://images.unsplash.com/photo-1674212466621-3a19431cd70b?auto=format&fit=crop&w=800&h=620&q=80",
+        "https://images.unsplash.com/photo-1674212466621-3a19431cd70b?auto=format&fit=crop&w=780&h=605&q=80",
       ],
       closingParagraph:
         "Adding different fruits throughout the week can make meals more colorful and enjoyable. Choose a variety that you like and rotate your choices as different fruits become available.",
       promo: {
-        eyebrow: "FRESH FROM FARM",
-        title: "Fresh Fruits",
-        discountLabel: "UP TO",
-        discountValue: "40%",
-        discountSuffix: "Off",
-        ctaLabel: "Shop Now",
-        image:
-          "https://placehold.co/700x260/1A1A1A/D1D5DB?text=Fresh+Fruits",
+        image: "/blog-banner.webp",
       },
       comments: [
         {
           id: "c1",
           name: "Jane Cooper",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=JC",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=JC",
           date: "10 Oct, 2025",
           text: "I love making fruit bowls for breakfast. Great ideas!",
         },
         {
           id: "c2",
           name: "Jacob Jones",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=JJ",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=JJ",
           date: "8 Oct, 2025",
           text: "The storage tips are really useful.",
         },
@@ -312,7 +283,8 @@ export const blogPosts = [
   {
     id: "post-4",
     slug: "store-leafy-green-vegetables",
-    image: "https://placehold.co/620x420/FFFFFF/D1D5DB?text=Blog+4",
+    image:
+      "https://images.unsplash.com/photo-1683536905403-ea18a3176d29?auto=format&fit=crop&w=1200&h=675&q=80",
     day: "28",
     month: "SEP",
     timestamp: 1748563200000,
@@ -327,13 +299,11 @@ export const blogPosts = [
 
     article: {
       heroImage:
-        "https://placehold.co/1100x520/E8F5E9/6B7280?text=Leafy+Greens",
-      title:
-        "How To Store Leafy Green Vegetables For Longer Freshness",
+        "https://images.unsplash.com/photo-1683536905403-ea18a3176d29?auto=format&fit=crop&w=1400&h=788&q=80",
+      title: "How To Store Leafy Green Vegetables For Longer Freshness",
       writer: {
         name: "Admin",
-        avatar:
-          "https://placehold.co/64x64/E5E7EB/6B7280?text=AD",
+        avatar: "https://placehold.co/64x64/E5E7EB/6B7280?text=AD",
         date: "28 September, 2025",
         readTime: "5 min read",
       },
@@ -345,8 +315,8 @@ export const blogPosts = [
         "Keeping vegetables in the appropriate section of your refrigerator and checking them regularly can also help you use them before they begin to wilt.",
       ],
       inlineImages: [
-        "https://placehold.co/540x420/E8F5E9/D1D5DB?text=Fresh+Greens",
-        "https://placehold.co/540x420/FFFFFF/D1D5DB?text=Vegetable+Storage",
+        "https://images.unsplash.com/photo-1683536905403-ea18a3176d29?auto=format&fit=crop&w=800&h=620&q=80",
+        "https://images.unsplash.com/photo-1683536905403-ea18a3176d29?auto=format&fit=crop&w=780&h=605&q=80",
       ],
       closingParagraph:
         "With proper preparation and storage, you can reduce food waste and enjoy fresh leafy vegetables for longer. The key is keeping them cool, clean, and protected from excess moisture.",
@@ -358,22 +328,20 @@ export const blogPosts = [
         discountSuffix: "Off",
         ctaLabel: "Shop Now",
         image:
-          "https://placehold.co/700x260/1A1A1A/D1D5DB?text=Garden+Fresh",
+          "https://images.unsplash.com/photo-1683536905403-ea18a3176d29?auto=format&fit=crop&w=700&h=260&q=80",
       },
       comments: [
         {
           id: "c1",
           name: "Darrell Steward",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=DS",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=DS",
           date: "2 Oct, 2025",
           text: "The paper towel trick works really well for my vegetables.",
         },
         {
           id: "c2",
           name: "Annette Black",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=AB",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=AB",
           date: "30 Sep, 2025",
           text: "Very useful tips for keeping lettuce fresh.",
         },
@@ -384,7 +352,8 @@ export const blogPosts = [
   {
     id: "post-5",
     slug: "refreshing-summer-drinks",
-    image: "https://placehold.co/620x420/FFFFFF/D1D5DB?text=Blog+5",
+    image:
+      "https://images.unsplash.com/photo-1754594537133-796eb54f206c?auto=format&fit=crop&w=1200&h=675&q=80",
     day: "20",
     month: "SEP",
     timestamp: 1747872000000,
@@ -398,13 +367,11 @@ export const blogPosts = [
 
     article: {
       heroImage:
-        "https://placehold.co/1100x520/E6F7FF/6B7280?text=Summer+Drinks",
-      title:
-        "5 Refreshing Summer Drinks To Beat The Heat Naturally",
+        "https://images.unsplash.com/photo-1754594537133-796eb54f206c?auto=format&fit=crop&w=1400&h=788&q=80",
+      title: "5 Refreshing Summer Drinks To Beat The Heat Naturally",
       writer: {
         name: "Priya",
-        avatar:
-          "https://placehold.co/64x64/E5E7EB/6B7280?text=PR",
+        avatar: "https://placehold.co/64x64/E5E7EB/6B7280?text=PR",
         date: "20 September, 2025",
         readTime: "6 min read",
       },
@@ -416,8 +383,8 @@ export const blogPosts = [
         "You can also experiment with orange, pineapple, berries, and other seasonal fruits. Using fresh ingredients lets you adjust the flavor according to your preference.",
       ],
       inlineImages: [
-        "https://placehold.co/540x420/E6F7FF/D1D5DB?text=Fruit+Drink",
-        "https://placehold.co/540x420/FFF7E6/D1D5DB?text=Fresh+Juice",
+        "https://images.unsplash.com/photo-1754594537133-796eb54f206c?auto=format&fit=crop&w=800&h=620&q=80",
+        "https://images.unsplash.com/photo-1754594537133-796eb54f206c?auto=format&fit=crop&w=780&h=605&q=80",
       ],
       closingParagraph:
         "Homemade fruit drinks are easy to customize and can be a fun way to use fresh produce from your grocery basket. Keep the ingredients chilled and enjoy them fresh.",
@@ -429,22 +396,20 @@ export const blogPosts = [
         discountSuffix: "Off",
         ctaLabel: "Shop Now",
         image:
-          "https://placehold.co/700x260/1A1A1A/D1D5DB?text=Summer+Drinks",
+          "https://images.unsplash.com/photo-1754594537133-796eb54f206c?auto=format&fit=crop&w=700&h=260&q=80",
       },
       comments: [
         {
           id: "c1",
           name: "Devon Lane",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=DL",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=DL",
           date: "24 Sep, 2025",
           text: "The watermelon and cucumber combination sounds delicious.",
         },
         {
           id: "c2",
           name: "Jane Cooper",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=JC",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=JC",
           date: "22 Sep, 2025",
           text: "I will definitely try the lemon and mint drink.",
         },
@@ -455,7 +420,8 @@ export const blogPosts = [
   {
     id: "post-6",
     slug: "healthy-tiffin-box-ideas",
-    image: "https://placehold.co/620x420/FFFFFF/D1D5DB?text=Blog+6",
+    image:
+      "https://images.unsplash.com/photo-1543352632-5a4b24e4d2a6?auto=format&fit=crop&w=1200&h=675&q=80",
     day: "15",
     month: "SEP",
     timestamp: 1747440000000,
@@ -469,13 +435,11 @@ export const blogPosts = [
 
     article: {
       heroImage:
-        "https://placehold.co/1100x520/FFF7E6/6B7280?text=Tiffin+Box+Ideas",
-      title:
-        "Healthy Tiffin Box Ideas For Kids That They'll Actually Eat",
+        "https://images.unsplash.com/photo-1543352632-5a4b24e4d2a6?auto=format&fit=crop&w=1400&h=788&q=80",
+      title: "Healthy Tiffin Box Ideas For Kids That They'll Actually Eat",
       writer: {
         name: "Admin",
-        avatar:
-          "https://placehold.co/64x64/E5E7EB/6B7280?text=AD",
+        avatar: "https://placehold.co/64x64/E5E7EB/6B7280?text=AD",
         date: "15 September, 2025",
         readTime: "6 min read",
       },
@@ -487,8 +451,8 @@ export const blogPosts = [
         "Preparing some ingredients in advance can make busy mornings easier. Wash fruits, prepare vegetables, and organize containers ahead of time so packing takes less effort.",
       ],
       inlineImages: [
-        "https://placehold.co/540x420/FFF7E6/D1D5DB?text=Healthy+Tiffin",
-        "https://placehold.co/540x420/E8F5E9/D1D5DB?text=Fresh+Snacks",
+        "https://images.unsplash.com/photo-1543352632-5a4b24e4d2a6?auto=format&fit=crop&w=800&h=620&q=80",
+        "https://images.unsplash.com/photo-1543352632-5a4b24e4d2a6?auto=format&fit=crop&w=780&h=605&q=80",
       ],
       closingParagraph:
         "The best tiffin is one that fits your family's routine and includes foods your child enjoys. Keep experimenting with different combinations to find a few reliable favorites.",
@@ -500,22 +464,20 @@ export const blogPosts = [
         discountSuffix: "Off",
         ctaLabel: "Shop Now",
         image:
-          "https://placehold.co/700x260/1A1A1A/D1D5DB?text=Healthy+Snacks",
+          "https://images.unsplash.com/photo-1543352632-5a4b24e4d2a6?auto=format&fit=crop&w=700&h=260&q=80",
       },
       comments: [
         {
           id: "c1",
           name: "Jacob Jones",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=JJ",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=JJ",
           date: "18 Sep, 2025",
           text: "The preparation tips are especially helpful for busy school mornings.",
         },
         {
           id: "c2",
           name: "Jane Cooper",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=JC",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=JC",
           date: "17 Sep, 2025",
           text: "Great ideas for making lunch boxes more interesting.",
         },
@@ -526,7 +488,8 @@ export const blogPosts = [
   {
     id: "post-7",
     slug: "artisan-bread-baking-guide",
-    image: "https://placehold.co/620x420/EFF6E0/D1D5DB?text=Blog+7",
+    image:
+      "https://images.unsplash.com/photo-1537200275355-4f0c0714f777?auto=format&fit=crop&w=1200&h=675&q=80",
     day: "02",
     month: "SEP",
     timestamp: 1746316800000,
@@ -540,13 +503,11 @@ export const blogPosts = [
 
     article: {
       heroImage:
-        "https://placehold.co/1100x520/EFF6E0/6B7280?text=Artisan+Bread",
-      title:
-        "Artisan Bread Baking At Home: A Beginner's Complete Guide",
+        "https://images.unsplash.com/photo-1537200275355-4f0c0714f777?auto=format&fit=crop&w=1400&h=788&q=80",
+      title: "Artisan Bread Baking At Home: A Beginner's Complete Guide",
       writer: {
         name: "Rahul",
-        avatar:
-          "https://placehold.co/64x64/E5E7EB/6B7280?text=RA",
+        avatar: "https://placehold.co/64x64/E5E7EB/6B7280?text=RA",
         date: "2 September, 2025",
         readTime: "8 min read",
       },
@@ -558,8 +519,8 @@ export const blogPosts = [
         "Baking temperature also matters. A properly preheated oven helps the bread develop a good crust while allowing the inside to cook evenly.",
       ],
       inlineImages: [
-        "https://placehold.co/540x420/EFF6E0/D1D5DB?text=Bread+Dough",
-        "https://placehold.co/540x420/FFF7E6/D1D5DB?text=Fresh+Bread",
+        "https://images.unsplash.com/photo-1537200275355-4f0c0714f777?auto=format&fit=crop&w=800&h=620&q=80",
+        "https://images.unsplash.com/photo-1537200275355-4f0c0714f777?auto=format&fit=crop&w=780&h=605&q=80",
       ],
       closingParagraph:
         "Bread baking becomes easier with practice. Start with a simple recipe, learn how your ingredients behave, and make small adjustments each time you bake.",
@@ -571,22 +532,20 @@ export const blogPosts = [
         discountSuffix: "Off",
         ctaLabel: "Shop Now",
         image:
-          "https://placehold.co/700x260/1A1A1A/D1D5DB?text=Fresh+Bakery",
+          "https://images.unsplash.com/photo-1537200275355-4f0c0714f777?auto=format&fit=crop&w=700&h=260&q=80",
       },
       comments: [
         {
           id: "c1",
           name: "Annette Black",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=AB",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=AB",
           date: "8 Sep, 2025",
           text: "This makes bread baking feel much less complicated.",
         },
         {
           id: "c2",
           name: "Darrell Steward",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=DS",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=DS",
           date: "5 Sep, 2025",
           text: "The explanation about resting the dough was very useful.",
         },
@@ -597,7 +556,8 @@ export const blogPosts = [
   {
     id: "post-8",
     slug: "choose-best-cuts-of-meat",
-    image: "https://placehold.co/620x420/D6EFFF/D1D5DB?text=Blog+8",
+    image:
+      "https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?auto=format&fit=crop&w=1200&h=675&q=80",
     day: "22",
     month: "AUG",
     timestamp: 1745356800000,
@@ -611,13 +571,11 @@ export const blogPosts = [
 
     article: {
       heroImage:
-        "https://placehold.co/1100x520/D6EFFF/6B7280?text=Fresh+Meat",
-      title:
-        "How To Choose The Best Cuts Of Meat For Every Recipe",
+        "https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?auto=format&fit=crop&w=1400&h=788&q=80",
+      title: "How To Choose The Best Cuts Of Meat For Every Recipe",
       writer: {
         name: "Admin",
-        avatar:
-          "https://placehold.co/64x64/E5E7EB/6B7280?text=AD",
+        avatar: "https://placehold.co/64x64/E5E7EB/6B7280?text=AD",
         date: "22 August, 2025",
         readTime: "7 min read",
       },
@@ -629,8 +587,8 @@ export const blogPosts = [
         "When shopping for meat, pay attention to the cut, freshness, packaging, and the cooking method you plan to use. Asking your butcher for advice can also help you choose appropriately.",
       ],
       inlineImages: [
-        "https://placehold.co/540x420/D6EFFF/D1D5DB?text=Meat+Cuts",
-        "https://placehold.co/540x420/FFF7E6/D1D5DB?text=Cooking+Meat",
+        "https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?auto=format&fit=crop&w=800&h=620&q=80",
+        "https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?auto=format&fit=crop&w=780&h=605&q=80",
       ],
       closingParagraph:
         "The best cut depends on the recipe rather than simply choosing the most expensive option. Once you understand how different cuts respond to different cooking methods, grocery shopping becomes much easier.",
@@ -642,22 +600,20 @@ export const blogPosts = [
         discountSuffix: "Off",
         ctaLabel: "Shop Now",
         image:
-          "https://placehold.co/700x260/1A1A1A/D1D5DB?text=Fresh+Meat",
+          "https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?auto=format&fit=crop&w=700&h=260&q=80",
       },
       comments: [
         {
           id: "c1",
           name: "Devon Lane",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=DL",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=DL",
           date: "27 Aug, 2025",
           text: "The difference between quick-cooking and slow-cooking cuts is much clearer now.",
         },
         {
           id: "c2",
           name: "Jacob Jones",
-          avatar:
-            "https://placehold.co/48x48/E5E7EB/6B7280?text=JJ",
+          avatar: "https://placehold.co/48x48/E5E7EB/6B7280?text=JJ",
           date: "25 Aug, 2025",
           text: "Good guide for someone who is still learning about different cuts.",
         },

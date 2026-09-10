@@ -8,13 +8,16 @@ import {store} from './redux/store'
 import { ToastContainer } from 'react-toastify';
 import 'swiper/css';
 import { QuickViewProvider } from './context/QuickViewContext.jsx';
+import { CartProvider } from './context/CartContext.jsx';
 createRoot(document.getElementById('root')).render(
 <Provider store={store}>
   <BrowserRouter>
+  <CartProvider>
   <QuickViewProvider>
       <App />
     <ToastContainer />
   </QuickViewProvider>
+  </CartProvider>
   </BrowserRouter>
 </Provider>
 )

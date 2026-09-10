@@ -5,8 +5,10 @@ import { useState } from "react";
 
 import CategorySidebar from "./CategorySidebar";
 import { IoHomeOutline } from "react-icons/io5";
+import { useCart } from "../context/useCart";
 
 const MobileBottomNav = () => {
+  const { isCartOpen, toggleCart } = useCart();
   const { pathname } = useLocation();
   const isHomeActive = pathname === "/";
   const isActive = (path) => {
@@ -38,15 +40,13 @@ const MobileBottomNav = () => {
           </span>
         </button>
         <button
-          className={`flex flex-col items-center gap-1 transition-colors relative text-gray-5 `}
+          type="button"
+          aria-label={isCartOpen ? "Close shopping cart" : "Open shopping cart"}
+          aria-expanded={isCartOpen}
+          onClick={toggleCart}
+          className={`flex flex-col items-center gap-1 transition-colors ${isCartOpen ? "text-primary" : "text-gray-500 hover:text-primary"}`}
         >
-          <div className="relative">
-            <HiOutlineShoppingBag size={22} />
-
-            <span className="absolute -top-1 -right-2 flex items-center justify-center min-w-4 lg:min-w-5 h-4 lg:min-h-5 bg-[#2C742F] text-white text-[9px] lg:text-[11px] font-semibold font-pop rounded-full border-[1.5px] lg:border-2 border-white px-1 shadow-sm">
-              3
-            </span>
-          </div>
+          <HiOutlineShoppingBag size={22} />
           <span className="text-[10px] font-medium tracking-wide uppercase ">
             Cart
           </span>
